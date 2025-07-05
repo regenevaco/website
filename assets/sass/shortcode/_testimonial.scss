@@ -1,0 +1,85 @@
+/*--------------------------------------------------------------
+  15. Testimonial
+----------------------------------------------------------------*/
+.cs_testimonial.cs_style_1 {
+  padding: 50px 49px;
+  position: relative;
+  @media (max-width: 1199px) {
+    padding: 40px 30px;
+  }
+  .cs_testimonial_avatar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      flex: none;
+      object-fit: cover;
+    }
+  }
+  blockquote {
+    font-style: initial;
+  }
+  .cs_quote_icon {
+    position: absolute;
+    right: 60px;
+    top: 65px;
+    @media (max-width: 1199px) {
+      top: 55px;
+      right: 30px;
+    }
+    @media (max-width: 991px) {
+      top: 40px;
+      svg {
+        width: 35px;
+      }
+    }
+    @media (max-width: 575px) {
+      right: 20px;
+    }
+  }
+  &.cs_type_1 {
+    padding: 60px 60px;
+    @media (max-width: 1199px) {
+      padding: 40px 30px;
+    }
+    @media (max-width: 575px) {
+      padding: 40px 20px;
+    }
+    .cs_testimonial_avatar {
+      gap: 30px;
+      @media (max-width: 1199px) {
+        gap: 15px;
+      }
+      @media (min-width: 992px) {
+        img {
+          height: 90px;
+          width: 90px;
+        }
+      }
+    }
+  }
+  &.cs_type_2 {
+    text-align: center;
+    padding: 1px 49px 50px 49px;
+    margin-top: 75px;
+    @media (max-width: 991px) {
+      padding: 1px 25px 50px 25px;
+    }
+    .cs_testimonial_avatar {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: -75px;
+      img {
+        height: 150px;
+        width: 150px;
+      }
+    }
+    .cs_rating {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

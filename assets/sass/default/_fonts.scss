@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------
+ ** Google Fonts Integration
+----------------------------------------------------------------*/
+/** Roboto **/
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/** EncodeSansCondensed **/
+@font-face {
+  font-family: 'Encode Sans Condensed';
+  src: url('../fonts/Encode_Sans_Condensed/EncodeSansCondensed-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Encode Sans Condensed';
+  src: url('../fonts/Encode_Sans_Condensed/EncodeSansCondensed-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Encode Sans Condensed';
+  src: url('../fonts/Encode_Sans_Condensed/EncodeSansCondensed-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Encode Sans Condensed';
+  src: url('../fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}

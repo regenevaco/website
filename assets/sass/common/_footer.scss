@@ -1,0 +1,118 @@
+/*--------------------------------------------------------------
+  8. Footer
+----------------------------------------------------------------*/
+.cs_footer_row {
+  display: flex;
+  gap: 50px 80px;
+  padding: 90px 0;
+  @media (max-width: 1400px) {
+    gap: 50px 60px;
+  }
+  @media (max-width: 1199px) {
+    gap: 50px 30px;
+  }
+  @media (max-width: 991px) {
+    flex-wrap: wrap;
+    gap: 50px 40px;
+    padding: 60px 0;
+  }
+  .cs_footer_col {
+    flex: 1.2;
+    @media (max-width: 991px) {
+      flex: none !important;
+      width: calc(50% - 20px);
+    }
+    @media (max-width: 470px) {
+      width: 100%;
+    }
+    &:first-child {
+      flex: 1.5;
+    }
+    &:nth-child(2) {
+      flex: 1;
+    }
+  }
+}
+.cs_footer_widget_menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+.cs_footer_text_widget {
+  p {
+    margin-bottom: 0;
+  }
+  img + p {
+    margin-top: 35px;
+  }
+}
+.cs_copyright {
+  a {
+    color: var(--accent-color);
+  }
+}
+.cs_footer_bottom {
+  border-top: 1px solid var(--body-color);
+}
+.cs_footer_bottom_in {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 23px 0;
+  gap: 5px 25px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cs_footer_widget_menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 30px;
+    li {
+      margin-bottom: 0;
+    }
+  }
+}
+.cs_footer_widget_menu a,
+.cs_copyright a,
+.cs_page_heading .breadcrumb a {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
+  transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+    color 0.27s ease-out;
+  background-position: 100% calc(100% - 0px);
+  background-size: 0 1px;
+  &:hover {
+    background-size: 100% 1px;
+    background-position: 0 calc(100% - 0px);
+  }
+}
+.cs_footer.cs_style_1 {
+  padding-top: 1px;
+  margin-top: 134px;
+  &.cs_type_1 {
+    margin-top: 0;
+  }
+  .cs_newsletter.cs_style_2 {
+    margin-top: -134px;
+  }
+  .cs_social_btns.cs_style_1 {
+    font-size: 14px;
+    margin-top: 30px;
+    a {
+      height: 30px;
+      width: 30px;
+      border-color: #fff;
+      color: #fff;
+      &:hover {
+        border-color: var(--accent-color);
+      }
+    }
+  }
+}

@@ -1,0 +1,295 @@
+/*--------------------------------------------------------------
+  17. Card
+----------------------------------------------------------------*/
+.cs_card.cs_style_1 {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  @media (max-width: 1400px) {
+    padding: 30px;
+    gap: 30px;
+  }
+  @media (max-width: 991px) {
+    flex-direction: column;
+  }
+  @media (max-width: 575px) {
+    padding: 30px 20px;
+  }
+  .cs_card_thumb {
+    flex: none;
+    width: 54%;
+    height: 460px;
+    @media (max-width: 1400px) {
+      width: 50%;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
+      height: initial;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .cs_card_info {
+    padding-bottom: 10px;
+  }
+}
+.cs_card.cs_style_2 {
+  .cs_card_info {
+    padding: 18px 24px 31px 24px;
+  }
+  &.cs_type_1 {
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    .cs_card_thumb {
+      width: 100%;
+      height: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: all 2s ease;
+      }
+    }
+    .cs_card_info {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 24px 40px 24px;
+      gap: 30px 0;
+      h2,
+      h3 {
+        color: #fff;
+      }
+      p {
+        color: #f6fbf6;
+      }
+      .cs_progress {
+        background-color: #f6fbf6;
+      }
+    }
+    &:hover {
+      .cs_card_thumb {
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  &.cs_type_2 {
+    padding: 40px;
+    @media (max-width: 1400px) {
+      padding: 30px;
+    }
+    @media (max-width: 575px) {
+      padding: 30px 20px;
+    }
+    .cs_card_info {
+      padding: 31px 0 0;
+      @media (max-width: 991px) {
+        padding-top: 20px;
+      }
+    }
+  }
+}
+.cs_card.cs_style_3 {
+  height: 377px;
+  position: relative;
+  overflow: hidden;
+  .cs_card_thumb {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 1s ease;
+  }
+  .cs_card_title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: 65px 15px 85px 15px;
+  }
+  .cs_btn.cs_style_2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 45px;
+    z-index: 4;
+  }
+  &:hover {
+    .cs_card_thumb {
+      transform: scale(1.05);
+    }
+  }
+}
+.cs_event_card_1_list {
+  .cs_event_card.cs_style_1 {
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+}
+.cs_event_card.cs_style_1,
+.cs_event_card.cs_style_2,
+.cs_event_card.cs_style_3 {
+  .cs_event_card_posted_by {
+    span {
+      color: var(--accent-color);
+    }
+  }
+  .cs_event_card_meta {
+    display: flex;
+    flex-wrap: wrap;
+    span {
+      &:not(:last-child) {
+        padding-right: 15px;
+        margin-right: 15px;
+        border-right: 1px solid var(--accent-color);
+      }
+    }
+  }
+}
+.cs_event_card.cs_style_1 {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px 30px;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media (max-width: 575px) {
+    padding: 30px 20px;
+  }
+  .cs_event_card_in {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+  .cs_event_card_thumb {
+    flex: none;
+    width: 250px;
+    display: block;
+    overflow: hidden;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+      transition: all 0.8s ease;
+    }
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+  .cs_event_card_btn {
+    flex: none;
+  }
+}
+.cs_event_card.cs_style_2 {
+  display: flex;
+  align-items: center;
+  @media (max-width: 991px) {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  .cs_event_card_info {
+    flex: none;
+    width: 56%;
+    padding-right: 80px;
+    @media (max-width: 1400px) {
+      width: 50%;
+      padding-right: 40px;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
+      padding-right: 0;
+    }
+  }
+  .cs_event_card_thumb {
+    flex: none;
+    width: 44%;
+    position: relative;
+    @media (max-width: 1400px) {
+      width: 50%;
+    }
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+  .cs_event_card_thumb_img {
+    position: relative;
+    z-index: 2;
+  }
+  .cs_event_card_shape {
+    position: absolute;
+    top: -90px;
+    right: -70px;
+  }
+  .cs_event_location {
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-right: none;
+    padding: 26px 0;
+  }
+}
+.cs_event_card.cs_style_3 {
+  padding: 30px;
+  transition: all 0.4s ease;
+  @media (max-width: 575px) {
+    padding: 25px 25px 30px 25px;
+  }
+  &:hover {
+    transform: translateY(-4px);
+  }
+  .cs_event_card_thumb {
+    display: block;
+    overflow: hidden;
+    img {
+      width: 100%;
+      transition: all 0.7s ease;
+    }
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+  .cs_event_card_title a {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
+    transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+      color 0.27s ease-out;
+    background-position: 100% calc(100% - 0px);
+    background-size: 0 2px;
+    &:hover {
+      background-size: 100% 2px;
+      background-position: 0 calc(100% - 0px);
+    }
+  }
+}
+.cs_card.cs_style_4 {
+  .cs_card_info {
+    padding: 22px 25px 26px 25px;
+  }
+}

@@ -1,0 +1,72 @@
+/*--------------------------------------------------------------
+  10. Newsletter
+----------------------------------------------------------------*/
+.cs_newsletter.cs_style_1 {
+  .cs_newsletter_input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    border: 1px solid var(--body-color);
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    outline: none;
+    transition: all 0.4s ease;
+    &:focus {
+      border-color: var(--accent-color);
+    }
+  }
+  .cs_btn.cs_style_1 {
+    box-shadow: none;
+  }
+}
+.cs_newsletter.cs_style_2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 95px 90px;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  @media (max-width: 1400px) {
+    padding: 95px 60px;
+  }
+  @media (max-width: 1199px) {
+    flex-direction: column;
+    padding: 65px 60px;
+    .cs_newsletter_left {
+      text-align: center;
+    }
+  }
+  @media (max-width: 575px) {
+    padding: 65px 30px;
+  }
+  @media (max-width: 360px) {
+    padding: 50px 30px 50px;
+  }
+  .cs_newsletter_form {
+    display: flex;
+    gap: 25px;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (max-width: 575px) {
+      width: 100%;
+    }
+  }
+  .cs_newsletter_input {
+    height: 50px;
+    box-shadow: 6px 6px 0px 0px var(--dark-blue-color);
+    width: 350px;
+    border: none;
+    padding: 5px 20px;
+    transition: all 0.3s ease;
+    outline: none;
+    @media (max-width: 575px) {
+      width: 100%;
+    }
+    &:focus {
+      box-shadow: -6px -6px 0px 0px var(--dark-blue-color);
+    }
+  }
+}
