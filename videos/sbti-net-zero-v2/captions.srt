@@ -1,0 +1,496 @@
+1
+00:00:01,400 --> 00:00:04,588
+More than 10,000 companies now have climate targets
+
+2
+00:00:04,588 --> 00:00:07,714
+validated by the Science Based Targets initiative.
+
+3
+00:00:08,164 --> 00:00:11,448
+And on 11 June 2026, the rulebook behind their
+
+4
+00:00:11,448 --> 00:00:14,589
+net-zero claims got its biggest rewrite yet.
+
+5
+00:00:15,039 --> 00:00:19,786
+This is the Corporate Net-Zero Standard, Version 2.0. In the next few minutes:
+
+6
+00:00:19,786 --> 00:00:23,681
+what it is, what's changed, and what it means for your business.
+
+7
+00:00:25,381 --> 00:00:29,431
+First, a quick refresher. SBTi is the world's leading body for
+
+8
+00:00:29,431 --> 00:00:33,415
+validating corporate climate targets against climate science.
+
+9
+00:00:33,865 --> 00:00:38,375
+In 2021, it launched the Corporate Net-Zero Standard: the first framework
+
+10
+00:00:38,375 --> 00:00:42,514
+to define what a science-based net-zero target actually looks like.
+
+11
+00:00:42,964 --> 00:00:48,266
+Version 1 focused on setting ambitious targets: cut emissions deeply,
+
+12
+00:00:48,266 --> 00:00:53,568
+in line with 1.5°C, and neutralize what's left by 2050 at the latest.
+
+13
+00:00:55,268 --> 00:00:58,816
+Version 2.0 is the product of a two-year revision.
+
+14
+00:00:59,266 --> 00:01:03,529
+A first draft went to public consultation in March 2025,
+
+15
+00:01:03,529 --> 00:01:05,813
+and a second in November 2025.
+
+16
+00:01:06,263 --> 00:01:10,840
+After pilot testing and expert working groups, it was approved by SBTi's
+
+17
+00:01:10,840 --> 00:01:15,099
+independent Technical Council and adopted by its Board of Trustees.
+
+18
+00:01:15,548 --> 00:01:21,373
+It was published on 11 June 2026. Validations open in early 2027,
+
+19
+00:01:21,373 --> 00:01:28,274
+and from 1 February 2028 it becomes mandatory for all new target submissions.
+
+20
+00:01:29,974 --> 00:01:35,279
+The biggest idea in Version 2.0 is a shift from ambition to implementation.
+
+21
+00:01:35,729 --> 00:01:40,601
+As SBTi CEO David Kennedy put it: "companies have told us that they
+
+22
+00:01:40,601 --> 00:01:45,399
+need a partner that can help foster implementation and that's what
+
+23
+00:01:45,399 --> 00:01:49,980
+the Corporate Net-Zero Standard Version 2.0 is designed to do."
+
+24
+00:01:50,430 --> 00:01:55,217
+So targets now run in five-year cycles: set a near-term target, implement it,
+
+25
+00:01:55,217 --> 00:01:59,506
+report progress every year, and get assessed at the end of the cycle.
+
+26
+00:01:59,956 --> 00:02:04,557
+Targets are pursued on a best-efforts basis. Companies that are genuinely acting,
+
+27
+00:02:04,557 --> 00:02:08,477
+and transparent about the barriers they face, can stay in the system.
+
+28
+00:02:10,178 --> 00:02:13,808
+Next, not every company is treated the same any more.
+
+29
+00:02:13,808 --> 00:02:17,095
+Version 2.0 sorts companies into two categories.
+
+30
+00:02:17,545 --> 00:02:20,185
+Category A covers large companies everywhere,
+
+31
+00:02:20,185 --> 00:02:23,235
+and medium-sized companies in high-income countries.
+
+32
+00:02:23,685 --> 00:02:27,756
+In any country, you're Category A with net turnover of at
+
+33
+00:02:27,756 --> 00:02:31,898
+least €450 million, or at least 1,000 full-time employees.
+
+34
+00:02:32,348 --> 00:02:37,349
+In high-income countries, you're also Category A if your scope 1 and
+
+35
+00:02:37,349 --> 00:02:41,983
+2 emissions reach 10,000 tCO2e, or you meet two of three tests:
+
+36
+00:02:41,983 --> 00:02:46,984
+a €25 million balance sheet, €50 million turnover, or 250 employees.
+
+37
+00:02:47,434 --> 00:02:51,380
+Everyone else is Category B, with a simpler set of requirements.
+
+38
+00:02:51,380 --> 00:02:55,758
+For them, scope 3 targets, transition plans and assurance are optional.
+
+39
+00:02:57,459 --> 00:03:01,467
+Now, the target architecture, and a change that surprised many people.
+
+40
+00:03:01,917 --> 00:03:06,707
+Near-term, five-year targets are the core. Scope 1 and scope 2 targets are
+
+41
+00:03:06,707 --> 00:03:11,368
+required for every company. Scope 3 targets are required for Category A.
+
+42
+00:03:11,818 --> 00:03:15,516
+Long-term targets are optional for scopes 2 and 3. For scope 1,
+
+43
+00:03:15,516 --> 00:03:18,568
+they depend on the target-setting method you choose.
+
+44
+00:03:19,019 --> 00:03:22,698
+And a full net-zero target? It's now optional for all companies.
+
+45
+00:03:22,698 --> 00:03:26,836
+The standard puts its weight on what you deliver in the next five years.
+
+46
+00:03:28,535 --> 00:03:32,245
+Let's go scope by scope. Scope 1, your direct emissions,
+
+47
+00:03:32,245 --> 00:03:36,683
+now gets its own separate target, covering 100% of those emissions.
+
+48
+00:03:37,133 --> 00:03:40,882
+Companies choose from a set of methods, including absolute
+
+49
+00:03:40,882 --> 00:03:44,502
+linear reduction and sector-specific intensity pathways,
+
+50
+00:03:44,502 --> 00:03:48,122
+consistent with reaching net zero by 2050 at the latest.
+
+51
+00:03:49,822 --> 00:03:52,406
+Scope 2 (purchased electricity, heat,
+
+52
+00:03:52,406 --> 00:03:56,526
+steam and cooling) also gets its own target, covering 100%.
+
+53
+00:03:56,976 --> 00:04:02,693
+You can set an emissions reduction target, now based only on the location-based inventory,
+
+54
+00:04:02,693 --> 00:04:06,759
+a target to raise your share of low-carbon electricity, or both.
+
+55
+00:04:06,759 --> 00:04:12,349
+Low-carbon includes renewables, nuclear, and generation with carbon capture and storage.
+
+56
+00:04:12,799 --> 00:04:16,644
+Buying certificates gets stricter: purchases must be matched to
+
+57
+00:04:16,644 --> 00:04:19,939
+consumption within 12 months, in the same grid region,
+
+58
+00:04:19,939 --> 00:04:24,089
+from generators commissioned or re-powered within the last 15 years.
+
+59
+00:04:24,540 --> 00:04:28,781
+Hourly matching isn't required to meet targets. But Category A
+
+60
+00:04:28,781 --> 00:04:33,297
+companies using 10 GWh or more must report how much of their power
+
+61
+00:04:33,297 --> 00:04:37,538
+is matched hour by hour, and early adopters can be recognized.
+
+62
+00:04:39,238 --> 00:04:43,112
+Scope 3, the value chain, is where most companies' emissions sit,
+
+63
+00:04:43,112 --> 00:04:45,317
+and where the rules changed the most.
+
+64
+00:04:45,767 --> 00:04:49,678
+The old fixed coverage thresholds, 67% of scope 3 for
+
+65
+00:04:49,678 --> 00:04:53,368
+near-term targets and 90% for long-term, are gone.
+
+66
+00:04:53,817 --> 00:04:58,219
+Instead there's a significance test: your near-term target must cover
+
+67
+00:04:58,219 --> 00:05:02,940
+every scope 3 category that makes up 5% or more of your scope 3 emissions.
+
+68
+00:05:03,391 --> 00:05:08,527
+You can set an overarching absolute reduction target, an overarching supplier or
+
+69
+00:05:08,527 --> 00:05:13,471
+customer alignment target, or targets for specific categories and activities.
+
+70
+00:05:13,920 --> 00:05:16,689
+Long-term scope 3 targets are optional,
+
+71
+00:05:16,689 --> 00:05:20,240
+but if you set one, it must cover 100% of scope 3.
+
+72
+00:05:21,940 --> 00:05:24,447
+So how do you deliver these targets?
+
+73
+00:05:24,447 --> 00:05:27,998
+Version 2.0 introduces an implementation hierarchy.
+
+74
+00:05:28,448 --> 00:05:32,032
+First: direct action, in your own operations and value chain.
+
+75
+00:05:32,483 --> 00:05:36,066
+Where that isn't feasible, you can act within shared systems
+
+76
+00:05:36,066 --> 00:05:40,426
+such as electricity grids, gas grids, supply sheds or logistics networks,
+
+77
+00:05:40,426 --> 00:05:43,352
+using tools like certificates and book-and-claim.
+
+78
+00:05:43,801 --> 00:05:47,751
+What doesn't count? Carbon credits. Progress against your scope 1,
+
+79
+00:05:47,751 --> 00:05:50,743
+2 and 3 targets is measured on your own inventory.
+
+80
+00:05:52,444 --> 00:05:54,649
+So where do credits and removals fit?
+
+81
+00:05:54,649 --> 00:05:57,986
+Through a new concept: Ongoing Emissions Responsibility.
+
+82
+00:05:58,436 --> 00:06:02,924
+Every tonne you still emit on the way to net zero has an impact.
+
+83
+00:06:02,924 --> 00:06:07,272
+Companies can take responsibility for anywhere from 1% to 100%
+
+84
+00:06:07,272 --> 00:06:11,550
+of those ongoing emissions, and be recognized by SBTi for it.
+
+85
+00:06:12,000 --> 00:06:15,776
+Until 2035 this is voluntary, and it is kept separate from your
+
+86
+00:06:15,776 --> 00:06:19,373
+target progress: it cannot be netted against your inventory.
+
+87
+00:06:19,823 --> 00:06:25,101
+But from 2035, Category A companies must support eligible carbon removals
+
+88
+00:06:25,101 --> 00:06:29,801
+equal to at least 1% of their ongoing scope 1, 2 and 3 emissions.
+
+89
+00:06:30,250 --> 00:06:32,122
+And at the net-zero target year,
+
+90
+00:06:32,122 --> 00:06:35,984
+all residual emissions must be neutralized with eligible removals.
+
+91
+00:06:37,684 --> 00:06:41,306
+Version 2.0 also raises the bar on accountability,
+
+92
+00:06:41,306 --> 00:06:43,914
+especially for Category A companies.
+
+93
+00:06:44,364 --> 00:06:48,322
+Your greenhouse gas inventory and target metrics need independent
+
+94
+00:06:48,322 --> 00:06:51,793
+third-party assurance, at a minimum of limited assurance.
+
+95
+00:06:52,242 --> 00:06:56,089
+You must publish a transition plan within 15 months of validation,
+
+96
+00:06:56,089 --> 00:07:00,810
+approved by your highest governing body, and review it at least every five years.
+
+97
+00:07:01,261 --> 00:07:04,282
+And you report progress every year, including the barriers
+
+98
+00:07:04,282 --> 00:07:07,147
+you face and the actions you're taking to address them.
+
+99
+00:07:08,846 --> 00:07:10,491
+Let's put it side by side.
+
+100
+00:07:10,941 --> 00:07:16,059
+Version 1 used an SME route, allowed combined scope 1 and 2 targets,
+
+101
+00:07:16,059 --> 00:07:22,004
+fixed scope 3 coverage thresholds, and required long-term targets for net zero.
+
+102
+00:07:22,454 --> 00:07:27,064
+Version 2 brings Category A and B, separate scope 1 and 2 targets,
+
+103
+00:07:27,064 --> 00:07:32,791
+a 5% significance test for scope 3, optional net-zero targets, mandatory assurance
+
+104
+00:07:32,791 --> 00:07:37,959
+and transition plans for Category A, and Ongoing Emissions Responsibility.
+
+105
+00:07:39,659 --> 00:07:42,541
+How has it landed? Reaction from sustainability
+
+106
+00:07:42,541 --> 00:07:45,669
+leaders has been broadly positive, but not uniform.
+
+107
+00:07:46,119 --> 00:07:51,956
+NewClimate Institute welcomed the stronger focus on near-term targets and implementation,
+
+108
+00:07:51,956 --> 00:07:55,761
+but warned that high flexibility may weaken comparability,
+
+109
+00:07:55,761 --> 00:08:00,811
+and called the decision not to phase in hourly matching a missed opportunity.
+
+110
+00:08:01,261 --> 00:08:04,264
+Among other commentators, a common criticism is the
+
+111
+00:08:04,264 --> 00:08:07,266
+lack of progress on how carbon credits can be used.
+
+112
+00:08:08,965 --> 00:08:11,660
+So what should you do now? Here's a six-step checklist.
+
+113
+00:08:12,110 --> 00:08:17,804
+One: confirm your category, A or B. Two: get your inventory assurance-ready.
+
+114
+00:08:18,254 --> 00:08:22,277
+Three: map scope 3, and find every category above 5%. Four:
+
+115
+00:08:22,277 --> 00:08:25,755
+plan scope 1 and scope 2 separately, and check your
+
+116
+00:08:25,755 --> 00:08:29,915
+electricity contracts against the new location and age rules.
+
+117
+00:08:30,365 --> 00:08:34,904
+Five: build a transition plan your board can approve. Six: choose your timing.
+
+118
+00:08:35,354 --> 00:08:42,267
+If you're setting or renewing targets in 2026, SBTi encourages using Version 1.3.1.
+
+119
+00:08:42,267 --> 00:08:46,764
+Existing validated targets stay valid for their cycle,
+
+120
+00:08:46,764 --> 00:08:53,011
+and Version 2.0 becomes mandatory for new submissions from 1 February 2028.
+
+121
+00:08:54,712 --> 00:08:59,556
+Version 2.0 asks less about what you promise, and more about what you deliver.
+
+122
+00:09:00,006 --> 00:09:04,425
+ReGeneva helps organizations turn standards like this into action,
+
+123
+00:09:04,425 --> 00:09:08,577
+from GHG accounting to target setting and transition planning.
+
+124
+00:09:08,577 --> 00:09:12,929
+Subscribe for more, and share this with your sustainability team.
+

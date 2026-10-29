@@ -1,0 +1,16 @@
+0:00 Intro
+0:24 What is it?
+0:54 The journey to V2.0
+1:29 The big shift
+2:09 Category A vs B
+2:56 Target architecture
+3:27 Scope 1
+3:49 Scope 2
+4:38 Scope 3
+5:21 Implementation hierarchy
+5:51 Ongoing Emissions Responsibility
+6:36 Accountability
+7:08 V1 vs V2 at a glance
+7:38 How it's landed
+8:08 What to do now
+8:54 Outro
