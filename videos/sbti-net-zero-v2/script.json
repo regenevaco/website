@@ -1,0 +1,222 @@
+{
+  "title": "SBTi Corporate Net-Zero Standard V2.0 — Explained",
+  "voice": "af_heart",
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Intro",
+      "lines": [
+        {"text": "More than 10,000 companies now have climate targets validated by the Science Based Targets initiative.",
+         "say": "More than ten thousand companies now have climate targets validated by the Science Based Targets initiative."},
+        {"text": "And on 11 June 2026, the rulebook behind their net-zero claims got its biggest rewrite yet.",
+         "say": "And on the eleventh of June, twenty twenty-six, the rulebook behind their net-zero claims got its biggest rewrite yet."},
+        {"text": "This is the Corporate Net-Zero Standard, Version 2.0. In the next few minutes: what it is, what's changed, and what it means for your business.",
+         "say": "This is the Corporate Net-Zero Standard, Version two point zero. In the next few minutes: what it is, what's changed, and what it means for your business."}
+      ]
+    },
+    {
+      "id": "what",
+      "chapter": "What is it?",
+      "lines": [
+        {"text": "First, a quick refresher. SBTi is the world's leading body for validating corporate climate targets against climate science.",
+         "say": "First, a quick refresher. SBTi is the world's leading body for validating corporate climate targets against climate science."},
+        {"text": "In 2021, it launched the Corporate Net-Zero Standard: the first framework to define what a science-based net-zero target actually looks like.",
+         "say": "In twenty twenty-one, it launched the Corporate Net-Zero Standard: the first framework to define what a science-based net-zero target actually looks like."},
+        {"text": "Version 1 focused on setting ambitious targets: cut emissions deeply, in line with 1.5°C, and neutralize what's left by 2050 at the latest.",
+         "say": "Version one focused on setting ambitious targets: cut emissions deeply, in line with one point five degrees, and neutralize what's left by twenty fifty at the latest."}
+      ]
+    },
+    {
+      "id": "timeline",
+      "chapter": "The journey to V2.0",
+      "lines": [
+        {"text": "Version 2.0 is the product of a two-year revision.",
+         "say": "Version two point zero is the product of a two-year revision."},
+        {"text": "A first draft went to public consultation in March 2025, and a second in November 2025.",
+         "say": "A first draft went to public consultation in March twenty twenty-five, and a second in November twenty twenty-five."},
+        {"text": "After pilot testing and expert working groups, it was approved by SBTi's independent Technical Council and adopted by its Board of Trustees.",
+         "say": "After pilot testing and expert working groups, it was approved by SBTi's independent Technical Council, and adopted by its Board of Trustees."},
+        {"text": "It was published on 11 June 2026. Validations open in early 2027, and from 1 February 2028 it becomes mandatory for all new target submissions.",
+         "say": "It was published on the eleventh of June, twenty twenty-six. Validations open in early twenty twenty-seven, and from the first of February, twenty twenty-eight, it becomes mandatory for all new target submissions."}
+      ]
+    },
+    {
+      "id": "shift",
+      "chapter": "The big shift",
+      "lines": [
+        {"text": "The biggest idea in Version 2.0 is a shift from ambition to implementation.",
+         "say": "The biggest idea in version two point zero is a shift, from ambition, to implementation."},
+        {"text": "As SBTi CEO David Kennedy put it: \"companies have told us that they need a partner that can help foster implementation and that's what the Corporate Net-Zero Standard Version 2.0 is designed to do.\"",
+         "say": "As SBTi C.E.O. David Kennedy put it: companies have told us that they need a partner that can help foster implementation, and that's what the Corporate Net-Zero Standard Version two point zero is designed to do."},
+        {"text": "So targets now run in five-year cycles: set a near-term target, implement it, report progress every year, and get assessed at the end of the cycle.",
+         "say": "So targets now run in five-year cycles. Set a near-term target. Implement it. Report progress every year. And get assessed at the end of the cycle."},
+        {"text": "Targets are pursued on a best-efforts basis. Companies that are genuinely acting, and transparent about the barriers they face, can stay in the system.",
+         "say": "Targets are pursued on a best-efforts basis. Companies that are genuinely acting, and transparent about the barriers they face, can stay in the system."}
+      ]
+    },
+    {
+      "id": "categories",
+      "chapter": "Category A vs B",
+      "lines": [
+        {"text": "Next, not every company is treated the same any more. Version 2.0 sorts companies into two categories.",
+         "say": "Next, not every company is treated the same any more. Version two point zero sorts companies into two categories."},
+        {"text": "Category A covers large companies everywhere, and medium-sized companies in high-income countries.",
+         "say": "Category A covers large companies everywhere, and medium-sized companies in high-income countries."},
+        {"text": "In any country, you're Category A with net turnover of at least €450 million, or at least 1,000 full-time employees.",
+         "say": "In any country, you're Category A with net turnover of at least four hundred and fifty million euros, or at least one thousand full-time employees."},
+        {"text": "In high-income countries, you're also Category A if your scope 1 and 2 emissions reach 10,000 tCO2e, or you meet two of three tests: a €25 million balance sheet, €50 million turnover, or 250 employees.",
+         "say": "In high-income countries, you're also Category A if your scope one and two emissions reach ten thousand tonnes, or you meet two of three tests: a twenty-five million euro balance sheet, fifty million euros in turnover, or two hundred and fifty employees."},
+        {"text": "Everyone else is Category B, with a simpler set of requirements. For them, scope 3 targets, transition plans and assurance are optional.",
+         "say": "Everyone else is Category B, with a simpler set of requirements. For them, scope three targets, transition plans, and assurance, are optional."}
+      ]
+    },
+    {
+      "id": "architecture",
+      "chapter": "Target architecture",
+      "lines": [
+        {"text": "Now, the target architecture, and a change that surprised many people.",
+         "say": "Now, the target architecture. And a change that surprised many people."},
+        {"text": "Near-term, five-year targets are the core. Scope 1 and scope 2 targets are required for every company. Scope 3 targets are required for Category A.",
+         "say": "Near-term, five-year targets are the core. Scope one and scope two targets are required for every company. Scope three targets are required for Category A."},
+        {"text": "Long-term targets are optional for scopes 2 and 3. For scope 1, they depend on the target-setting method you choose.",
+         "say": "Long-term targets are optional for scopes two and three. For scope one, they depend on the target-setting method you choose."},
+        {"text": "And a full net-zero target? It's now optional for all companies. The standard puts its weight on what you deliver in the next five years.",
+         "say": "And a full net-zero target? It's now optional, for all companies. The standard puts its weight on what you deliver in the next five years."}
+      ]
+    },
+    {
+      "id": "scope1",
+      "chapter": "Scope 1",
+      "lines": [
+        {"text": "Let's go scope by scope. Scope 1, your direct emissions, now gets its own separate target, covering 100% of those emissions.",
+         "say": "Let's go scope by scope. Scope one, your direct emissions, now gets its own separate target, covering one hundred percent of those emissions."},
+        {"text": "Companies choose from a set of methods, including absolute linear reduction and sector-specific intensity pathways, consistent with reaching net zero by 2050 at the latest.",
+         "say": "Companies choose from a set of methods, including absolute linear reduction, and sector-specific intensity pathways, consistent with reaching net zero by twenty fifty at the latest."}
+      ]
+    },
+    {
+      "id": "scope2",
+      "chapter": "Scope 2",
+      "lines": [
+        {"text": "Scope 2 (purchased electricity, heat, steam and cooling) also gets its own target, covering 100%.",
+         "say": "Scope two, purchased electricity, heat, steam and cooling, also gets its own target, covering one hundred percent."},
+        {"text": "You can set an emissions reduction target, now based only on the location-based inventory, a target to raise your share of low-carbon electricity, or both. Low-carbon includes renewables, nuclear, and generation with carbon capture and storage.",
+         "say": "You can set an emissions reduction target, now based only on the location-based inventory. A target to raise your share of low-carbon electricity. Or both. Low-carbon includes renewables, nuclear, and generation with carbon capture and storage."},
+        {"text": "Buying certificates gets stricter: purchases must be matched to consumption within 12 months, in the same grid region, from generators commissioned or re-powered within the last 15 years.",
+         "say": "Buying certificates gets stricter. Purchases must be matched to consumption within twelve months, in the same grid region, from generators commissioned or re-powered within the last fifteen years."},
+        {"text": "Hourly matching isn't required to meet targets. But Category A companies using 10 GWh or more must report how much of their power is matched hour by hour, and early adopters can be recognized.",
+         "say": "Hourly matching isn't required to meet targets. But Category A companies using ten gigawatt hours or more must report how much of their power is matched, hour by hour. And early adopters can be recognized."}
+      ]
+    },
+    {
+      "id": "scope3",
+      "chapter": "Scope 3",
+      "lines": [
+        {"text": "Scope 3, the value chain, is where most companies' emissions sit, and where the rules changed the most.",
+         "say": "Scope three, the value chain, is where most companies' emissions sit. And it's where the rules changed the most."},
+        {"text": "The old fixed coverage thresholds, 67% of scope 3 for near-term targets and 90% for long-term, are gone.",
+         "say": "The old fixed coverage thresholds, sixty-seven percent of scope three for near-term targets, and ninety percent for long-term, are gone."},
+        {"text": "Instead there's a significance test: your near-term target must cover every scope 3 category that makes up 5% or more of your scope 3 emissions.",
+         "say": "Instead, there's a significance test. Your near-term target must cover every scope three category that makes up five percent or more of your scope three emissions."},
+        {"text": "You can set an overarching absolute reduction target, an overarching supplier or customer alignment target, or targets for specific categories and activities.",
+         "say": "You can set an overarching absolute reduction target. An overarching supplier, or customer, alignment target. Or targets for specific categories and activities."},
+        {"text": "Long-term scope 3 targets are optional, but if you set one, it must cover 100% of scope 3.",
+         "say": "Long-term scope three targets are optional. But if you set one, it must cover one hundred percent of scope three."}
+      ]
+    },
+    {
+      "id": "hierarchy",
+      "chapter": "Implementation hierarchy",
+      "lines": [
+        {"text": "So how do you deliver these targets? Version 2.0 introduces an implementation hierarchy.",
+         "say": "So how do you deliver these targets? Version two point zero introduces an implementation hierarchy."},
+        {"text": "First: direct action, in your own operations and value chain.",
+         "say": "First, direct action, in your own operations and value chain."},
+        {"text": "Where that isn't feasible, you can act within shared systems such as electricity grids, gas grids, supply sheds or logistics networks, using tools like certificates and book-and-claim.",
+         "say": "Where that isn't feasible, you can act within shared systems, such as electricity grids, gas grids, supply sheds, or logistics networks, using tools like certificates and book-and-claim."},
+        {"text": "What doesn't count? Carbon credits. Progress against your scope 1, 2 and 3 targets is measured on your own inventory.",
+         "say": "What doesn't count? Carbon credits. Progress against your scope one, two and three targets is measured on your own inventory."}
+      ]
+    },
+    {
+      "id": "oer",
+      "chapter": "Ongoing Emissions Responsibility",
+      "lines": [
+        {"text": "So where do credits and removals fit? Through a new concept: Ongoing Emissions Responsibility.",
+         "say": "So where do credits and removals fit? Through a new concept: Ongoing Emissions Responsibility."},
+        {"text": "Every tonne you still emit on the way to net zero has an impact. Companies can take responsibility for anywhere from 1% to 100% of those ongoing emissions, and be recognized by SBTi for it.",
+         "say": "Every tonne you still emit on the way to net zero has an impact. Companies can take responsibility for anywhere from one percent to one hundred percent of those ongoing emissions, and be recognized by SBTi for it."},
+        {"text": "Until 2035 this is voluntary, and it is kept separate from your target progress: it cannot be netted against your inventory.",
+         "say": "Until twenty thirty-five, this is voluntary. And it's kept separate from your target progress. It can't be netted against your inventory."},
+        {"text": "But from 2035, Category A companies must support eligible carbon removals equal to at least 1% of their ongoing scope 1, 2 and 3 emissions.",
+         "say": "But from twenty thirty-five, Category A companies must support eligible carbon removals equal to at least one percent of their ongoing scope one, two and three emissions."},
+        {"text": "And at the net-zero target year, all residual emissions must be neutralized with eligible removals.",
+         "say": "And at the net-zero target year, all residual emissions must be neutralized with eligible removals."}
+      ]
+    },
+    {
+      "id": "accountability",
+      "chapter": "Accountability",
+      "lines": [
+        {"text": "Version 2.0 also raises the bar on accountability, especially for Category A companies.",
+         "say": "Version two point zero also raises the bar on accountability, especially for Category A companies."},
+        {"text": "Your greenhouse gas inventory and target metrics need independent third-party assurance, at a minimum of limited assurance.",
+         "say": "Your greenhouse gas inventory and target metrics need independent, third-party assurance, at a minimum of limited assurance."},
+        {"text": "You must publish a transition plan within 15 months of validation, approved by your highest governing body, and review it at least every five years.",
+         "say": "You must publish a transition plan within fifteen months of validation, approved by your highest governing body, and review it at least every five years."},
+        {"text": "And you report progress every year, including the barriers you face and the actions you're taking to address them.",
+         "say": "And you report progress every year, including the barriers you face, and the actions you're taking to address them."}
+      ]
+    },
+    {
+      "id": "compare",
+      "chapter": "V1 vs V2 at a glance",
+      "lines": [
+        {"text": "Let's put it side by side.",
+         "say": "Let's put it all side by side."},
+        {"text": "Version 1 used an SME route, allowed combined scope 1 and 2 targets, fixed scope 3 coverage thresholds, and required long-term targets for net zero.",
+         "say": "Version one used a separate route for small companies, allowed combined scope one and two targets, used fixed scope three coverage thresholds, and required long-term targets for net zero."},
+        {"text": "Version 2 brings Category A and B, separate scope 1 and 2 targets, a 5% significance test for scope 3, optional net-zero targets, mandatory assurance and transition plans for Category A, and Ongoing Emissions Responsibility.",
+         "say": "Version two brings Category A and B, separate scope one and two targets, a five percent significance test for scope three, optional net-zero targets, mandatory assurance and transition plans for Category A, and Ongoing Emissions Responsibility."}
+      ]
+    },
+    {
+      "id": "reaction",
+      "chapter": "How it's landed",
+      "lines": [
+        {"text": "How has it landed? Reaction from sustainability leaders has been broadly positive, but not uniform.",
+         "say": "How has it landed? Reaction from sustainability leaders has been broadly positive, but not uniform."},
+        {"text": "NewClimate Institute welcomed the stronger focus on near-term targets and implementation, but warned that high flexibility may weaken comparability, and called the decision not to phase in hourly matching a missed opportunity.",
+         "say": "NewClimate Institute welcomed the stronger focus on near-term targets and implementation. But it warned that high flexibility may weaken comparability between companies, and called the decision not to phase in hourly matching, a missed opportunity."},
+        {"text": "Among other commentators, a common criticism is the lack of progress on how carbon credits can be used.",
+         "say": "Among other commentators, a common criticism is the lack of progress on how carbon credits can be used."}
+      ]
+    },
+    {
+      "id": "action",
+      "chapter": "What to do now",
+      "lines": [
+        {"text": "So what should you do now? Here's a six-step checklist.",
+         "say": "So what should you do now? Here's a six-step checklist."},
+        {"text": "One: confirm your category, A or B. Two: get your inventory assurance-ready.",
+         "say": "One: confirm your category, A or B. Two: get your greenhouse gas inventory assurance-ready."},
+        {"text": "Three: map scope 3, and find every category above 5%. Four: plan scope 1 and scope 2 separately, and check your electricity contracts against the new location and age rules.",
+         "say": "Three: map scope three, and find every category above five percent. Four: plan scope one and scope two separately, and check your electricity contracts against the new location and age rules."},
+        {"text": "Five: build a transition plan your board can approve. Six: choose your timing.",
+         "say": "Five: build a transition plan your board can approve. Six: choose your timing."},
+        {"text": "If you're setting or renewing targets in 2026, SBTi encourages using Version 1.3.1. Existing validated targets stay valid for their cycle, and Version 2.0 becomes mandatory for new submissions from 1 February 2028.",
+         "say": "If you're setting or renewing targets in twenty twenty-six, SBTi encourages using version one point three point one. Existing validated targets stay valid for their cycle, and version two point zero becomes mandatory for new submissions from the first of February, twenty twenty-eight."}
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "Outro",
+      "lines": [
+        {"text": "Version 2.0 asks less about what you promise, and more about what you deliver.",
+         "say": "Version two point zero asks less about what you promise, and more about what you deliver."},
+        {"text": "ReGeneva helps organizations turn standards like this into action, from GHG accounting to target setting and transition planning. Subscribe for more, and share this with your sustainability team.",
+         "say": "ReGeneva helps organizations turn standards like this into action, from G.H.G. accounting, to target setting and transition planning. Subscribe for more, and share this with your sustainability team."}
+      ]
+    }
+  ]
+}

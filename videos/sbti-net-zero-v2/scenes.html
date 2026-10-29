@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SBTi Net-Zero V2.0 Explainer</title>
+<link rel="stylesheet" href="../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "Encode Sans Condensed"; font-weight: 500; src: url(../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Medium.ttf); }
+@font-face { font-family: "Encode Sans Condensed"; font-weight: 600; src: url(../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-SemiBold.ttf); }
+@font-face { font-family: "Encode Sans Condensed"; font-weight: 700; src: url(../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf); }
+@font-face { font-family: "Encode Sans Condensed"; font-weight: 800; src: url(../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "Encode Sans Condensed"; font-weight: 900; src: url(../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 300; src: url(../../assets/fonts/Roboto/Roboto-Light.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 400; src: url(../../assets/fonts/Roboto/Roboto-Regular.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url(../../assets/fonts/Roboto/Roboto-Medium.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 400; font-style: italic; src: url(../../assets/fonts/Roboto/Roboto-Italic.ttf); }
+
+/* ReGeneva brand tokens (from assets/css/style.css + logo) */
+:root {
+  --green: #4baf47;
+  --deep: #046d3a;
+  --deeper: #03482a;
+  --mint: #26ca86;
+  --ink: #191919;
+  --body: #555;
+  --paper: #f4f3ef;
+  --line: #d9d9d9;
+  --warn: #e0a526;
+  --stop: #d9534f;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); }
+body { font-family: "Roboto", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, .hd { font-family: "Encode Sans Condensed", sans-serif; letter-spacing: -0.01em; }
+
+.scene { position: absolute; inset: 0; overflow: hidden; display: none; }
+.light { background: var(--paper); color: var(--ink); }
+.dark { background: radial-gradient(circle at 18% 12%, #0b8d4d 0%, var(--deep) 42%, var(--deeper) 100%); color: #fff; }
+
+/* ambient drifting shapes */
+.blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; animation: drift 26s ease-in-out infinite alternate; }
+.light .blob { background: #4baf4733; }
+.dark .blob { background: #26ca8633; }
+@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(120px, -80px) scale(1.25); } }
+.grid { position: absolute; inset: 0; background-image: radial-gradient(#00000014 1.5px, transparent 1.5px); background-size: 44px 44px; }
+.dark .grid { background-image: radial-gradient(#ffffff14 1.5px, transparent 1.5px); }
+
+/* frame chrome */
+.pill { position: absolute; left: 110px; top: 64px; display: flex; align-items: center; gap: 16px; font: 600 26px "Encode Sans Condensed"; letter-spacing: .08em; text-transform: uppercase; }
+.pill b { display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--green); color: #fff; font-size: 24px; letter-spacing: 0; }
+.dark .pill b { background: var(--mint); color: var(--deeper); }
+.pill span { opacity: .8; }
+.logo { position: absolute; right: 110px; top: 70px; height: 42px; }
+.src { position: absolute; left: 110px; bottom: 58px; font-size: 19px; opacity: .55; }
+.wm { position: absolute; right: 110px; bottom: 58px; font: 600 19px "Encode Sans Condensed"; letter-spacing: .12em; opacity: .45; text-transform: uppercase; }
+
+.content { position: absolute; left: 110px; right: 110px; top: 160px; bottom: 120px; }
+.title { font-size: 84px; font-weight: 800; line-height: 1.02; }
+.title em { font-style: normal; color: var(--green); }
+.dark .title em { color: var(--mint); }
+.lead { font-size: 36px; line-height: 1.35; color: var(--body); font-weight: 400; }
+.dark .lead { color: #ffffffcc; }
+
+.card { background: #fff; border-radius: 28px; box-shadow: 0 18px 50px #0000001a, 0 2px 6px #0000000d; padding: 40px 44px; }
+.dark .card { background: #ffffff12; box-shadow: none; border: 2px solid #ffffff24; backdrop-filter: blur(4px); }
+.tag { display: inline-flex; align-items: center; gap: 12px; padding: 10px 22px; border-radius: 999px; font: 600 26px "Encode Sans Condensed"; letter-spacing: .04em; background: #4baf4722; color: var(--deep); }
+.dark .tag { background: #26ca8630; color: #fff; }
+.icon { display: inline-grid; place-items: center; width: 92px; height: 92px; border-radius: 26px; background: var(--green); color: #fff; font-size: 44px; flex: none; }
+.dark .icon { background: var(--mint); color: var(--deeper); }
+.icon.alt { background: var(--deep); }
+.icon.bad { background: var(--stop); color: #fff; }
+
+/* animation presets — timing is injected by JS */
+.a { opacity: 0; }
+@keyframes up { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: none; } }
+@keyframes down { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: none; } }
+@keyframes left { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: none; } }
+@keyframes right { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.6); } 70% { opacity: 1; transform: scale(1.06); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes zoom { from { opacity: 0; transform: scale(1.25); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes growx { from { opacity: 1; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes growy { from { opacity: 1; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+@keyframes draw { from { opacity: 1; stroke-dashoffset: 1000; } to { opacity: 1; stroke-dashoffset: 0; } }
+@keyframes strike { from { opacity: 1; width: 0; } to { opacity: 1; width: 108%; } }
+@keyframes ghost { from { opacity: 0; transform: translateY(30px); } to { opacity: .22; transform: none; } }
+@keyframes light { from { opacity: .22; transform: scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes out { from { opacity: 1; } to { opacity: 0; transform: translateY(-30px); } }
+@keyframes dim { from { opacity: 1; } to { opacity: .28; } }
+@keyframes wipe { from { clip-path: circle(0% at var(--ox, 50%) var(--oy, 50%)); } to { clip-path: circle(150% at var(--ox, 50%) var(--oy, 50%)); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.growx { transform-origin: left center; }
+.growy { transform-origin: center bottom; }
+
+/* ---------- scene-specific ---------- */
+/* hook */
+#hook .big { font: 900 300px/0.9 "Encode Sans Condensed"; color: #fff; letter-spacing: -0.02em; }
+#hook .big small { font-size: 160px; color: var(--mint); }
+#hook .cap { font-size: 46px; color: #ffffffd9; margin-top: 44px; }
+#mosaic { position: absolute; right: 0; top: 40px; display: grid; grid-template-columns: repeat(10, 50px); gap: 12px; }
+#mosaic i { width: 50px; height: 50px; border-radius: 12px; background: var(--mint); display: block; }
+#mosaic i:nth-child(7n+3) { background: #ffffff; }
+#hook .mlab { position: absolute; right: 0; top: 670px; width: 608px; text-align: center; font-size: 26px; color: #ffffffb3; }
+#hook .date { display: inline-flex; gap: 18px; align-items: center; font: 700 52px "Encode Sans Condensed"; background: var(--mint); color: var(--deeper); padding: 16px 34px; border-radius: 18px; }
+#hook .lock { position: absolute; left: 0; right: 0; top: 70px; text-align: center; }
+#hook .lock .kicker { font: 700 40px "Encode Sans Condensed"; letter-spacing: .3em; color: var(--mint); }
+#hook .lock h1 { font-size: 150px; font-weight: 900; line-height: .95; margin-top: 18px; }
+#hook .lock .v { display: inline-block; font: 900 210px/1 "Encode Sans Condensed"; color: var(--deeper); background: var(--mint); border-radius: 36px; padding: 10px 56px 18px; margin-top: 34px; }
+#hook .lock .chips { display: flex; justify-content: center; gap: 22px; margin-top: 54px; }
+
+/* what */
+.flow { display: flex; align-items: stretch; gap: 26px; }
+.flow .card { flex: 1; text-align: left; }
+.flow .arrow { align-self: center; font-size: 46px; color: var(--green); }
+.step-n { font: 800 26px "Encode Sans Condensed"; letter-spacing: .16em; color: var(--green); }
+.card h3 { font-size: 46px; font-weight: 800; line-height: 1.05; margin: 10px 0 12px; }
+.card p { font-size: 28px; line-height: 1.4; color: var(--body); }
+.dark .card p { color: #ffffffcc; }
+
+/* timeline */
+.tl { position: absolute; left: 0; right: 0; top: 250px; height: 360px; }
+.tl .rail { position: absolute; left: 40px; right: 40px; top: 120px; height: 10px; border-radius: 6px; background: var(--line); }
+.tl .fill { position: absolute; left: 40px; right: 40px; top: 120px; height: 10px; border-radius: 6px; background: linear-gradient(90deg, var(--green), var(--deep)); }
+.tl .node { position: absolute; top: 0; width: 300px; margin-left: -150px; text-align: center; }
+.tl .node .when { font: 800 36px "Encode Sans Condensed"; color: var(--deep); height: 70px; display: flex; align-items: end; justify-content: center; }
+.tl .node .dot { width: 46px; height: 46px; margin: 20px auto 26px; border-radius: 50%; background: #fff; border: 9px solid var(--green); }
+.tl .node.hot .dot { background: var(--green); border-color: var(--deep); box-shadow: 0 0 0 14px #4baf4740; }
+.tl .node .what { font-size: 27px; line-height: 1.3; color: var(--body); }
+.tl .node.hot .when { color: var(--green); font-size: 44px; }
+.tl .node.hot .what { color: var(--ink); font-weight: 700; }
+.chiprow { display: flex; gap: 18px; flex-wrap: wrap; }
+
+/* shift */
+#shift .versus { display: flex; align-items: center; gap: 46px; font: 900 100px "Encode Sans Condensed"; }
+#shift .versus .from { position: relative; color: #ffffff80; }
+#shift .versus .from i.st { position: absolute; left: -4%; top: 52%; height: 10px; background: var(--mint); border-radius: 6px; }
+#shift .versus .to { color: var(--mint); }
+#shift .quote { position: absolute; left: 120px; right: 120px; top: 330px; }
+#shift .quote .mark { font-size: 120px; color: var(--mint); }
+#shift .quote p { font: 500 52px/1.3 "Encode Sans Condensed"; margin-top: 10px; }
+#shift .quote .who { margin-top: 30px; font-size: 30px; color: #ffffffb3; }
+.cycle { position: absolute; left: 30px; top: 175px; width: 700px; height: 640px; }
+.cycle .ring { position: absolute; left: 200px; top: 160px; width: 300px; height: 300px; }
+.cycle .center { position: absolute; left: 200px; top: 160px; width: 300px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font: 800 60px/1 "Encode Sans Condensed"; }
+.cycle .center small { display: block; font: 500 26px Roboto; opacity: .8; margin-top: 10px; }
+.cycle .st { position: absolute; width: 240px; text-align: center; }
+.cycle .st .icon { width: 84px; height: 84px; font-size: 36px; border-radius: 50%; margin-bottom: 10px; }
+.cycle .st b { display: block; font: 800 34px "Encode Sans Condensed"; }
+.cycle .st span { font-size: 22px; opacity: .8; }
+
+/* categories */
+.cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: 40px; margin-top: 60px; }
+.cols .card { padding: 48px 50px; }
+.catA h2, .catB h2 { font-size: 66px; font-weight: 900; display: flex; align-items: center; gap: 20px; }
+.catA h2 .badge, .catB h2 .badge { display: inline-grid; place-items: center; width: 84px; height: 84px; border-radius: 22px; background: var(--deep); color: #fff; font-size: 54px; }
+.catB h2 .badge { background: var(--green); }
+.catA .who, .catB .who { font-size: 28px; color: var(--body); margin: 14px 0 26px; line-height: 1.35; }
+.th { display: flex; align-items: center; gap: 18px; font-size: 30px; padding: 26px 0; border-top: 2px solid #0000000f; }
+.th .lab { font: 700 22px "Encode Sans Condensed"; letter-spacing: .12em; color: var(--green); text-transform: uppercase; width: 190px; flex: none; }
+.th .v { font: 800 40px "Encode Sans Condensed"; color: var(--deep); }
+.th .or { font: 700 22px "Encode Sans Condensed"; color: #999; letter-spacing: .1em; }
+.th .mini { display: flex; flex-direction: column; line-height: 1.05; font-size: 22px; color: var(--body); margin-right: 26px; }
+.opt { display: flex; align-items: center; gap: 16px; font-size: 30px; padding: 24px 0; border-top: 2px solid #0000000f; }
+.opt i { color: var(--green); }
+.opt em { margin-left: auto; font: 700 22px "Encode Sans Condensed"; letter-spacing: .1em; color: var(--green); text-transform: uppercase; font-style: normal; }
+
+/* architecture table */
+.tbl { margin-top: 60px; display: grid; grid-template-columns: 330px 1fr 1fr 1fr; gap: 14px; }
+.tbl .h { font: 800 38px "Encode Sans Condensed"; text-align: center; padding: 14px; color: var(--deep); }
+.tbl .r { font: 800 34px/1.05 "Encode Sans Condensed"; display: flex; flex-direction: column; justify-content: center; padding: 0 10px; }
+.tbl .r small { font: 400 22px Roboto; color: var(--body); margin-top: 6px; }
+.tbl .c { border-radius: 20px; padding: 26px 18px; text-align: center; font: 700 32px "Encode Sans Condensed"; display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 150px; }
+.tbl .req { background: var(--deep); color: #fff; }
+.tbl .reqa { background: var(--green); color: #fff; }
+.tbl .dep { background: #fff; color: var(--deep); border: 3px dashed var(--green); }
+.tbl .op { background: #fff; color: #777; border: 3px solid var(--line); }
+.tbl .nz { grid-column: span 3; background: #fff; border: 4px solid var(--green); color: var(--ink); font-size: 40px; position: relative; }
+.stamp { position: absolute; right: -14px; top: -26px; background: var(--mint); color: var(--deeper); font: 900 26px "Encode Sans Condensed"; letter-spacing: .1em; padding: 8px 18px; border-radius: 10px; transform: rotate(4deg); }
+
+/* scope scenes */
+.scopehead { display: flex; align-items: center; gap: 30px; }
+.scopehead .icon { width: 120px; height: 120px; font-size: 58px; border-radius: 32px; }
+.scopehead h1 { font-size: 96px; font-weight: 900; line-height: 1; }
+.scopehead p { font-size: 32px; color: var(--body); margin-top: 6px; }
+.ringwrap { position: relative; width: 300px; height: 300px; flex: none; }
+.ringwrap .pct { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font: 900 78px/1 "Encode Sans Condensed"; color: var(--deep); }
+.ringwrap .pct small { display: block; font: 500 22px Roboto; color: var(--body); }
+.methods { display: flex; flex-direction: column; gap: 20px; }
+.method { display: flex; align-items: center; gap: 22px; font: 700 36px "Encode Sans Condensed"; background: #fff; border-radius: 20px; padding: 18px 26px; box-shadow: 0 10px 30px #00000012; }
+.method .icon { width: 70px; height: 70px; font-size: 32px; border-radius: 18px; }
+.method small { display: block; font: 400 22px Roboto; color: var(--body); }
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.rule { display: flex; align-items: center; gap: 22px; background: #fff; border-radius: 22px; padding: 22px 26px; box-shadow: 0 10px 30px #00000012; }
+.rule .icon { width: 76px; height: 76px; font-size: 34px; border-radius: 20px; }
+.rule b { display: block; font: 800 40px "Encode Sans Condensed"; color: var(--deep); }
+.rule span { font-size: 23px; color: var(--body); }
+.opts2 { display: grid; grid-template-columns: 1fr auto 1fr; gap: 26px; align-items: center; }
+.andor { font: 900 40px "Encode Sans Condensed"; color: var(--green); text-align: center; }
+.hours { display: flex; align-items: end; gap: 6px; height: 120px; }
+.hours div { flex: 1; border-radius: 6px 6px 0 0; }
+
+.bars { display: flex; flex-direction: column; gap: 12px; position: relative; }
+.bar { display: grid; grid-template-columns: 330px 1fr 90px; align-items: center; gap: 16px; font-size: 26px; }
+.bar .track { height: 36px; position: relative; }
+.bar .track i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 8px; background: var(--green); }
+.bar.lo .track i { background: #c9c9c4; }
+.bar.lo { color: #999; }
+.bar .n { font: 800 28px "Encode Sans Condensed"; }
+.thr { position: absolute; top: -20px; bottom: -14px; border-left: 4px dashed var(--stop); }
+.thr span { position: absolute; top: -40px; left: -60px; width: 120px; text-align: center; font: 800 24px "Encode Sans Condensed"; color: var(--stop); }
+.oldnums { display: flex; gap: 90px; justify-content: center; }
+.oldnum { text-align: center; }
+.oldnum b { position: relative; display: inline-block; font: 900 220px/1 "Encode Sans Condensed"; color: #b9b9b3; }
+.oldnum b i { position: absolute; left: -4%; top: 50%; height: 16px; background: var(--stop); border-radius: 8px; }
+.oldnum span { display: block; font-size: 32px; color: var(--body); }
+
+/* hierarchy */
+.tier { display: flex; align-items: center; gap: 34px; border-radius: 28px; padding: 32px 40px; }
+.tier .num { font: 900 110px/1 "Encode Sans Condensed"; color: var(--mint); width: 90px; text-align: center; }
+.tier h3 { font-size: 52px; font-weight: 800; }
+.tier p { font-size: 28px; color: #ffffffcc; margin-top: 8px; line-height: 1.35; }
+.tier.no { background: #d9534f26; border: 2px solid #d9534f88; }
+.tier.no .num { color: #ff8a85; }
+
+/* oer */
+.meter { position: relative; height: 70px; border-radius: 40px; background: #e4e3dc; overflow: hidden; }
+.meter i { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 40px; background: linear-gradient(90deg, var(--mint), var(--deep)); }
+.meterlab { display: flex; justify-content: space-between; font: 800 36px "Encode Sans Condensed"; color: var(--deep); margin-top: 12px; }
+.sep { display: grid; grid-template-columns: 1fr 150px 1fr; align-items: center; }
+.sep .wall { text-align: center; font: 800 24px "Encode Sans Condensed"; color: var(--stop); }
+.sep .wall i { font-size: 64px; display: block; margin-bottom: 6px; }
+.road { position: relative; height: 270px; }
+.road .rail { position: absolute; left: 0; right: 0; top: 64px; height: 12px; border-radius: 6px; background: linear-gradient(90deg, #c9c9c4, var(--green) 40%, var(--deep)); }
+.road .stop { position: absolute; top: 0; width: 460px; margin-left: -230px; text-align: center; }
+.road .stop b { display: block; font: 900 46px "Encode Sans Condensed"; color: var(--deep); height: 52px; }
+.road .stop .dot { width: 44px; height: 44px; border-radius: 50%; margin: 2px auto 16px; background: #fff; border: 9px solid var(--green); }
+.road .stop p { font-size: 26px; line-height: 1.3; color: var(--body); }
+.road .stop p b { display: inline; font: inherit; font-weight: 700; color: var(--ink); height: auto; }
+.road .stop.hot .dot { background: var(--green); border-color: var(--deep); box-shadow: 0 0 0 14px #4baf4740; }
+
+/* accountability */
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 60px; }
+.three .card { padding: 46px 40px; }
+.three .card .icon { margin-bottom: 26px; }
+.three .card .k { font: 900 64px/1 "Encode Sans Condensed"; color: var(--mint); margin: 16px 0 10px; }
+
+/* compare */
+.cmp { margin-top: 40px; display: grid; grid-template-columns: 330px 1fr 1fr; column-gap: 20px; row-gap: 14px; font-size: 30px; }
+.cmp .hh { font: 900 44px "Encode Sans Condensed"; padding: 10px 26px; border-radius: 18px; }
+.cmp .hh.v1 { color: #8a8a85; background: #e6e5df; }
+.cmp .hh.v2 { color: #fff; background: var(--deep); }
+.cmp .k { font: 800 32px "Encode Sans Condensed"; color: var(--deep); display: flex; align-items: center; }
+.cmp .x1, .cmp .x2 { padding: 17px 26px; border-radius: 16px; display: flex; align-items: center; gap: 14px; line-height: 1.2; }
+.cmp .x1 { background: #ecebe5; color: #777; }
+.cmp .x2 { background: #fff; color: var(--ink); font-weight: 500; box-shadow: 0 8px 24px #00000010; }
+.cmp .x2 i { color: var(--green); }
+
+/* reaction */
+.gauge { display: flex; align-items: center; gap: 30px; }
+.rx { display: flex; gap: 26px; align-items: flex-start; }
+.rx .icon { width: 78px; height: 78px; font-size: 36px; border-radius: 22px; }
+.rx p { font-size: 38px; line-height: 1.3; }
+.rx .icon.w { background: var(--warn); color: #fff; }
+
+/* action */
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 40px; margin-top: 40px; }
+.chk { display: flex; align-items: center; gap: 24px; background: #fff; border-radius: 22px; padding: 22px 28px; box-shadow: 0 10px 30px #00000012; }
+.chk .n { flex: none; width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; font: 900 36px "Encode Sans Condensed"; color: #fff; background: var(--deep); }
+.chk b { display: block; font: 800 36px/1.1 "Encode Sans Condensed"; }
+.chk span { font-size: 23px; color: var(--body); }
+.chk .ok { margin-left: auto; color: var(--green); font-size: 44px; }
+.timing { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.timing div { background: var(--deep); color: #fff; border-radius: 20px; padding: 20px 26px; font-size: 24px; }
+.timing b { display: block; font: 900 38px "Encode Sans Condensed"; color: var(--mint); }
+
+/* outro */
+#outro .line1 { font: 900 110px/1.02 "Encode Sans Condensed"; text-align: center; }
+#outro .line1 em { color: var(--mint); font-style: normal; }
+#outro .brand { text-align: center; }
+#outro .brand img { height: 130px; }
+#outro .tagline { font: 600 44px "Encode Sans Condensed"; letter-spacing: .04em; margin-top: 20px; color: #ffffffd9; }
+#outro .svc { display: flex; justify-content: center; gap: 18px; margin-top: 40px; }
+#outro .sub { display: inline-flex; align-items: center; gap: 18px; margin-top: 50px; background: #fff; color: var(--deep); font: 900 42px "Encode Sans Condensed"; padding: 20px 44px; border-radius: 999px; }
+#outro .sub i { color: #e62117; font-size: 46px; }
+#outro .fine { position: absolute; left: 110px; right: 110px; bottom: 50px; text-align: center; font-size: 19px; color: #ffffff99; line-height: 1.5; }
+
+/* progress bar */
+#prog { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; z-index: 999; background: #00000014; }
+#prog i { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, var(--green), var(--mint)); }
+#prog s { position: absolute; top: 0; bottom: 0; width: 3px; background: #ffffffaa; }
+</style>
+</head>
+<body>
+
+<!-- 0. HOOK -->
+<section class="scene dark" id="hook">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;left:-200px;top:-200px"></div>
+  <div class="blob" style="width:600px;height:600px;right:-150px;bottom:-200px;animation-delay:-9s"></div>
+  <div class="content">
+    <div style="position:absolute;top:80px;left:0" class="a up" data-x="1" data-xo="-0.2">
+      <div class="big"><span data-count="10000" data-cd="2.4">0</span><small>+</small></div>
+      <div class="cap">companies with SBTi-validated climate targets</div>
+    </div>
+    <div class="a fade" data-x="1" data-xo="-0.2" style="position:absolute;inset:0">
+      <div id="mosaic"></div>
+      <div class="mlab a fade" data-o="2.6">each square ≈ 100 companies · milestone reached January 2026</div>
+    </div>
+    <div style="position:absolute;top:300px;left:0" class="a up" data-c="1" data-x="2" data-xo="-0.2">
+      <div class="date"><i class="fa-solid fa-calendar"></i> 11 June 2026</div>
+      <div class="title" style="margin-top:40px;font-size:110px">The net-zero rulebook<br>got its <em>biggest rewrite</em> yet.</div>
+    </div>
+    <div class="lock">
+      <div class="kicker a fade" data-c="2">SBTi · EXPLAINED</div>
+      <h1 class="a zoom" data-c="2" data-o="0.2">Corporate Net-Zero Standard</h1>
+      <div class="v a pop" data-c="2" data-o="1.0">Version 2.0</div>
+      <div class="chips">
+        <span class="tag a up" data-c="2" data-o="3.4"><i class="fa-solid fa-magnifying-glass-chart"></i> What it is</span>
+        <span class="tag a up" data-c="2" data-o="4.2"><i class="fa-solid fa-arrows-rotate"></i> What's changed</span>
+        <span class="tag a up" data-c="2" data-o="5.2"><i class="fa-solid fa-building"></i> What it means for you</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. WHAT -->
+<section class="scene light" id="what" data-src="Sources: SBTi; SBTi Corporate Net-Zero Standard V1 (2021)">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;right:-250px;top:-250px"></div>
+  <div class="content">
+    <div class="a up" style="display:flex;align-items:center;gap:30px">
+      <span class="icon" style="width:120px;height:120px;font-size:60px;border-radius:32px"><i class="fa-solid fa-bullseye"></i></span>
+      <div>
+        <div class="title" style="font-size:76px">Science Based Targets initiative</div>
+        <div class="lead">Validates corporate climate targets against climate science</div>
+      </div>
+    </div>
+    <div class="a left" data-c="1" style="margin-top:56px;display:flex;align-items:center;gap:26px">
+      <span class="tag" style="font-size:34px;padding:14px 28px"><i class="fa-solid fa-flag-checkered"></i> 2021</span>
+      <div style="font:800 52px 'Encode Sans Condensed'">Corporate Net-Zero Standard <span style="color:var(--green)">V1</span></div>
+    </div>
+    <div class="a fade lead" data-c="1" data-o="0.6" style="margin-top:12px;font-size:32px">The first framework to define a science-based net-zero target</div>
+    <div class="flow" style="margin-top:56px">
+      <div class="card a up" data-c="2" data-o="0.6"><div class="step-n">01</div><h3>Cut deeply</h3><p>Near- and long-term emission cuts across scopes 1, 2 and 3</p></div>
+      <div class="arrow a fade" data-c="2" data-o="1.0"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card a up" data-c="2" data-o="1.4"><div class="step-n">02</div><h3>Align with 1.5°C</h3><p>Ambition consistent with limiting warming to 1.5°C</p></div>
+      <div class="arrow a fade" data-c="2" data-o="1.8"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card a up" data-c="2" data-o="2.4"><div class="step-n">03</div><h3>Neutralize by 2050</h3><p>Remove residual emissions by 2050 at the latest</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TIMELINE -->
+<section class="scene light" id="timeline" data-src="Source: SBTi, Corporate Net-Zero Standard V2.0 (June 2026) and transition guidance">
+  <div class="grid"></div>
+  <div class="content">
+    <div class="title a up">A <em>two-year</em> revision</div>
+    <div class="tl">
+      <div class="rail"></div>
+      <div class="fill a growx" data-c="1" data-cd="9" style="animation-timing-function:linear"></div>
+      <div class="node a up" data-c="1" data-o="0.4" style="left:6%"><div class="when">Mar 2025</div><div class="dot"></div><div class="what">1st public<br>consultation</div></div>
+      <div class="node a up" data-c="1" data-o="2.6" style="left:28%"><div class="when">Nov 2025</div><div class="dot"></div><div class="what">2nd public<br>consultation</div></div>
+      <div class="node hot a pop" data-c="3" data-o="0.2" style="left:50%"><div class="when">11 Jun 2026</div><div class="dot"></div><div class="what">V2.0 published</div></div>
+      <div class="node a up" data-c="3" data-o="3.6" style="left:72%"><div class="when">Feb 2027</div><div class="dot"></div><div class="what">Validations open<br>(V1.3.1 or V2.0)</div></div>
+      <div class="node a up" data-c="3" data-o="6.2" style="left:94%"><div class="when">1 Feb 2028</div><div class="dot"></div><div class="what">V2.0 mandatory for<br>all new submissions</div></div>
+    </div>
+    <div class="chiprow" style="position:absolute;top:640px;left:0;right:0;justify-content:center">
+      <span class="tag a up" data-c="2" data-o="0.0"><i class="fa-solid fa-flask"></i> Pilot testing</span>
+      <span class="tag a up" data-c="2" data-o="0.8"><i class="fa-solid fa-people-group"></i> Expert working groups</span>
+      <span class="tag a up" data-c="2" data-o="2.4"><i class="fa-solid fa-scale-balanced"></i> Technical Council approval</span>
+      <span class="tag a up" data-c="2" data-o="4.4"><i class="fa-solid fa-circle-check"></i> Board of Trustees adoption</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SHIFT -->
+<section class="scene dark" id="shift" data-src="Source: SBTi press release, 11 June 2026; Corporate Net-Zero Standard V2.0">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;right:-250px;top:200px"></div>
+  <div class="content">
+    <div class="versus">
+      <span class="from a left">Ambition<i class="st a strike" data-o="1.8"></i></span>
+      <span class="a fade" data-o="1.6" style="color:#ffffff80"><i class="fa-solid fa-arrow-right"></i></span>
+      <span class="to a right" data-o="2.0">Implementation</span>
+    </div>
+    <div class="quote a up" data-c="1" data-x="2" data-xo="-0.3">
+      <div class="mark"><i class="fa-solid fa-quote-left"></i></div>
+      <p>Companies have told us that they need a partner that can help foster implementation and that's what the Corporate Net-Zero Standard Version 2.0 is designed to do.</p>
+      <div class="who">— David Kennedy, CEO, Science Based Targets initiative</div>
+    </div>
+    <div class="cycle">
+      <svg class="ring" viewBox="0 0 400 400"><circle class="a draw" data-c="2" data-cd="6" cx="200" cy="200" r="180" fill="none" stroke="#26ca86" stroke-width="10" stroke-linecap="round" pathLength="1000" stroke-dasharray="1000" style="transform:rotate(-90deg);transform-origin:center"/></svg>
+      <div class="center a pop" data-c="2" data-o="0.2">5-year<small>target cycle</small></div>
+      <div class="st a pop" data-c="2" data-o="0.8" style="left:230px;top:0px"><span class="icon"><i class="fa-solid fa-bullseye"></i></span><b>Set</b><span>near-term target</span></div>
+      <div class="st a pop" data-c="2" data-o="1.8" style="left:500px;top:240px"><span class="icon"><i class="fa-solid fa-gears"></i></span><b>Implement</b><span>use all levers</span></div>
+      <div class="st a pop" data-c="2" data-o="2.8" style="left:230px;top:470px"><span class="icon"><i class="fa-solid fa-chart-line"></i></span><b>Report</b><span>progress every year</span></div>
+      <div class="st a pop" data-c="2" data-o="3.8" style="left:-40px;top:240px"><span class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span><b>Assess</b><span>end of cycle</span></div>
+    </div>
+    <div class="card a right" data-c="3" style="position:absolute;left:880px;right:0;top:300px">
+      <span class="tag"><i class="fa-solid fa-handshake"></i> Best-efforts basis</span>
+      <h3 style="margin-top:24px;font-size:54px">Act, and be transparent about barriers</h3>
+      <p style="font-size:30px">Companies are expected to use all available levers and disclose the barriers they face. Those genuinely acting can stay in the SBTi system.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CATEGORIES -->
+<section class="scene light" id="categories" data-src="Source: SBTi Corporate Net-Zero Standard V2.0 Criteria (June 2026), company categorization">
+  <div class="grid"></div>
+  <div class="content">
+    <div class="title a up">Two company <em>categories</em></div>
+    <div class="cols">
+      <div class="card catA a left" data-c="1" data-g="0" data-go="1.6">
+        <h2><span class="badge">A</span> Category A</h2>
+        <div class="who">Large companies in all countries + medium-sized companies in high-income countries</div>
+        <div class="th a fade" data-c="2"><span class="lab">Any country</span><span class="v">≥ €450m</span> net turnover <span class="or">OR</span> <span class="v">≥ 1,000</span> FTE</div>
+        <div class="th a fade" data-c="3"><span class="lab">High-income</span><span class="v">≥ 10,000</span> tCO₂e scope 1+2</div>
+        <div class="th a fade" data-c="3" data-o="4.2"><span class="lab">or 2 of 3</span><span class="mini"><span class="v">€25m</span>balance sheet</span><span class="mini"><span class="v">€50m</span>turnover</span><span class="mini"><span class="v">250</span>FTE</span></div>
+      </div>
+      <div class="card catB a right" data-c="4" data-g="0" data-go="2.0">
+        <h2><span class="badge">B</span> Category B</h2>
+        <div class="who">Everyone else: simpler requirements</div>
+        <div class="opt a fade" data-c="4" data-o="2.4"><i class="fa-solid fa-layer-group"></i> Scope 3 targets <em>Optional</em></div>
+        <div class="opt a fade" data-c="4" data-o="3.0"><i class="fa-solid fa-file-lines"></i> Transition plan <em>Optional</em></div>
+        <div class="opt a fade" data-c="4" data-o="3.6"><i class="fa-solid fa-shield-halved"></i> Assurance <em>Optional</em></div>
+        <div class="opt a fade" data-c="4" data-o="4.2"><i class="fa-solid fa-bullseye"></i> Scope 1 &amp; 2 targets <em style="color:var(--deep)">Required</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ARCHITECTURE -->
+<section class="scene light" id="architecture" data-src="Source: SBTi Corporate Net-Zero Standard V2.0, Executive Summary (June 2026)">
+  <div class="grid"></div>
+  <div class="content">
+    <div class="title a up">The new target <em>architecture</em></div>
+    <div class="tbl">
+      <div></div>
+      <div class="h a down" data-o="1.2"><i class="fa-solid fa-industry"></i> Scope 1</div>
+      <div class="h a down" data-o="1.5"><i class="fa-solid fa-bolt"></i> Scope 2</div>
+      <div class="h a down" data-o="1.8"><i class="fa-solid fa-truck"></i> Scope 3</div>
+
+      <div class="r a left" data-c="1">Near-term<small>5-year targets</small></div>
+      <div class="c req a pop" data-c="1" data-o="2.6"><i class="fa-solid fa-check"></i> Required, all</div>
+      <div class="c req a pop" data-c="1" data-o="4.4"><i class="fa-solid fa-check"></i> Required, all</div>
+      <div class="c reqa a pop" data-c="1" data-o="6.4"><i class="fa-solid fa-check"></i> Required, Cat. A</div>
+
+      <div class="r a left" data-c="2">Long-term<small>to residual levels</small></div>
+      <div class="c dep a pop" data-c="2" data-o="3.4">Depends on method</div>
+      <div class="c op a pop" data-c="2" data-o="1.2">Optional</div>
+      <div class="c op a pop" data-c="2" data-o="1.6">Optional</div>
+
+      <div class="r a left" data-c="3">Net-zero<small>target</small></div>
+      <div class="c nz a zoom" data-c="3" data-o="1.6"><span class="stamp a pop" data-c="3" data-o="2.6">CHANGED</span>Optional for all companies</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SCOPE 1 -->
+<section class="scene light" id="scope1" data-src="Source: SBTi CNZS V2.0 Criteria; Basis for Conclusions (June 2026)">
+  <div class="grid"></div>
+  <div class="blob" style="width:600px;height:600px;left:-200px;bottom:-250px"></div>
+  <div class="content">
+    <div class="scopehead a up">
+      <span class="icon"><i class="fa-solid fa-industry"></i></span>
+      <div><h1>Scope 1</h1><p>Direct emissions from owned or controlled sources</p></div>
+    </div>
+    <div style="display:flex;gap:70px;margin-top:60px;align-items:center">
+      <div class="ringwrap a pop" data-o="3.0">
+        <svg viewBox="0 0 300 300" width="300" height="300"><circle cx="150" cy="150" r="128" fill="none" stroke="#e4e3dc" stroke-width="26"/><circle class="a draw" data-o="3.4" data-cd="2" cx="150" cy="150" r="128" fill="none" stroke="#4baf47" stroke-width="26" stroke-linecap="round" pathLength="1000" stroke-dasharray="1000" style="transform:rotate(-90deg);transform-origin:center"/></svg>
+        <div class="pct"><div><span data-count="100" data-o="3.4" data-cd="2">0</span>%<small>own, separate target</small></div></div>
+      </div>
+      <div class="methods" style="flex:1">
+        <div class="method a right" data-c="1" data-o="1.4"><span class="icon"><i class="fa-solid fa-chart-line" style="transform:scaleY(-1)"></i></span><div>Absolute linear reduction<small>Cut total tonnes on a straight-line pathway</small></div></div>
+        <div class="method a right" data-c="1" data-o="3.2"><span class="icon alt"><i class="fa-solid fa-industry"></i></span><div>Sector-specific intensity (SDA)<small>Emissions per unit of output, by sector pathway</small></div></div>
+        <div class="method a right" data-c="1" data-o="4.4"><span class="icon"><i class="fa-solid fa-gears"></i></span><div>Asset-level plans<small>Asset decarbonization plans for specific facilities</small></div></div>
+        <div class="tag a up" data-c="1" data-o="6.2" style="align-self:flex-start;font-size:30px"><i class="fa-solid fa-flag-checkered"></i> Consistent with net zero by 2050 at the latest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. SCOPE 2 -->
+<section class="scene light" id="scope2" data-src="Source: SBTi, Understanding Scope 2 in the Updated Corporate Net-Zero Standard V2.0; CNZS V2.0 Criteria">
+  <div class="grid"></div>
+  <div class="content" style="top:140px">
+    <div class="scopehead a up">
+      <span class="icon"><i class="fa-solid fa-bolt"></i></span>
+      <div><h1>Scope 2</h1><p>Purchased electricity, heat, steam &amp; cooling · own target · 100% coverage</p></div>
+    </div>
+    <div class="opts2" style="margin-top:30px">
+      <div class="card a left" data-c="1" style="padding:30px 36px"><span class="tag"><i class="fa-solid fa-chart-line" style="transform:scaleY(-1)"></i> Option 1</span><h3 style="font-size:42px">Emissions reduction target</h3><p>Based only on the <b>location-based</b> inventory</p></div>
+      <div class="andor a pop" data-c="1" data-o="4.4">AND /<br>OR</div>
+      <div class="card a right" data-c="1" data-o="4.6" style="padding:30px 36px"><span class="tag"><i class="fa-solid fa-solar-panel"></i> Option 2</span><h3 style="font-size:42px">Low-carbon electricity target</h3><p>Raise your share of <b>renewables · nuclear · CCS</b></p></div>
+    </div>
+    <div class="rules" style="margin-top:22px">
+      <div class="rule a up" data-c="2" data-o="2.6"><span class="icon"><i class="fa-solid fa-clock"></i></span><div><b>≤ 12 months</b><span>annual matching of purchases to use</span></div></div>
+      <div class="rule a up" data-c="2" data-o="4.0"><span class="icon"><i class="fa-solid fa-location-dot"></i></span><div><b>Same grid region</b><span>location-matched procurement</span></div></div>
+      <div class="rule a up" data-c="2" data-o="5.2"><span class="icon"><i class="fa-solid fa-calendar"></i></span><div><b>≤ 15 years</b><span>since generator commissioned or re-powered</span></div></div>
+    </div>
+    <div class="card a up" data-c="3" style="margin-top:22px;padding:20px 36px;display:grid;grid-template-columns:520px 1fr;gap:40px;align-items:center">
+      <div>
+        <div class="hours" id="hours"></div>
+        <div style="display:flex;justify-content:space-between;font-size:18px;color:#999;margin-top:6px"><span>00:00</span><span>hourly matching</span><span>24:00</span></div>
+      </div>
+      <div style="font-size:27px;line-height:1.55">
+        <div class="a fade" data-c="3" data-o="0.2"><i class="fa-solid fa-xmark" style="color:#999;width:34px"></i> Not required to meet targets</div>
+        <div class="a fade" data-c="3" data-o="3.0"><i class="fa-solid fa-file-lines" style="color:var(--green);width:34px"></i> <b>Reporting required</b>: Category A using ≥ 10 GWh</div>
+        <div class="a fade" data-c="3" data-o="7.6"><i class="fa-solid fa-award" style="color:var(--green);width:34px"></i> Recognition for early adopters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SCOPE 3 -->
+<section class="scene light" id="scope3" data-src="Source: SBTi CNZS V2.0 Criteria &amp; Main Changes Document (June 2026). Category bars are illustrative.">
+  <div class="grid"></div>
+  <div class="content">
+    <div class="scopehead a up">
+      <span class="icon"><i class="fa-solid fa-truck"></i></span>
+      <div><h1>Scope 3</h1><p>Value chain emissions: where the rules changed most</p></div>
+    </div>
+    <div class="oldnums" style="position:absolute;left:0;right:0;top:300px" data-dummy>
+      <div class="oldnum a up" data-c="1" data-x="2" data-xo="-0.3"><b>67%<i class="a strike" data-c="1" data-o="4.6"></i></b><span>old near-term coverage</span></div>
+      <div class="oldnum a up" data-c="1" data-o="2.2" data-x="2" data-xo="-0.3"><b>90%<i class="a strike" data-c="1" data-o="5.0"></i></b><span>old long-term coverage</span></div>
+    </div>
+    <div style="position:absolute;left:0;top:250px;width:900px">
+      <div class="a fade" data-c="2" style="font:800 40px 'Encode Sans Condensed';margin-bottom:56px">New: the <span style="color:var(--green)">5% significance test</span></div>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div style="position:absolute;left:990px;right:0;top:300px;display:flex;flex-direction:column;gap:18px">
+      <div class="method a right" data-c="3" data-o="0.6"><span class="icon"><i class="fa-solid fa-chart-line" style="transform:scaleY(-1)"></i></span><div>Overarching absolute reduction</div></div>
+      <div class="method a right" data-c="3" data-o="3.4"><span class="icon alt"><i class="fa-solid fa-link"></i></span><div>Supplier or customer alignment</div></div>
+      <div class="method a right" data-c="3" data-o="6.4"><span class="icon"><i class="fa-solid fa-layer-group"></i></span><div>Category- or activity-specific</div></div>
+      <div class="card a up" data-c="4" style="padding:22px 28px;border:3px solid var(--green);box-shadow:none"><p style="font-size:26px;color:var(--ink)"><b>Long-term scope 3:</b> optional, but if set, it must cover <b style="color:var(--green)">100%</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. HIERARCHY -->
+<section class="scene dark" id="hierarchy" data-src="Source: SBTi CNZS V2.0, Target implementation chapter (June 2026)">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;left:-250px;top:200px"></div>
+  <div class="content">
+    <div class="title a up">The implementation <em>hierarchy</em></div>
+    <div style="display:flex;flex-direction:column;gap:26px;margin-top:50px">
+      <div class="tier card a left" data-c="1" data-g="0" data-go="1.8"><div class="num">1</div><span class="icon"><i class="fa-solid fa-industry"></i></span><div><h3>Direct action</h3><p>Cut emissions in your own operations and value chain first</p></div></div>
+      <div class="tier card a left" data-c="2" data-g="0" data-go="2.2" style="margin-left:120px"><div class="num">2</div><span class="icon"><i class="fa-solid fa-plug"></i></span><div><h3>Act within shared systems</h3><p>Grids, gas grids, supply sheds, logistics networks: via certificates &amp; book-and-claim, where direct action isn't feasible</p></div></div>
+      <div class="tier no a pop" data-c="3" data-o="1.2" data-g="0" data-go="2.6" style="margin-left:240px"><div class="num"><i class="fa-solid fa-xmark"></i></div><span class="icon bad"><i class="fa-solid fa-coins"></i></span><div><h3>Carbon credits don't count toward targets</h3><p>Progress on scopes 1, 2 and 3 is measured on your own inventory</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. OER -->
+<section class="scene light" id="oer" data-src="Source: SBTi CNZS V2.0, Chapter 6: Ongoing Emissions Responsibility (June 2026)">
+  <div class="grid"></div>
+  <div class="content">
+    <div class="title a up">Ongoing Emissions <em>Responsibility</em></div>
+    <div class="a fade" data-c="1" style="margin-top:46px">
+      <div class="lead" style="font-size:32px;margin-bottom:18px"><i class="fa-solid fa-award" style="color:var(--green)"></i> Voluntary recognition for taking responsibility for ongoing scope 1–3 emissions</div>
+      <div class="meter"><i class="a growx" data-c="1" data-o="5.0" data-cd="3.5"></i></div>
+      <div class="meterlab"><span>1%</span><span>100%</span></div>
+    </div>
+    <div class="sep a up" data-c="2" style="margin-top:30px">
+      <div class="card" style="padding:24px 32px"><h3 style="font-size:36px;margin:0"><i class="fa-solid fa-bullseye" style="color:var(--green)"></i> Target progress</h3><p style="font-size:24px">Measured on your own inventory</p></div>
+      <div class="wall"><i class="fa-solid fa-ban"></i>NO NETTING</div>
+      <div class="card" style="padding:24px 32px"><h3 style="font-size:36px;margin:0"><i class="fa-solid fa-leaf" style="color:var(--green)"></i> OER contributions</h3><p style="font-size:24px">Recognized separately</p></div>
+    </div>
+    <div class="road" style="margin-top:50px">
+      <div class="rail a growx" data-c="2" data-o="3" data-cd="8" style="animation-timing-function:linear"></div>
+      <div class="stop a up" data-c="2" data-o="0.4" style="left:12%"><b>Until 2035</b><div class="dot"></div><p>Voluntary</p></div>
+      <div class="stop hot a pop" data-c="3" data-o="0.4" style="left:50%"><b>From 2035</b><div class="dot"></div><p><b>Category A:</b> support eligible carbon removals ≥ 1% of ongoing scope 1–3 emissions</p></div>
+      <div class="stop hot a pop" data-c="4" data-o="0.4" style="left:86%"><b>Net-zero year</b><div class="dot"></div><p>Neutralize <b>all</b> residual emissions with eligible removals</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ACCOUNTABILITY -->
+<section class="scene dark" id="accountability" data-src="Source: SBTi CNZS V2.0 (June 2026). Requirements shown apply to Category A.">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;right:-250px;top:-250px"></div>
+  <div class="content">
+    <div class="title a up">Raising the bar on <em>accountability</em></div>
+    <div class="tag a fade" data-o="2.4" style="margin-top:24px"><i class="fa-solid fa-building"></i> Category A</div>
+    <div class="three">
+      <div class="card a up" data-c="1" data-g="0" data-go="1.5"><span class="icon"><i class="fa-solid fa-shield-halved"></i></span><h3>Third-party assurance</h3><div class="k">Limited+</div><p>On GHG inventory and target-setting metrics</p></div>
+      <div class="card a up" data-c="2" data-g="0" data-go="1.8"><span class="icon"><i class="fa-solid fa-file-signature"></i></span><h3>Transition plan</h3><div class="k">≤ 15 months</div><p>after validation · approved by highest governing body · reviewed at least every 5 years</p></div>
+      <div class="card a up" data-c="3" data-g="0" data-go="2.1"><span class="icon"><i class="fa-solid fa-chart-line"></i></span><h3>Annual reporting</h3><div class="k">Every year</div><p>Progress, implementation barriers and the actions to address them</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. COMPARE -->
+<section class="scene light" id="compare" data-src="Source: SBTi CNZS V2.0 Main Changes Document (June 2026); CNZS V1.3.1">
+  <div class="grid"></div>
+  <div class="content" style="top:150px">
+    <div class="title a up" style="font-size:74px">V1 vs V2.0 <em>at a glance</em></div>
+    <div class="cmp">
+      <div></div><div class="hh v1 a down" data-c="1">Version 1.x</div><div class="hh v2 a down" data-c="2">Version 2.0</div>
+      <div class="k a fade" data-c="1">Company size</div><div class="x1 a fade" data-c="1" data-o="0.8">Separate SME route</div><div class="x2 a right" data-c="2" data-o="0.6"><i class="fa-solid fa-check"></i> Category A &amp; B</div>
+      <div class="k a fade" data-c="1" data-o="1.6">Scopes 1 &amp; 2</div><div class="x1 a fade" data-c="1" data-o="2.4">Combined targets allowed</div><div class="x2 a right" data-c="2" data-o="2.0"><i class="fa-solid fa-check"></i> Separate targets</div>
+      <div class="k a fade" data-c="1" data-o="3.6">Scope 2 basis</div><div class="x1 a fade" data-c="1" data-o="3.8">Location- or market-based</div><div class="x2 a right" data-c="2" data-o="3.2"><i class="fa-solid fa-check"></i> Location-based + low-carbon electricity</div>
+      <div class="k a fade" data-c="1" data-o="5.2">Scope 3 coverage</div><div class="x1 a fade" data-c="1" data-o="5.6">67% near-term · 90% long-term</div><div class="x2 a right" data-c="2" data-o="5.2"><i class="fa-solid fa-check"></i> Every category ≥ 5%</div>
+      <div class="k a fade" data-c="1" data-o="7.2">Net-zero target</div><div class="x1 a fade" data-c="1" data-o="7.6">Near- + long-term required</div><div class="x2 a right" data-c="2" data-o="7.4"><i class="fa-solid fa-check"></i> Optional for all companies</div>
+      <div class="k a fade" data-c="1" data-o="8.6">Assurance &amp; plans</div><div class="x1 a fade" data-c="1" data-o="8.8">Not required</div><div class="x2 a right" data-c="2" data-o="9.2"><i class="fa-solid fa-check"></i> Required for Category A</div>
+      <div class="k a fade" data-c="1" data-o="9.6">Beyond targets</div><div class="x1 a fade" data-c="1" data-o="9.8">BVCM recommended</div><div class="x2 a right" data-c="2" data-o="12.0"><i class="fa-solid fa-check"></i> Ongoing Emissions Responsibility</div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. REACTION -->
+<section class="scene dark" id="reaction" data-src="Sources: NewClimate Institute, 'The SBTi Corporate Net-Zero Standard v2.0: Key takeaways and outlook' (2026); Trellis (2026)">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:700px;left:-250px;bottom:-300px"></div>
+  <div class="content">
+    <div class="title a up">How has it <em>landed?</em></div>
+    <div class="lead a fade" data-o="2.6" style="margin-top:14px">Broadly positive, but not uniform</div>
+    <div class="card" style="margin-top:44px;display:flex;flex-direction:column;gap:30px">
+      <div class="a fade" data-c="1" style="font:700 26px 'Encode Sans Condensed';letter-spacing:.14em;color:var(--mint)">NEWCLIMATE INSTITUTE</div>
+      <div class="rx a left" data-c="1" data-o="0.4"><span class="icon"><i class="fa-solid fa-thumbs-up"></i></span><p>Welcomed the stronger focus on near-term targets and implementation</p></div>
+      <div class="rx a left" data-c="1" data-o="4.8"><span class="icon w"><i class="fa-solid fa-triangle-exclamation"></i></span><p>High flexibility may weaken comparability between companies</p></div>
+      <div class="rx a left" data-c="1" data-o="9.0"><span class="icon w"><i class="fa-solid fa-triangle-exclamation"></i></span><p>Not phasing in hourly electricity matching: a missed opportunity</p></div>
+    </div>
+    <div class="rx a up" data-c="2" style="margin-top:34px;padding-left:44px"><span class="icon w"><i class="fa-solid fa-coins"></i></span><p>Common criticism from commentators: limited progress on how carbon credits can be used</p></div>
+  </div>
+</section>
+
+<!-- 14. ACTION -->
+<section class="scene light" id="action" data-src="Source: SBTi, transition to Corporate Net-Zero Standard V2.0 (2026)">
+  <div class="grid"></div>
+  <div class="content" style="top:150px">
+    <div class="title a up" style="font-size:76px">Your <em>6-step</em> checklist</div>
+    <div class="checks">
+      <div class="chk a up" data-c="1" data-o="0.1"><span class="n">1</span><div><b>Confirm your category</b><span>A or B, using turnover, FTE, emissions</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="1" data-o="1.4"></i></div>
+      <div class="chk a up" data-c="1" data-o="2.6"><span class="n">2</span><div><b>Assurance-ready inventory</b><span>Complete, auditable GHG data</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="1" data-o="4.0"></i></div>
+      <div class="chk a up" data-c="2" data-o="0.1"><span class="n">3</span><div><b>Map scope 3</b><span>Find every category ≥ 5%</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="2" data-o="3.0"></i></div>
+      <div class="chk a up" data-c="2" data-o="4.0"><span class="n">4</span><div><b>Split scope 1 &amp; 2 plans</b><span>Check power contracts: location &amp; age rules</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="2" data-o="9.0"></i></div>
+      <div class="chk a up" data-c="3" data-o="0.1"><span class="n">5</span><div><b>Board-approved transition plan</b><span>Governance, levers, investment</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="3" data-o="2.4"></i></div>
+      <div class="chk a up" data-c="3" data-o="2.8"><span class="n">6</span><div><b>Choose your timing</b><span>V1.3.1 or V2.0</span></div><i class="ok fa-solid fa-circle-check a pop" data-c="3" data-o="4.0"></i></div>
+    </div>
+    <div class="timing">
+      <div class="a up" data-c="4" data-o="0.2"><b>2026</b>Setting or renewing? SBTi encourages V1.3.1</div>
+      <div class="a up" data-c="4" data-o="6.0"><b>Existing targets</b>Stay valid for their cycle</div>
+      <div class="a up" data-c="4" data-o="10.2"><b>From 1 Feb 2028</b>V2.0 mandatory for new submissions</div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. OUTRO -->
+<section class="scene dark" id="outro" data-nologo>
+  <div class="grid"></div>
+  <div class="blob" style="width:800px;height:800px;left:-250px;top:-250px"></div>
+  <div class="blob" style="width:700px;height:700px;right:-200px;bottom:-250px;animation-delay:-11s"></div>
+  <div class="content" style="top:120px">
+    <div class="line1 a zoom" data-x="1" data-xo="-0.2" style="position:absolute;left:0;right:0;top:220px">Less about what you <em>promise</em>.<br>More about what you <em>deliver</em>.</div>
+    <div class="brand" style="position:absolute;left:0;right:0;top:70px">
+      <img class="a pop" data-c="1" data-o="0.1" src="regeneva-logo-white.png" alt="ReGeneva">
+      <div class="tagline a fade" data-c="1" data-o="0.8">Simplifying ESG. Amplifying Action.</div>
+      <div class="svc">
+        <span class="tag a up" data-c="1" data-o="5.6"><i class="fa-solid fa-calculator"></i> GHG accounting</span>
+        <span class="tag a up" data-c="1" data-o="6.6"><i class="fa-solid fa-bullseye"></i> Target setting</span>
+        <span class="tag a up" data-c="1" data-o="7.6"><i class="fa-solid fa-route"></i> Transition planning</span>
+        <span class="tag a up" data-c="1" data-o="8.4"><i class="fa-solid fa-graduation-cap"></i> ESG Academy</span>
+      </div>
+      <div class="sub a pop" data-c="1" data-o="9.4"><i class="fa-brands fa-youtube"></i> Subscribe · regeneva.co</div>
+    </div>
+    <div class="fine a fade" data-c="1" data-o="9.8">Sources: SBTi Corporate Net-Zero Standard V2.0, Criteria, Executive Summary, Main Changes Document &amp; Scope 2 guidance (June 2026); SBTi press release (11 June 2026); NewClimate Institute; Trellis.<br>Independent explainer by ReGeneva, not affiliated with or endorsed by SBTi. Information as of October 2026. Always check the official SBTi documents before setting targets.</div>
+  </div>
+</section>
+
+<div id="prog"><i></i></div>
+
+<script>
+(function () {
+  const ENTER = { up: 0.9, down: 0.8, left: 0.9, right: 0.9, fade: 0.8, pop: 0.7, zoom: 1.1, growx: 1.2, growy: 1.0, draw: 1.6, strike: 0.6 };
+  const PRESETS = Object.keys(ENTER);
+  let T = null, counters = [], scenes = [];
+
+  // decorative content generated once
+  function decorate() {
+    const mosaic = document.getElementById('mosaic');
+    for (let k = 0; k < 100; k++) {
+      const q = document.createElement('i');
+      q.className = 'a pop'; q.dataset.o = (0.5 + k * 0.022).toFixed(3); q.dataset.cd = '0.45';
+      mosaic.appendChild(q);
+    }
+    const hours = document.getElementById('hours');
+    for (let h = 0; h < 24; h++) {
+      const solar = Math.max(0, Math.sin((h - 6) / 12 * Math.PI));
+      const d = document.createElement('div');
+      d.style.height = (25 + 75 * solar) + '%';
+      d.style.background = solar > 0.35 ? 'var(--green)' : '#c9c9c4';
+      d.className = 'a growy';
+      d.dataset.c = '3'; d.dataset.o = (0.4 + h * 0.08).toFixed(2); d.dataset.cd = '0.6';
+      hours.appendChild(d);
+    }
+    // illustrative scope 3 category split (sums to 100)
+    const cats = [['Purchased goods & services', 46], ['Use of sold products', 18], ['Upstream transport', 9],
+                  ['Capital goods', 7], ['Fuel & energy activities', 6], ['Business travel', 4],
+                  ['Waste', 3], ['Employee commuting', 3], ['Other categories', 4]];
+    const bars = document.getElementById('bars');
+    const scale = 2.2; // % per 1% of track width
+    cats.forEach(([name, v], i) => {
+      const row = document.createElement('div');
+      row.className = 'bar a fade' + (v < 5 ? ' lo' : '');
+      row.dataset.c = '2'; row.dataset.o = (0.3 + i * 0.25).toFixed(2);
+      row.innerHTML = `<span>${name}</span><div class="track"><i class="a growx" data-c="2" data-o="${(0.5 + i * 0.25).toFixed(2)}" style="width:${v * scale}%"></i></div><span class="n">${v}%</span>`;
+      bars.appendChild(row);
+    });
+    const thr = document.createElement('div');
+    thr.className = 'thr a fade'; thr.dataset.c = '2'; thr.dataset.o = '3.2';
+    thr.style.left = `calc(346px + (100% - 452px) * ${5 * scale / 100})`;
+    thr.innerHTML = '<span>5%</span>';
+    bars.appendChild(thr);
+  }
+
+  function chrome(sec, idx, info) {
+    const pill = document.createElement('div');
+    pill.className = 'pill a down';
+    pill.innerHTML = `<b>${String(idx).padStart(2, '0')}</b><span>${info.chapter}</span>`;
+    if (idx > 0 && sec.id !== 'outro') sec.appendChild(pill);
+    if (!sec.hasAttribute('data-nologo') && sec.id !== 'hook') {
+      const img = document.createElement('img');
+      img.className = 'logo';
+      img.src = sec.classList.contains('dark') ? 'regeneva-logo-white.png' : 'regeneva-logo-dark.png';
+      sec.appendChild(img);
+    } else if (sec.id === 'hook') {
+      const img = document.createElement('img');
+      img.className = 'logo a fade'; img.src = 'regeneva-logo-white.png';
+      sec.appendChild(img);
+    }
+    if (sec.dataset.src) {
+      const s = document.createElement('div');
+      s.className = 'src a fade'; s.dataset.o = '1.5'; s.innerHTML = sec.dataset.src;
+      sec.appendChild(s);
+    }
+  }
+
+  window.init = function (timing) {
+    T = timing;
+    decorate();
+    const origins = [['50%', '50%'], ['100%', '0%'], ['0%', '100%'], ['100%', '100%'], ['0%', '0%']];
+    T.scenes.forEach((info, i) => {
+      const sec = document.getElementById(info.id);
+      if (!sec) throw new Error('missing scene ' + info.id);
+      chrome(sec, i, info);
+      const s0 = info.start;
+      sec.style.zIndex = 10 + i;
+      const [ox, oy] = origins[i % origins.length];
+      sec.style.setProperty('--ox', ox); sec.style.setProperty('--oy', oy);
+      if (i > 0) sec.style.animation = `wipe 0.9s cubic-bezier(.7,0,.3,1) ${s0}s both paused`;
+      scenes.push({ el: sec, start: s0, end: s0 + info.dur });
+      const cue = c => (info.lines[c] ? info.lines[c].start : 0);
+      sec.querySelectorAll('.a').forEach(el => {
+        const preset = PRESETS.find(p => el.classList.contains(p)) || 'fade';
+        const c = +(el.dataset.c || 0), o = +(el.dataset.o || 0);
+        const dur = +(el.dataset.cd || ENTER[preset]);
+        const at = s0 + cue(c) + o + (i > 0 ? 0.25 : 0);
+        const ease = el.style.animationTimingFunction || 'cubic-bezier(.2,.8,.2,1)';
+        let anim = `${preset} ${dur}s ${ease} ${at.toFixed(3)}s both paused`;
+        if (el.dataset.g !== undefined) {
+          const gat = s0 + cue(+el.dataset.g) + +(el.dataset.go || 0) + (i > 0 ? 0.25 : 0);
+          anim = `ghost 0.7s ease-out ${gat.toFixed(3)}s both paused, light 0.8s ${ease} ${at.toFixed(3)}s forwards paused`;
+        }
+        if (el.dataset.x !== undefined) {
+          const xat = s0 + cue(+el.dataset.x) + +(el.dataset.xo || 0);
+          anim += `, out 0.5s ease-in ${xat.toFixed(3)}s forwards paused`;
+        }
+        el.style.animation = anim;
+      });
+      sec.querySelectorAll('[data-count]').forEach(el => {
+        const host = el.closest('.a');
+        const c = +(el.dataset.c || (host && host.dataset.c) || 0);
+        const o = +(el.dataset.o || 0);
+        counters.push({ el, to: +el.dataset.count, at: s0 + cue(c) + o + 0.4, dur: +(el.dataset.cd || 2) });
+      });
+      // ambient animations run on absolute time
+      sec.querySelectorAll('.blob').forEach(b => b.style.animationPlayState = 'paused');
+    });
+    const prog = document.getElementById('prog');
+    T.scenes.slice(1).forEach(s => {
+      const m = document.createElement('s'); m.style.left = (s.start / T.total * 100) + '%'; prog.appendChild(m);
+    });
+    document.getAnimations().forEach(a => a.pause());
+  };
+
+  window.setTime = function (t) {
+    scenes.forEach((s, i) => {
+      const next = scenes[i + 1];
+      const visible = t >= s.start - 0.05 && t < (next ? next.start + 1.0 : Infinity);
+      s.el.style.display = visible ? 'block' : 'none';
+    });
+    document.getAnimations().forEach(a => { a.currentTime = t * 1000; });
+    counters.forEach(c => {
+      const p = Math.min(1, Math.max(0, (t - c.at) / c.dur));
+      const e = 1 - Math.pow(1 - p, 3);
+      c.el.textContent = Math.round(c.to * e).toLocaleString('en-US');
+    });
+    document.querySelector('#prog i').style.width = (t / T.total * 100) + '%';
+  };
+})();
+</script>
+</body>
+</html>
