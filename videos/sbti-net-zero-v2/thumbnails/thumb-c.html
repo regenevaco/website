@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Thumbnail C: Target</title>
+<link rel="stylesheet" href="_base.css"><link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+body { background: radial-gradient(circle at 74% 50%, #07603a 0%, #023d24 38%, var(--night) 70%, #000f08 100%); color: #fff; }
+.grid { inset: 0; background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px); background-size: 64px 64px; }
+.ring { left: 700px; top: 40px; width: 640px; height: 640px; }
+.core { left: 836px; top: 176px; width: 368px; height: 368px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #3fe39d, var(--mint) 40%, #109a5c); display: grid; place-items: center; box-shadow: 0 0 90px #26ca8699, inset 0 -20px 50px #0004; }
+.core b { font: 900 176px/1 "ESC"; color: var(--night); letter-spacing: -0.04em; margin-top: 44px; }
+.core small { position: absolute; top: 74px; font: 900 30px "ESC"; letter-spacing: .3em; color: var(--night); }
+.logo { left: 64px; top: 52px; height: 40px; }
+.k { left: 64px; top: 150px; font: 800 44px "ESC"; letter-spacing: .1em; color: var(--mint); }
+.h { left: 58px; top: 200px; font: 900 150px/0.86 "ESC"; text-transform: uppercase; letter-spacing: -0.01em; }
+.h span { -webkit-text-stroke: 4px #fff; color: transparent; }
+.list { left: 64px; top: 478px; display: flex; flex-direction: column; gap: 12px; }
+.list div { display: flex; align-items: center; gap: 14px; font: 800 36px "ESC"; }
+.list i { width: 44px; height: 44px; border-radius: 10px; background: var(--sun); color: var(--ink); display: grid; place-items: center; font-size: 24px; }
+</style></head><body>
+<div class="abs grid"></div>
+<svg class="abs ring" viewBox="0 0 640 640">
+  <circle cx="320" cy="320" r="300" fill="none" stroke="#26ca8622" stroke-width="2"/>
+  <circle cx="320" cy="320" r="250" fill="none" stroke="#26ca8655" stroke-width="16" stroke-dasharray="6 18"/>
+  <circle cx="320" cy="320" r="214" fill="none" stroke="#26ca86" stroke-width="10" stroke-linecap="round" stroke-dasharray="1100 245" transform="rotate(-80 320 320)"/>
+  <circle cx="320" cy="106" r="16" fill="#ffd23f"/>
+</svg>
+<div class="abs core"><small>VERSION</small><b>2.0</b></div>
+<img class="abs logo" src="../regeneva-logo-white.png" alt="ReGeneva">
+<div class="abs k">SBTi CORPORATE</div>
+<div class="abs h">Net-Zero<br><span>Standard</span></div>
+<div class="abs list">
+  <div><i class="fa-solid fa-check"></i> What it is</div>
+  <div><i class="fa-solid fa-check"></i> What's changed</div>
+  <div><i class="fa-solid fa-check"></i> What it means for you</div>
+</div>
+</body></html>

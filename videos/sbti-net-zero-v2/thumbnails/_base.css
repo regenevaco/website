@@ -1,0 +1,11 @@
+@font-face { font-family: "ESC"; font-weight: 600; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-SemiBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 700; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url(../../../assets/fonts/Roboto/Roboto-Medium.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+:root { --green: #4baf47; --deep: #046d3a; --deeper: #03482a; --night: #012a19; --mint: #26ca86; --paper: #f4f3ef; --ink: #191919; --sun: #ffd23f; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1280px; height: 720px; overflow: hidden; }
+body { font-family: "ESC", sans-serif; position: relative; -webkit-font-smoothing: antialiased; }
+.abs { position: absolute; }

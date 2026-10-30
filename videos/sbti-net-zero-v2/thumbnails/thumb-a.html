@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Thumbnail A: V1 to V2</title>
+<link rel="stylesheet" href="_base.css"><link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+body { background: var(--night); color: #fff; }
+.left { left: 0; top: 0; bottom: 0; width: 470px; background: linear-gradient(160deg, #3b403d, #1f2321); overflow: hidden; }
+.left::after { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, #ffffff08 0 14px, transparent 14px 28px); }
+.right { left: 430px; top: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 30%, #0fa158 0%, var(--deep) 40%, var(--deeper) 75%, var(--night) 100%); clip-path: polygon(80px 0, 100% 0, 100% 100%, 0 100%); }
+.glow { right: 40px; top: 30px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, #26ca8655, transparent 65%); }
+.v1 { left: 54px; top: 150px; font: 900 300px/0.85 "ESC"; color: #6d736f; letter-spacing: -0.03em; }
+.v1 i { position: absolute; left: -10px; right: -10px; top: 46%; height: 26px; background: #e2463f; border-radius: 13px; transform: rotate(-8deg); box-shadow: 0 6px 18px #0008; }
+.v1lab { left: 60px; top: 430px; font: 800 34px "ESC"; letter-spacing: .18em; color: #8b918d; }
+.arrow { left: 400px; top: 235px; width: 130px; height: 130px; border-radius: 50%; background: var(--sun); color: var(--ink); display: grid; place-items: center; font-size: 66px; box-shadow: 0 12px 40px #000a; z-index: 3; }
+.kick { left: 590px; top: 62px; font: 800 40px "ESC"; letter-spacing: .14em; color: var(--mint); }
+.v2 { left: 576px; top: 104px; font: 900 290px/0.85 "ESC"; letter-spacing: -0.03em; color: #fff; text-shadow: 0 16px 50px #0006; }
+.v2 span { color: var(--mint); }
+.title { left: 590px; top: 372px; font: 900 72px/0.95 "ESC"; text-transform: uppercase; }
+.bar { left: 0; right: 0; bottom: 0; height: 110px; background: #000c; display: flex; align-items: center; gap: 18px; padding-left: 60px; }
+.bar span { font: 800 34px "ESC"; color: #fff; padding: 8px 20px; border-radius: 12px; border: 3px solid #ffffff38; }
+.bar span b { color: var(--mint); }
+.logo { right: 56px; bottom: 34px; height: 40px; }
+</style></head><body>
+<div class="abs left"></div><div class="abs right"></div><div class="abs glow"></div>
+<div class="abs v1">1.0<i></i></div><div class="abs v1lab">OLD RULES</div>
+<div class="abs arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="abs kick">SBTi CORPORATE</div>
+<div class="abs v2">V2<span>.0</span></div>
+<div class="abs title">Net-Zero Standard<br><span style="color:var(--sun)">Explained</span></div>
+<div class="abs bar"><span><b>A/B</b> companies</span><span><b>5%</b> scope 3 rule</span><span>Removals <b>2035</b></span></div>
+<img class="abs logo" src="../regeneva-logo-white.png" alt="ReGeneva">
+</body></html>
