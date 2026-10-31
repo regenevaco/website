@@ -74,5 +74,11 @@ async function video(timing, out, workers, scale) {
   const [mode, timingPath, out, ...rest] = process.argv.slice(2);
   const timing = JSON.parse(fs.readFileSync(timingPath, 'utf8'));
   if (mode === 'stills') await stills(timing, out, rest.map(Number), 1);
+  else if (mode === 'segment') {
+    // node render.js segment <timing> <out.mp4> <part> <parts> <scale>: one slice, for parallel jobs
+    const [part, parts, scale] = rest.map(Number);
+    const total = Math.ceil(timing.total * FPS), per = Math.ceil(total / parts);
+    await segment(timing, part * per, Math.min(total, (part + 1) * per), out, scale || 1);
+  }
   else await video(timing, out, +(rest[0] || 4), +(rest[1] || 1));
 })().catch(e => { console.error(e); process.exit(1); });

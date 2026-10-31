@@ -2,7 +2,7 @@
 
 ## Title options
 1. India's Carbon Market Explained: CCTS, Carbon Credit Certificates & What It Means for Business (2026)
-2. India's Carbon Credit Trading Scheme (CCTS) in 15 Minutes: How It Works, Status & Opportunities
+2. India's Carbon Credit Trading Scheme (CCTS) in 13 Minutes: How It Works, Status & Opportunities
 3. Will Your Plant Earn or Pay? India's Carbon Credit Trading Scheme Explained
 
 ## Description
@@ -19,7 +19,18 @@ In this ReGeneva explainer we cover:
 ✅ Expert critiques from IEEFA and CEEW, and what comes next
 
 ⏱️ Chapters
-[paste chapters.txt here after the final render]
+0:00 Two plants, one decision
+0:37 The big picture
+1:25 Decoding the jargon
+2:51 How India got here
+4:00 Why India needs CCTS
+5:08 How CCTS works
+6:28 A worked example
+7:26 Where CCTS stands today
+8:56 Business opportunities
+10:23 Challenges and critiques
+11:31 What comes next
+12:09 What it means for you
 
 📚 Key sources (research cut-off 31 Oct 2026)
 • Carbon Credit Trading Scheme, 2023 (S.O. 2825(E), Ministry of Power): https://beeindia.gov.in/sites/default/files/CCTS.pdf
@@ -44,7 +55,7 @@ Full evidence register available on request.
 CCTS, Carbon Credit Trading Scheme, Indian Carbon Market, carbon credits India, carbon credit certificate, BEE, Bureau of Energy Efficiency, PAT scheme, GEI targets, emission intensity targets, CERC carbon trading, Grid Controller of India registry, offset mechanism India, MRV, CBAM India, industrial decarbonisation, ESG India, ReGeneva
 
 ## Uploading
-- Video: `india-ccts-explainer-4k.mp4` (YouTube serves 4K and creates 1080p and lower automatically)
+- Video: `india-ccts-explainer-4k.mp4` (or `india-ccts-explainer-1080p.mp4`) (YouTube serves 4K and creates 1080p and lower automatically)
 - Thumbnail: `thumbnail/thumbnail-1280x720.jpg`
 - Subtitles: `captions.srt` → Subtitles → English → Upload file → "With timing"
 - In YouTube Studio's "Altered or synthetic content" setting, consider disclosing the AI voice. The voice is realistic and synthetic, even though it is Surya's own.
@@ -60,7 +71,7 @@ Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants now have le
 Beat your target → you may earn Carbon Credit Certificates (1 CCC = 1 tCO₂e).
 Miss it → you buy certificates, or pay environmental compensation at 2× the average market price.
 
-In our new 15-minute explainer, I break down:
+In our new 13-minute explainer, I break down:
 🔹 How CCTS works: BEE, MoEFCC, Grid Controller of India, CERC and the 5-step compliance cycle
 🔹 A worked example: who earns, who pays
 🔹 What's live today vs what's still pending (no CCC has a market price yet!)
