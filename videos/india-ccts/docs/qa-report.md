@@ -3,7 +3,7 @@
 ## Deliverables (verified)
 | File | Spec | Check |
 |---|---|---|
-| `india-ccts-explainer-4k.mp4` | H.264 High, 3840×2160, 30 fps, AAC 320 kbps 48 kHz stereo, 12:53.8, 540 MB | 23,185/23,185 video frames · −14.0 LUFS · −1.4 dBTP |
+| `india-ccts-explainer-4k.mp4` | H.264 High, 3840×2160, 30 fps (CRF 20, preset slow), AAC 256 kbps 48 kHz stereo, 12:53.8, 375 MiB | 23,185/23,185 video frames · −14.0 LUFS · −1.2 dBTP |
 | `india-ccts-explainer-1080p.mp4` | H.264 High, 1920×1080 (Lanczos downscale of the 4K master), 30 fps, AAC 320 kbps, 181 MB | 23,185 frames · −14.0 LUFS · −1.4 dBTP |
 | `india-ccts-captions-en.srt` | English, matches the narration wording, ≤80 characters per cue | timed from the final narration |
 | `india-ccts-chapters.txt` | 12 YouTube chapters from 0:00 | taken from the final timeline |
@@ -33,6 +33,7 @@
 - **Text and logos:** no text overflow in the frames checked. The logo is never distorted, and it switches between dark and light versions with the background.
 
 ## Known limitations
+- Minor: in the glossary index, the highlighted term is grey text on a black pill. It is legible, but white would have more contrast. Fix it in `style.css` (`.gi` highlight) on the next render.
 - **No live-action footage.** Stock-footage sites and AI video generation weren't reachable from this environment. The industrial "footage" is a procedural cinematic animation (night skyline, smoke, data grids). Licensed clips can be dropped into `scenes/index.html` later.
 - **Music is synthesised, not licensed.** Tracks from the connected Epidemic Sound account couldn't be downloaded (no download permission on this account), so the score was composed and synthesised for this video and is royalty-free.
 - **Government sites weren't fetched directly.** BEE, PIB, CERC and the e-Gazette sites were blocked by the network policy, so facts were verified through their published excerpts and through ICAP, IEEFA and CEEW. The ⚠ items in the evidence register should be re-checked against the gazette text before any legal use.
