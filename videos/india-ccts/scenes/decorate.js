@@ -1,7 +1,7 @@
 // Generated markup: chapter cards, glossary, evolution camera pan.
 (function () {
   const GLOSS = [
-    { t: 'Greenhouse gases', k: 'GHG', d: 'Gases that trap heat in the atmosphere.', v: '<div class="mols"><span>CO<sub>2</sub></span><span>CH<sub>4</sub></span><span>N<sub>2</sub>O</span></div>' },
+    { t: 'Greenhouse gases', k: 'GHG', d: 'Gases that trap heat in the atmosphere.', v: '<div class="mols"><span><i>CO<sub>2</sub></i></span><span><i>CH<sub>4</sub></i></span><span><i>N<sub>2</sub>O</i></span></div>' },
     { t: 'CO<sub>2</sub> equivalent', k: 'CO<sub>2</sub>e', d: 'One common unit for every gas, weighted by its warming effect.', v: '<div class="eqv"><span>CO<sub>2</sub></span><span>CH<sub>4</sub></span><span>N<sub>2</sub>O</span><i class="fa-solid fa-arrow-right"></i><b>tCO<sub>2</sub>e</b></div>' },
     { t: 'Emissions intensity', k: 'GEI', d: 'Emissions per unit of output. CCTS targets intensity, not an absolute cap.', v: '<div class="frac"><b>tCO<sub>2</sub>e</b><hr><span>tonne of product</span></div>' },
     { t: 'Baseline & target', k: 'BASE', d: 'Baseline: the 2023-24 starting point. Target: the lower intensity required in a compliance year.', v: '<div class="bt"><i style="height:100%"><span>2023-24<br>baseline</span></i><i class="g" style="height:88%"><span>2025-26</span></i><i class="g" style="height:80%"><span>2026-27</span></i><em>Illustrative</em></div>' },

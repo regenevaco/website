@@ -171,6 +171,7 @@ body[data-tone="light"] .grain { opacity: .025; }
 .gcard .gv { margin-top: 40px; }
 .mols { display: flex; gap: 30px; }
 .mols span { width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; font: 800 42px "ESC"; background: var(--g-tint); border: 3px solid var(--g); }
+.mols span i { font-style: normal; }
 .mols span:nth-child(2) { background: #fff; } .mols span:nth-child(3) { background: var(--k); color: #fff; }
 .eqv { display: flex; align-items: center; gap: 24px; font: 800 44px "ESC"; }
 .eqv span { padding: 16px 26px; border-radius: 14px; border: 3px solid var(--line); }
@@ -241,7 +242,7 @@ body[data-tone="light"] .grain { opacity: .025; }
 .stack .s3 { background: var(--g); }
 .stack .s4 { background: var(--g-deep); border-radius: 0 12px 12px 0; }
 .stack .seg span { position: absolute; left: 22px; top: 22px; font: 800 30px "ESC"; color: #fff; white-space: nowrap; }
-.stack .seg span.out { left: -60px; top: 96px; color: var(--g-lo); }
+.stack .seg span.out { left: -330px; top: 96px; color: var(--g-lo); }
 .legend { display: flex; gap: 26px; margin-top: 90px; font-size: 21px; color: var(--mute); }
 .legend i { display: inline-block; width: 18px; height: 18px; border-radius: 4px; margin-right: 8px; vertical-align: -3px; }
 .legend .s1 { background: var(--k); } .legend .s2 { background: #A7B3AE; } .legend .s3 { background: var(--g); } .legend .s4 { background: var(--g-deep); }
