@@ -34,6 +34,12 @@
       if (i > 0) sec.style.animation = `wipe 1.1s cubic-bezier(.77,0,.18,1) ${s0}s both paused`;
       scenes.push({ el: sec, start: s0, end: s0 + info.dur, info });
       if (window.decorate && window.decorate[info.id]) window.decorate[info.id](sec, info);
+      // slow documentary-style push-in on every chapter's content layer
+      sec.querySelectorAll(':scope > .content').forEach(c => {
+        c.style.transformOrigin = '50% 45%';
+        c.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.03)' }],
+          { duration: info.dur * 1000, delay: s0 * 1000, fill: 'both', easing: 'linear' }).pause();
+      });
       sec.querySelectorAll('.a').forEach(el => {
         const preset = PRESETS.find(p => el.classList.contains(p)) || 'fade';
         const c = el.dataset.c === 'end' ? 'end' : +(el.dataset.c || 0);

@@ -2,6 +2,8 @@
 
     python3 build_voice.py <out_dir>                 # full narration
     python3 build_voice.py <out_dir> --only hook     # one scene (for previews)
+    python3 build_voice.py <out_dir> --redo close:4  # regenerate listed lines, then re-assemble
+    python3 build_voice.py <out_dir> --assemble      # re-assemble narration/timing from lines/*.wav
     python3 build_voice.py <out_dir> --captions-only # rebuild SRT/chapters from timing.json
 
 Configuration comes from surya-clone-voice.json plus two environment variables:
@@ -141,58 +143,54 @@ def write_text_tracks(script, timing, out):
             f.write(f"{m}:{s:02} {st['chapter']}\n")
 
 
-def main():
-    out = sys.argv[1]
-    os.makedirs(os.path.join(out, "lines"), exist_ok=True)
-    script = json.load(open(SCRIPT))
-    if "--captions-only" in sys.argv:
-        write_text_tracks(script, json.load(open(os.path.join(out, "timing.json"))), out)
-        return
-    only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+def load_voice():
     models = os.environ["SURYA_VOICE_MODELS"]
     m = PROFILE["model"]
-    voice = ZipClone(os.path.join(models, m["dir"]), os.path.join(models, m["vocoder"]),
-                     os.path.join(models, m["tokens"]), os.environ["SURYA_VOICE_REF"],
-                     PROFILE["reference_transcript"], encoder=m["encoder"], decoder=m["decoder"])
+    return ZipClone(os.path.join(models, m["dir"]), os.path.join(models, m["vocoder"]),
+                    os.path.join(models, m["tokens"]), os.environ["SURYA_VOICE_REF"],
+                    PROFILE["reference_transcript"], encoder=m["encoder"], decoder=m["decoder"]), Checker(models)
+
+
+def generate_line(voice, checker, scene, li, line, out, report):
     g = PROFILE["generation"]
-    checker = Checker(models)
-    report = []
+    pieces = []
+    for ci, chunk in enumerate(chunks(line["say"])):
+        best = None
+        for attempt in range(MAX_TRIES):
+            w = trim(voice.say(chunk, speed=g["speed"], steps=g["steps"], guidance=g["guidance"],
+                               t_shift=g["t_shift"], seed=1000 * li + 10 * ci + attempt))
+            heard = checker.transcribe(w)
+            sim = similarity(re.sub(r"\[\[.*?\]\]", "", chunk), heard)
+            if best is None or sim > best[0]:
+                best = (sim, w, heard, attempt)
+            if sim >= MIN_SIMILARITY:
+                break
+        sim, w, heard, attempt = best
+        report[f"{scene['id']}/{li}/{ci}"] = {"chunk": chunk, "heard": heard, "similarity": round(sim, 3),
+                                             "tries": attempt + 1}
+        print(f"{scene['id']}/{li}.{ci} sim={sim:.2f} tries={attempt + 1}", flush=True)
+        pieces += [w, np.zeros(int(CHUNK_GAP * SR), np.float32)]
+    sf.write(os.path.join(out, "lines", f"{scene['id']}_{li:02}.wav"), np.concatenate(pieces[:-1]), SR)
+
+
+def assemble(script, out):
+    """Build narration.wav, timing.json, captions and chapters from the per-line WAVs."""
     track, t, timing = [], 0.0, {"scenes": []}
-    scenes = [s for s in script["scenes"] if only in (None, s["id"])]
-    for si, scene in enumerate(scenes):
+    for si, scene in enumerate(script["scenes"]):
         start = t
         pad = LEAD_IN if si == 0 else SCENE_PAD_IN
         track.append(np.zeros(int(pad * SR), np.float32))
         t += pad
         lines = []
-        for li, line in enumerate(scene["lines"]):
-            pieces = []
-            for ci, chunk in enumerate(chunks(line["say"])):
-                best = None
-                for attempt in range(MAX_TRIES):
-                    w = trim(voice.say(chunk, speed=g["speed"], steps=g["steps"], guidance=g["guidance"],
-                                       t_shift=g["t_shift"], seed=1000 * li + 10 * ci + attempt))
-                    heard = checker.transcribe(w)
-                    sim = similarity(chunk, heard)
-                    if best is None or sim > best[0]:
-                        best = (sim, w, heard, attempt)
-                    if sim >= MIN_SIMILARITY:
-                        break
-                sim, w, heard, attempt = best
-                report.append({"scene": scene["id"], "line": li, "chunk": chunk, "heard": heard,
-                               "similarity": round(sim, 3), "tries": attempt + 1})
-                print(f"{scene['id']}/{li}.{ci} sim={sim:.2f} tries={attempt + 1}", flush=True)
-                pieces.append(w)
-                pieces.append(np.zeros(int(CHUNK_GAP * SR), np.float32))
-            lw = np.concatenate(pieces[:-1])
-            sf.write(os.path.join(out, "lines", f"{scene['id']}_{li:02}.wav"), lw, SR)
+        for li in range(len(scene["lines"])):
+            lw, sr = sf.read(os.path.join(out, "lines", f"{scene['id']}_{li:02}.wav"), dtype="float32")
             lines.append({"start": round(t - start, 3), "dur": round(len(lw) / SR, 3)})
             track.append(lw)
             t += len(lw) / SR
             if li < len(scene["lines"]) - 1:
                 track.append(np.zeros(int(LINE_GAP * SR), np.float32))
                 t += LINE_GAP
-        hold = OUTRO_HOLD if scene is script["scenes"][-1] else SCENE_PAD_OUT
+        hold = OUTRO_HOLD if si == len(script["scenes"]) - 1 else SCENE_PAD_OUT
         track.append(np.zeros(int(hold * SR), np.float32))
         t += hold
         timing["scenes"].append({"id": scene["id"], "chapter": scene["chapter"], "tone": scene["tone"],
@@ -200,10 +198,41 @@ def main():
     timing["total"] = round(t, 3)
     sf.write(os.path.join(out, "narration.wav"), np.concatenate(track), SR)
     json.dump(timing, open(os.path.join(out, "timing.json"), "w"), indent=1)
-    json.dump(report, open(os.path.join(out, "voice_qa.json"), "w"), indent=1)
-    if only is None:
-        write_text_tracks(script, timing, out)
+    write_text_tracks(script, timing, out)
     print(f"total {t:.1f}s")
+
+
+def main():
+    out = sys.argv[1]
+    os.makedirs(os.path.join(out, "lines"), exist_ok=True)
+    script = json.load(open(SCRIPT))
+    if "--captions-only" in sys.argv:
+        write_text_tracks(script, json.load(open(os.path.join(out, "timing.json"))), out)
+        return
+    qa_path = os.path.join(out, "voice_qa.json")
+    report = json.load(open(qa_path)) if os.path.exists(qa_path) else {}
+    if isinstance(report, list):  # older list format: re-key by scene/line/chunk
+        keyed, seen = {}, {}
+        for r in report:
+            k = (r["scene"], r["line"])
+            ci = seen.get(k, 0)
+            seen[k] = ci + 1
+            keyed[f"{r['scene']}/{r['line']}/{ci}"] = {x: r[x] for x in ("chunk", "heard", "similarity", "tries")}
+        report = keyed
+    only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+    redo = sys.argv[sys.argv.index("--redo") + 1].split(",") if "--redo" in sys.argv else None
+    if "--assemble" not in sys.argv:
+        voice, checker = load_voice()
+        for scene in script["scenes"]:
+            if only and scene["id"] != only:
+                continue
+            for li, line in enumerate(scene["lines"]):
+                if redo and f"{scene['id']}:{li}" not in redo:
+                    continue
+                generate_line(voice, checker, scene, li, line, out, report)
+        json.dump(report, open(qa_path, "w"), indent=1, ensure_ascii=False)
+    if only is None:
+        assemble(script, out)
 
 
 if __name__ == "__main__":

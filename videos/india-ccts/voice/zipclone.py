@@ -4,6 +4,7 @@ Pipeline (mirrors k2-fsa/ZipVoice onnx_infer.py):
   espeak IPA tokens -> text encoder -> flow-matching decoder (Euler, CFG) -> Vocos ISTFT.
 """
 import os
+import re
 import numpy as np
 import onnxruntime as ort
 import soundfile as sf
@@ -87,7 +88,10 @@ class ZipClone:
                          separator=Separator(phone="", word=" "), njobs=1)
 
     def tokens(self, text):
-        ids = [self.tok[c] for c in self.ipa(text) if c in self.tok]
+        # [[...]] passes raw IPA through, for names espeak gets wrong (e.g. [[sˈuːɹjə]]).
+        parts = re.split(r"\[\[(.*?)\]\]", text)
+        ipa = " ".join((p if i % 2 else self.ipa(p)).strip() for i, p in enumerate(parts) if p.strip())
+        ids = [self.tok[c] for c in ipa if c in self.tok]
         return np.array([ids], dtype=np.int64)
 
     def say(self, text, speed=1.0, steps=8, guidance=3.0, t_shift=0.5, seed=0):
