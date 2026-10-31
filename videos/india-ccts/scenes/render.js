@@ -36,7 +36,8 @@ async function segment(timing, from, to, out, scale) {
   const page = await openPage(browser, timing, scale);
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS),
     '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'medium', '-crf', scale > 1 ? '17' : '17',
-    '-pix_fmt', 'yuv420p', '-r', String(FPS), out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    '-pix_fmt', 'yuv420p', '-r', String(FPS), '-g', '60', ...(out.endsWith('.ts') ? ['-f', 'mpegts'] : []), out],
+    { stdio: ['pipe', 'inherit', 'inherit'] });
   const cdp = await page.context().newCDPSession(page);
   const t0 = Date.now();
   for (let f = from; f < to; f++) {
@@ -74,11 +75,12 @@ async function video(timing, out, workers, scale) {
   const [mode, timingPath, out, ...rest] = process.argv.slice(2);
   const timing = JSON.parse(fs.readFileSync(timingPath, 'utf8'));
   if (mode === 'stills') await stills(timing, out, rest.map(Number), 1);
-  else if (mode === 'segment') {
-    // node render.js segment <timing> <out.mp4> <part> <parts> <scale>: one slice, for parallel jobs
-    const [part, parts, scale] = rest.map(Number);
-    const total = Math.ceil(timing.total * FPS), per = Math.ceil(total / parts);
-    await segment(timing, part * per, Math.min(total, (part + 1) * per), out, scale || 1);
+  else if (mode === 'range') {
+    // node render.js range <timing> <out.ts> <fromFrame> <toFrame|end> <scale>
+    // MPEG-TS output stays playable if the job is interrupted; resume with a new range.
+    const total = Math.ceil(timing.total * FPS);
+    const from = +rest[0], to = rest[1] === 'end' ? total : Math.min(total, +rest[1]);
+    await segment(timing, from, to, out, +(rest[2] || 1));
   }
   else await video(timing, out, +(rest[0] || 4), +(rest[1] || 1));
 })().catch(e => { console.error(e); process.exit(1); });
