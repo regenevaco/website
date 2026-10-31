@@ -1,0 +1,38 @@
+{
+  "name": "Surya's Clone Voice",
+  "description": "Zero-shot clone of Surya's voice (Indian English), authorised by Surya for ReGeneva narration only.",
+  "provider": "Local, offline: k2-fsa ZipVoice (Apache-2.0) via ONNX Runtime, with a Vocos 24 kHz vocoder. No cloud service and no API keys.",
+  "consent": "Reference recording supplied by Surya for generating his own narration. Do not share the recording or use the voice for any other person or purpose.",
+  "reference_audio_env": "SURYA_VOICE_REF",
+  "reference_audio_format": "24 kHz mono WAV, ~10 s, converted from the supplied MP3 (the original is kept untouched)",
+  "reference_transcript": "Hi, it's me. Have you got there yet? Oh, right, that's fine. Listen, I'm stuck in traffic on the way over, so I'll be about twenty minutes late.",
+  "models_env": "SURYA_VOICE_MODELS",
+  "model": {
+    "dir": "sherpa-onnx-zipvoice-zh-en-emilia",
+    "encoder": "text_encoder.onnx",
+    "decoder": "fm_decoder.onnx",
+    "tokens": "sherpa-onnx-zipvoice-distill-int8-zh-en-emilia/tokens.txt",
+    "vocoder": "vocos_24khz.onnx",
+    "download": {
+      "zipvoice": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-zipvoice-zh-en-emilia.tar.bz2",
+      "tokens": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-zipvoice-distill-int8-zh-en-emilia.tar.bz2",
+      "vocoder": "https://github.com/k2-fsa/sherpa-onnx/releases/download/vocoder-models/vocos_24khz.onnx",
+      "asr_check": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8.tar.bz2"
+    }
+  },
+  "generation": {"speed": 1.05, "steps": 16, "guidance": 1.0, "t_shift": 0.5},
+  "pronunciation_tips": {
+    "acronyms": "Spell letter by letter with spaces: 'C C T S', 'C E R C', 'M R V', 'G H G'",
+    "CO2e": "C O two e",
+    "CBAM": "see bam",
+    "PAT": "Pat",
+    "years": "Write as words: 'twenty twenty-six', 'twenty twenty-three to twenty-four'",
+    "Surya": "Soorya"
+  },
+  "validation": {
+    "speaker_similarity_wespeaker": 0.918,
+    "reference_self_similarity": 0.876,
+    "other_voices_baseline": "0.63-0.73",
+    "measured_on": "2026-10-31"
+  }
+}

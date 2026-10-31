@@ -1,0 +1,229 @@
+{
+  "title": "India's Carbon Market: The Carbon Credit Trading Scheme (CCTS) Explained",
+  "research_cutoff": "31 October 2026",
+  "voice": "Surya's Clone Voice",
+  "scenes": [
+    {
+      "id": "hook", "chapter": "Two plants, one decision", "tone": "dark",
+      "lines": [
+        {"text": "Imagine two cement plants. Same size. Same product. Same market.",
+         "say": "Imagine two cement plants. Same size. Same product. Same market."},
+        {"text": "The first invests in efficient kilns, waste-heat recovery and cleaner fuels. The second carries on as usual.",
+         "say": "The first invests in efficient kilns, waste heat recovery, and cleaner fuels. The second carries on as usual."},
+        {"text": "For decades, the difference between them showed up in one place: the energy bill.",
+         "say": "For decades, the difference between them showed up in one place. The energy bill."},
+        {"text": "But in India, that is changing. The first plant could soon hold certificates it can sell. The second could have to buy them.",
+         "say": "But in India, that is changing. The first plant could soon hold certificates it can sell. The second could have to buy them."},
+        {"text": "Carbon is becoming a line item on the balance sheet.",
+         "say": "Carbon is becoming a line item on the balance sheet."},
+        {"text": "This is India's Carbon Credit Trading Scheme. Let's unpack how it works, where it stands today, and what it means for your business.",
+         "say": "This is India's Carbon Credit Trading Scheme. Let's unpack how it works, where it stands today, and what it means for your business."}
+      ]
+    },
+    {
+      "id": "overview", "chapter": "The big picture", "tone": "light",
+      "lines": [
+        {"text": "The Carbon Credit Trading Scheme, or CCTS, is India's own carbon market, created under the Energy Conservation Act.",
+         "say": "The Carbon Credit Trading Scheme, or C C T S, is India's own carbon market, created under the Energy Conservation Act."},
+        {"text": "It has two parts. The first is a compliance mechanism: selected energy-intensive industries get legally binding targets for greenhouse gas emitted per tonne of product.",
+         "say": "It has two parts. The first is a compliance mechanism. Selected energy intensive industries get legally binding targets, for the greenhouse gas they emit per tonne of product."},
+        {"text": "The second is an offset mechanism. It is voluntary, and lets other organisations register projects that reduce or remove emissions.",
+         "say": "The second is an offset mechanism. It is voluntary, and lets other organisations register projects that reduce or remove emissions."},
+        {"text": "In both, verified performance can be rewarded with Carbon Credit Certificates, traded on regulated power exchanges.",
+         "say": "In both, verified performance can be rewarded with Carbon Credit Certificates, which are traded on regulated power exchanges."},
+        {"text": "Think of it as a fitness target for factories. Beat your target, and you can earn credits. Miss it, and you must buy credits, or pay a penalty.",
+         "say": "Think of it as a fitness target for factories. Beat your target, and you can earn credits. Miss it, and you must buy credits, or pay a penalty."}
+      ]
+    },
+    {
+      "id": "terms", "chapter": "Decoding the jargon", "tone": "light",
+      "lines": [
+        {"text": "Before we go deeper, let's decode the jargon.",
+         "say": "Before we go deeper, let's decode the jargon."},
+        {"text": "Greenhouse gases, like carbon dioxide, methane and nitrous oxide, trap heat in the atmosphere.",
+         "say": "Greenhouse gases, like carbon dioxide, methane, and nitrous oxide, trap heat in the atmosphere."},
+        {"text": "Each gas warms the planet differently, so we convert them into one unit: tonnes of carbon dioxide equivalent, or CO2e.",
+         "say": "Each gas warms the planet differently, so we convert them into one unit. Tonnes of carbon dioxide equivalent, or C O two e."},
+        {"text": "Emissions intensity is emissions per unit of output, for example tonnes of CO2e per tonne of cement. India's scheme is built on intensity, not an absolute cap.",
+         "say": "Emissions intensity is emissions per unit of output. For example, tonnes of C O two e per tonne of cement. India's scheme is built on intensity, not on an absolute cap."},
+        {"text": "The baseline is the starting point, here the year 2023-24. The target is the lower intensity a plant must reach in a compliance year.",
+         "say": "The baseline is the starting point. Here, the year twenty twenty-three to twenty-four. The target is the lower intensity a plant must reach in a compliance year."},
+        {"text": "One Carbon Credit Certificate, or CCC, represents one tonne of CO2e reduced, removed or avoided.",
+         "say": "One Carbon Credit Certificate, or C C C, represents one tonne of C O two e, reduced, removed, or avoided."},
+        {"text": "A compliance market is mandatory, created by law. A voluntary market is where companies buy credits by choice.",
+         "say": "A compliance market is mandatory, created by law. A voluntary market is where companies buy credits by choice."},
+        {"text": "Obligated entities are the plants given legal targets. Non-obligated entities can take part voluntarily, through the offset mechanism.",
+         "say": "Obligated entities are the plants given legal targets. Non obligated entities can take part voluntarily, through the offset mechanism."},
+        {"text": "And MRV, monitoring, reporting and verification, is how every tonne is measured, reported and independently checked.",
+         "say": "And M R V, monitoring, reporting and verification, is how every tonne is measured, reported, and independently checked."},
+        {"text": "One more distinction: an Energy Saving Certificate from the older PAT scheme, or a Renewable Energy Certificate, is not a carbon credit. They count energy saved or green power generated, not tonnes of greenhouse gas.",
+         "say": "One more distinction. An energy saving certificate from the older Pat scheme, or a renewable energy certificate, is not a carbon credit. They count energy saved, or green power generated. Not tonnes of greenhouse gas."}
+      ]
+    },
+    {
+      "id": "evolution", "chapter": "How India got here", "tone": "dark",
+      "lines": [
+        {"text": "India did not build this market from scratch.",
+         "say": "India did not build this market from scratch."},
+        {"text": "In 2010, the electricity regulator CERC created Renewable Energy Certificates, and exchange trading began in 2011.",
+         "say": "In twenty ten, the electricity regulator, C E R C, created renewable energy certificates, and exchange trading began in twenty eleven."},
+        {"text": "In 2012, the Bureau of Energy Efficiency launched Perform, Achieve and Trade, or PAT, under the National Mission for Enhanced Energy Efficiency.",
+         "say": "In twenty twelve, the Bureau of Energy Efficiency launched Perform, Achieve and Trade, or Pat, under the National Mission for Enhanced Energy Efficiency."},
+        {"text": "PAT's first cycle covered 478 plants in eight sectors, and saved 8.67 million tonnes of oil equivalent, about 30% more than its target.",
+         "say": "Pat's first cycle covered four hundred and seventy-eight plants in eight sectors, and saved eight point six seven million tonnes of oil equivalent. About thirty percent more than its target."},
+        {"text": "Plants that beat their targets earned Energy Saving Certificates, traded on power exchanges from 2017.",
+         "say": "Plants that beat their targets earned energy saving certificates, traded on power exchanges from twenty seventeen."},
+        {"text": "In December 2022, Parliament amended the Energy Conservation Act, giving the government power to create a carbon credit trading scheme.",
+         "say": "In December twenty twenty-two, Parliament amended the Energy Conservation Act, giving the government the power to create a carbon credit trading scheme."},
+        {"text": "The scheme was notified on 28 June 2023, and an offset mechanism was added that December.",
+         "say": "The scheme was notified on the twenty-eighth of June, twenty twenty-three. And an offset mechanism was added that December."},
+        {"text": "So PAT is the foundation, not the same thing. PAT measured energy. CCTS measures greenhouse gas emissions.",
+         "say": "So Pat is the foundation, not the same thing. Pat measured energy. C C T S measures greenhouse gas emissions."}
+      ]
+    },
+    {
+      "id": "why", "chapter": "Why India needs CCTS", "tone": "light",
+      "lines": [
+        {"text": "Why does India need a carbon market at all?",
+         "say": "Why does India need a carbon market at all?"},
+        {"text": "India's first Biennial Transparency Report puts its 2020 emissions at about 2,959 million tonnes of CO2e, excluding land use and forestry.",
+         "say": "India's first Biennial Transparency Report puts its twenty twenty emissions at about two thousand nine hundred and fifty-nine million tonnes of C O two e, excluding land use and forestry."},
+        {"text": "Three quarters came from energy, including the fuel burned in factories, and another 8% from industrial processes.",
+         "say": "Three quarters came from energy, including the fuel burned in factories. And another eight percent, from industrial processes."},
+        {"text": "India has committed to cut the emissions intensity of its economy by 45% by 2030 compared with 2005, and to reach net zero by 2070.",
+         "say": "India has committed to cut the emissions intensity of its economy by forty-five percent by twenty thirty, compared with twenty oh five. And to reach net zero by twenty seventy."},
+        {"text": "Its newest climate plan, submitted in April 2026, raises that to 47% by 2035.",
+         "say": "Its newest climate plan, submitted in April twenty twenty-six, raises that to forty-seven percent by twenty thirty-five."},
+        {"text": "Efficiency rules alone cannot get there. Industry needs a measurable signal that rewards every tonne avoided.",
+         "say": "Efficiency rules alone cannot get there. Industry needs a measurable signal, that rewards every tonne avoided."},
+        {"text": "There is a trade angle too. The EU's Carbon Border Adjustment Mechanism, CBAM, entered its definitive phase in January 2026, putting a price on carbon in imports like steel and aluminium.",
+         "say": "There's a trade angle too. The European Union's Carbon Border Adjustment Mechanism, or see bam, entered its definitive phase in January twenty twenty-six, putting a price on the carbon in imports like steel and aluminium."}
+      ]
+    },
+    {
+      "id": "how", "chapter": "How CCTS works", "tone": "dark",
+      "lines": [
+        {"text": "So how does CCTS actually work? Let's follow it, step by step.",
+         "say": "So how does C C T S actually work? Let's follow it, step by step."},
+        {"text": "At the top is the National Steering Committee for the Indian Carbon Market, chaired by the Power Secretary and co-chaired by the Environment Secretary.",
+         "say": "At the top is the National Steering Committee for the Indian Carbon Market, chaired by the Power Secretary, and co-chaired by the Environment Secretary."},
+        {"text": "The Bureau of Energy Efficiency is the administrator. It develops procedures and methodologies, recommends targets, and processes certificates.",
+         "say": "The Bureau of Energy Efficiency is the administrator. It develops procedures and methodologies, recommends targets, and processes certificates."},
+        {"text": "The Environment Ministry notifies the targets. Grid Controller of India runs the registry. And CERC regulates trading.",
+         "say": "The Environment Ministry notifies the targets. Grid Controller of India runs the registry. And C E R C regulates trading."},
+        {"text": "Step one: the government identifies obligated entities in energy-intensive sectors, and notifies a plant-specific intensity target against a 2023-24 baseline.",
+         "say": "Step one. The government identifies obligated entities in energy intensive sectors, and notifies a plant specific intensity target, against a twenty twenty-three to twenty-four baseline."},
+        {"text": "Step two: each plant monitors its emissions under an approved monitoring plan.",
+         "say": "Step two. Each plant monitors its emissions, under an approved monitoring plan."},
+        {"text": "Step three: after the compliance year, it reports its performance, and an Accredited Carbon Verification Agency independently checks the numbers.",
+         "say": "Step three. After the compliance year, it reports its performance, and an accredited carbon verification agency independently checks the numbers."},
+        {"text": "Step four: the Bureau reviews the verified report. If the plant beat its target, the Steering Committee can recommend certificates for the difference.",
+         "say": "Step four. The Bureau reviews the verified report. If the plant beat its target, the Steering Committee can recommend certificates for the difference."},
+        {"text": "Step five: certificates sit in the registry, and can be bought and sold on CERC-registered power exchanges, within a floor and a ceiling price.",
+         "say": "Step five. Certificates sit in the registry, and can be bought and sold on power exchanges registered with C E R C, within a floor and a ceiling price."}
+      ]
+    },
+    {
+      "id": "example", "chapter": "A worked example", "tone": "light",
+      "lines": [
+        {"text": "Let's make it concrete with two hypothetical plants. Each makes one million tonnes of cement a year, with a target of 0.80 tonnes of CO2e per tonne.",
+         "say": "Let's make it concrete, with two hypothetical plants. Each makes one million tonnes of cement a year, with a target of zero point eight zero tonnes of C O two e, per tonne."},
+        {"text": "Company A brings its intensity down to 0.77. That is 0.03 better than target, across one million tonnes: thirty thousand tonnes. So it may become eligible for 30,000 certificates.",
+         "say": "Company A brings its intensity down to zero point seven seven. That's zero point zero three better than target, across one million tonnes. Thirty thousand tonnes. So it may become eligible for thirty thousand certificates."},
+        {"text": "Company B ends the year at 0.82, a shortfall of twenty thousand tonnes. It must surrender 20,000 certificates, bought from the market.",
+         "say": "Company B ends the year at zero point eight two. A shortfall of twenty thousand tonnes. It must surrender twenty thousand certificates, bought from the market."},
+        {"text": "And if it doesn't? The Central Pollution Control Board can levy environmental compensation at twice the average price certificates traded at in that cycle.",
+         "say": "And if it doesn't? The Central Pollution Control Board can levy environmental compensation, at twice the average price certificates traded at, in that cycle."},
+        {"text": "Two caveats. Certificates come only after verification and approval, not automatically for every reduction. And unused certificates can be banked for later years.",
+         "say": "Two caveats. Certificates come only after verification and approval, not automatically for every reduction. And unused certificates can be banked for later years."}
+      ]
+    },
+    {
+      "id": "status", "chapter": "Where CCTS stands today", "tone": "dark",
+      "lines": [
+        {"text": "Where does all this stand today? Here is our snapshot, as of 31 October 2026.",
+         "say": "Where does all this stand today? Here's our snapshot, as of the thirty-first of October, twenty twenty-six."},
+        {"text": "In October 2025, targets were notified for 282 plants in aluminium, cement, chlor-alkali, and pulp and paper.",
+         "say": "In October twenty twenty-five, targets were notified for two hundred and eighty-two plants, in aluminium, cement, chlor alkali, and pulp and paper."},
+        {"text": "In January 2026, 208 more were added from petroleum refining, petrochemicals, textiles and secondary aluminium: 490 obligated entities in total.",
+         "say": "In January twenty twenty-six, two hundred and eight more were added, from petroleum refining, petrochemicals, textiles, and secondary aluminium. That's four hundred and ninety obligated entities in total."},
+        {"text": "Targets cover two compliance years: 2025-26 and 2026-27. Targets for iron and steel were published only as a draft in June 2026.",
+         "say": "Targets cover two compliance years. Twenty twenty-five to twenty-six, and twenty twenty-six to twenty-seven. Targets for iron and steel were published only as a draft, in June twenty twenty-six."},
+        {"text": "The building blocks are in place: verification agencies have been accredited, CERC notified trading regulations in February 2026, and the Indian Carbon Market portal went live in March.",
+         "say": "The building blocks are in place. Verification agencies have been accredited. C E R C notified the trading regulations in February twenty twenty-six. And the Indian Carbon Market portal went live in March."},
+        {"text": "On the offset side, the procedure and the first eight methodologies were approved in March 2025, covering areas like renewable energy, green hydrogen, industrial energy efficiency, landfill methane and mangroves. More have followed.",
+         "say": "On the offset side, the procedure and the first eight methodologies were approved in March twenty twenty-five, covering areas like renewable energy, green hydrogen, industrial energy efficiency, landfill methane, and mangroves. More have followed."},
+        {"text": "What has not happened yet? As of our cut-off, we found no confirmed public record of the first certificates being issued or traded. Both are expected soon. There is no market price yet, so be wary of anyone quoting one.",
+         "say": "What hasn't happened yet? As of our cut off, we found no confirmed public record of the first certificates being issued, or traded. Both are expected soon. There is no market price yet. So be wary of anyone quoting one."}
+      ]
+    },
+    {
+      "id": "business", "chapter": "Business opportunities", "tone": "light",
+      "lines": [
+        {"text": "So what does this mean for business? Let's look at who gains, and how.",
+         "say": "So what does this mean for business? Let's look at who gains, and how."},
+        {"text": "For obligated industries, every tonne avoided now has two values: lower energy costs, and potentially sellable certificates. Efficiency, fuel switching, waste-heat recovery and renewable power all become easier to justify.",
+         "say": "For obligated industries, every tonne avoided now has two values. Lower energy costs, and potentially sellable certificates. Efficiency, fuel switching, waste heat recovery and renewable power, all become easier to justify."},
+        {"text": "Data becomes a strategic asset. Plants with accurate, auditable emissions data will plan better, and trade better.",
+         "say": "Data becomes a strategic asset. Plants with accurate, auditable emissions data will plan better, and trade better."},
+        {"text": "For project developers, the offset mechanism opens a domestic route to certificates, for projects that follow approved methodologies and pass verification. Viability will depend on demand and prices that are still emerging.",
+         "say": "For project developers, the offset mechanism opens a domestic route to certificates, for projects that follow approved methodologies and pass verification. Viability will depend on demand, and prices, that are still emerging."},
+        {"text": "Sustainability advisers will see demand for GHG accounting, CCTS readiness and gap assessments, monitoring plans, verification support and decarbonisation roadmaps.",
+         "say": "Sustainability advisers will see demand for G H G accounting, C C T S readiness and gap assessments, monitoring plans, verification support, and decarbonisation roadmaps."},
+        {"text": "Technology providers have room to grow in carbon accounting software, energy and emissions monitoring, and digital MRV.",
+         "say": "Technology providers have room to grow, in carbon accounting software, energy and emissions monitoring, and digital M R V."},
+        {"text": "For investors and lenders, carbon performance becomes a new lens on industrial risk, and on the case for decarbonisation finance.",
+         "say": "For investors and lenders, carbon performance becomes a new lens on industrial risk, and on the case for decarbonisation finance."},
+        {"text": "And MSMEs? Most are not obligated today. But as large buyers track supply-chain emissions, and export rules like CBAM bite, suppliers will increasingly be asked for credible emissions data.",
+         "say": "And M S M Es? Most are not obligated today. But as large buyers track supply chain emissions, and export rules like see bam bite, suppliers will increasingly be asked for credible emissions data."}
+      ]
+    },
+    {
+      "id": "challenges", "chapter": "Challenges and critiques", "tone": "dark",
+      "lines": [
+        {"text": "Now, a balanced view. Experts have flagged real challenges.",
+         "say": "Now, a balanced view. Experts have flagged real challenges."},
+        {"text": "First, intensity versus absolute. Targets limit emissions per tonne of product, so total emissions can still grow as production grows. IEEFA estimates the first targets average only around a 3% cut.",
+         "say": "First, intensity versus absolute. Targets limit emissions per tonne of product, so total emissions can still grow, as production grows. I E E F A estimates that the first targets average only around a three percent cut."},
+        {"text": "Second, ambition and oversupply. CEEW has argued that delays led to less stringent final targets, which could mean more credits than buyers. Unlimited banking could add to any surplus.",
+         "say": "Second, ambition and oversupply. C E E W has argued that delays led to less stringent final targets, which could mean more credits than buyers. Unlimited banking could add to any surplus."},
+        {"text": "Third, price discovery. With trading in sessions, inside a price band, and few buyers at first, liquidity may be thin. IEEFA has called for a price stability mechanism.",
+         "say": "Third, price discovery. With trading in sessions, inside a price band, and few buyers at first, liquidity may be thin. I E E F A has called for a price stability mechanism."},
+        {"text": "Fourth, coverage. The power sector, India's largest emitter, is not in the compliance market today.",
+         "say": "Fourth, coverage. The power sector, India's largest emitter, is not in the compliance market today."},
+        {"text": "And finally, capability. Measurement, data quality and verification capacity must scale fast, and smaller players may find compliance costs harder to absorb.",
+         "say": "And finally, capability. Measurement, data quality, and verification capacity must scale fast. And smaller players may find compliance costs harder to absorb."},
+        {"text": "None of this makes the market irrelevant. It means credibility will have to be earned, tonne by tonne.",
+         "say": "None of this makes the market irrelevant. It means credibility will have to be earned. Tonne, by tonne."}
+      ]
+    },
+    {
+      "id": "next", "chapter": "What comes next", "tone": "light",
+      "lines": [
+        {"text": "So what comes next? Let's separate what is expected from what is possible.",
+         "say": "So, what comes next? Let's separate what is expected, from what is possible."},
+        {"text": "Expected soon: the first certificate issuance, the first trading sessions, and final targets for iron and steel.",
+         "say": "Expected soon. The first certificate issuance, the first trading sessions, and final targets for iron and steel."},
+        {"text": "Possible over time: more sectors and entities, tighter targets in future cycles, more offset methodologies, digital MRV at scale, and links to international markets under Article 6 of the Paris Agreement.",
+         "say": "Possible, over time. More sectors and entities, tighter targets in future cycles, more offset methodologies, digital M R V at scale, and links to international markets, under Article six of the Paris Agreement."},
+        {"text": "These are possibilities, not decisions. But the direction is clear: carbon is moving from the sustainability report into the operating plan.",
+         "say": "These are possibilities, not decisions. But the direction is clear. Carbon is moving from the sustainability report, into the operating plan."}
+      ]
+    },
+    {
+      "id": "close", "chapter": "What it means for you", "tone": "dark",
+      "lines": [
+        {"text": "Let's bring it together.",
+         "say": "Let's bring it together."},
+        {"text": "CCTS turns emissions into something measurable and tradeable. Plants that decarbonise faster could earn an asset. Plants that lag could face a cost.",
+         "say": "C C T S turns emissions into something measurable, and tradeable. Plants that decarbonise faster could earn an asset. Plants that lag could face a cost."},
+        {"text": "It is still early. The rules are written, the infrastructure is live, and the first trades are on the horizon.",
+         "say": "It's still early. The rules are written, the infrastructure is live, and the first trades are on the horizon."},
+        {"text": "For Indian businesses, the smart move is to get ready now. Know your emissions, build credible data, and treat decarbonisation as strategy, not just compliance.",
+         "say": "For Indian businesses, the smart move is to get ready now. Know your emissions. Build credible data. And treat decarbonisation as strategy, not just compliance."},
+        {"text": "I'm Surya, from ReGeneva. Follow us for practical insights on carbon markets, sustainability and industrial decarbonisation.",
+         "say": "I'm Soorya, from ReGeneva. Follow us for practical insights on carbon markets, sustainability, and industrial decarbonisation."}
+      ]
+    }
+  ]
+}
