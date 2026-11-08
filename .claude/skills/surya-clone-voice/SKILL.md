@@ -1,54 +1,47 @@
 ---
 name: surya-clone-voice
-description: Generate narration in "Surya's Clone Voice" (Surya's own authorised voice clone) for ReGeneva videos. Use ONLY when the user explicitly asks for Surya's voice / Surya's Clone Voice for a narration or voiceover.
+description: Generate ReGeneva narration in Surya's own authorised cloned voice. Two profiles: "Surya Indian Accent Original Voice Clone" (India-focused content) and "Surya US Accent Clone" (global content). Use ONLY when the user asks for Surya's voice for a voiceover.
 ---
 
-# Surya's Clone Voice
+# Surya's voice clones
 
-An offline, zero-shot clone of Surya's Indian-English voice, authorised by Surya for ReGeneva narration only.
-- **Engine:** ZipVoice (k2-fsa, Apache-2.0) run through ONNX Runtime, with a Vocos 24 kHz vocoder.
-- **Cost and access:** no cloud provider, no API key.
-- **Profile:** `videos/india-ccts/voice/surya-clone-voice.json`. The engine is `videos/india-ccts/voice/zipclone.py`.
+| Profile | File | Use for |
+|---|---|---|
+| **Surya Indian Accent Original Voice Clone** | `videos/india-ccts/voice/profiles/surya-indian-accent-original-voice-clone.json` | India-focused topics and Indian audiences (CCTS, BRSR, Indian regulation) |
+| **Surya US Accent Clone** | `videos/india-ccts/voice/profiles/surya-us-accent-clone.json` | Global topics and international audiences |
 
 ## Rules
-- Use the voice only for Surya / ReGeneva content that the user asked to be narrated in Surya's voice. Never use it for any other person, and never make it say things Surya wouldn't sign off on.
-- The reference recording is personal data. Keep it **outside the repository**, point `SURYA_VOICE_REF` at it, and never commit, upload or share it.
-- Don't claim a narration was produced in this voice unless the build actually ran and passed its ASR check.
+- Use these voices only for ReGeneva content that the user asked to have narrated in Surya's voice. Never use them for another person, and never make them say anything Surya wouldn't sign off on.
+- Surya's recordings are personal data. Keep them outside the repository (`SURYA_VOICE_REF_DIR`, `SURYA_MATCH_WAV`) and never commit, upload or share them.
+- Never say Surya's name in a video unless the user asks for it. Disclose that the narration is AI-generated (end-card fine print, plus YouTube's "Altered or synthetic content" setting).
+- Don't claim audio was produced in a voice unless the build ran and passed its ASR check.
 
-## Setup (once per machine/session)
-1. Create a model folder and set `SURYA_VOICE_MODELS` to it.
-2. Download the files listed under `model.download` in the profile JSON from the GitHub releases and extract them:
-   - `sherpa-onnx-zipvoice-zh-en-emilia`
-   - `sherpa-onnx-zipvoice-distill-int8-zh-en-emilia` (needed only for `tokens.txt`)
-   - `vocos_24khz.onnx`
-   - `sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8` (the ASR check)
-3. Install the Python packages: `pip install onnxruntime sherpa-onnx espeakng-loader phonemizer soundfile scipy`.
-4. Convert Surya's reference to 24 kHz mono WAV and point `SURYA_VOICE_REF` at it:
-   `ffmpeg -i Surya-voice-clone.mp3 -ar 24000 -ac 1 surya_ref24k.wav`
-   The transcript in the profile must match the recording exactly. If Surya supplies a new or longer reference (30–60 s of clean, studio-quality speech improves quality), update `reference_transcript`.
-
-## Writing narration for this voice
-- Write a `script.json` with both `text` (captions) and `say` (what the voice reads). Follow `pronunciation_tips` in the profile:
-  - Spell acronyms with spaces: "C C T S".
+## Indian accent profile (ZipVoice, offline)
+- **Source:** four style reference clips cut from Surya's 11.8-minute sample, each with an exact transcript.
+- **Picking a style per line:** set `"style"` on each line of `script.json`:
+  - `curious`: hooks, questions, high energy
+  - `emphatic`: thought-provoking points, key takeaways
+  - `explanatory`: teaching and data
+  - `warm`: closings and calls to action
+- **Speed per style:** `style_speed` in the profile.
+- **Setup:**
+  1. Download the files listed under `model.download` into `SURYA_VOICE_MODELS`.
+  2. `pip install onnxruntime sherpa-onnx espeakng-loader phonemizer soundfile scipy`
+  3. Put the style clips in `SURYA_VOICE_REF_DIR`. To recreate them from the original sample: polish with `highpass=f=70,afftdn=nr=10:nf=-50,loudnorm=I=-18:TP=-2`, resample to 24 kHz mono, then cut at the timestamps listed in the profile's `styles`.
+- **Generate:**
+  - `python3 videos/india-ccts/voice/build_voice.py <out_dir> --only <scene>` renders one scene.
+  - Then `--assemble` produces `narration.wav`, `timing.json`, `captions.srt` and `chapters.txt`.
+  - Each chunk is transcribed by ASR and regenerated when it drifts from the script (`voice_qa.json`).
+- **Pronunciation:**
+  - Spell acronyms with spaces ("C C T S", "I E E F A").
+  - "C O two e" for CO₂e, and "see bam" for CBAM.
   - Write years as words.
-  - Write "C O two e" for CO₂e.
-- Keep sentences 8–35 words long. The builder groups shorter sentences together automatically.
+  - Use `[[IPA]]` for names, e.g. `[[sˈuːɹjə]]`.
 
-## Generate
-```bash
-cd videos/<project>/voice    # or copy build_voice.py next to your script
-python3 build_voice.py <out_dir> --only <scene_id>   # quick preview of one scene
-python3 build_voice.py <out_dir>                     # full narration
-```
-Outputs:
-- `narration.wav`: the full narration
-- `lines/*.wav`: one file per line
-- `timing.json`: for syncing visuals
-- `captions.srt`, `chapters.txt`
-- `voice_qa.json`: the ASR transcript and similarity for every chunk. Chunks below 0.8 are retried with new seeds, up to 4 times.
+## US accent profile (Kokoro → kNN-VC)
+- **Pipeline:** a US-English Kokoro voice gives the accent and rhythm. kNN-VC (WavLM-Large + pre-matched HiFi-GAN, MIT licence) then converts the timbre to Surya's, using his long recording as the matching set.
+- **Status:** the code is in `videos/india-ccts/voice/usclone.py`. Running the third-party kNN-VC code needs the user's explicit permission in this environment. Validate it (ASR plus speaker similarity) before first use, and record the scores in the profile.
 
-On a 4-core CPU, generation runs at roughly 6–10× real time.
-
-## QA before delivering
-- Read `voice_qa.json`. Any chunk with `similarity < 0.9` needs a listen, or a rewrite of its `say` text.
-- Speaker similarity at setup was 0.918 (WeSpeaker) against a self-similarity of 0.876, so the clone matches the reference about as well as the reference matches itself.
+## QA before delivery
+- Read `voice_qa.json`. Any chunk with `similarity < 0.85` needs listening to, or its `say` text rewritten (scores dip on spelled acronyms and digits).
+- Speaker similarity (WeSpeaker) of the Indian profile against Surya's recording is 0.92–0.95. His own recording scores 0.959 against itself.

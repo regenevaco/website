@@ -181,3 +181,39 @@
     });
   };
 })();
+
+// ---------- v2: marginal abatement cost "hurdle race" (illustrative) ----------
+(function () {
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  window.DRAW.macc = function (ctx, t, w, h, local, info) {
+    const c3 = info.lines[3] ? info.lines[3].start : 0;
+    const c4 = info.lines[4] ? info.lines[4].start : 0;
+    const zeroY = h * 0.6;
+    const bars = [
+      ['Energy efficiency', 170, -70], ['Waste-heat recovery', 160, -55], ['Renewable power', 190, -30],
+      ['Fuel switch', 210, 60], ['Electrification', 220, 120], ['Green hydrogen', 240, 190], ['Carbon capture', 260, 250]];
+    ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(0, zeroY); ctx.lineTo(w, zeroY); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.65)'; ctx.font = '700 22px "ESC"';
+    ctx.fillText('SAVES MONEY', 6, zeroY + 34); ctx.fillText('COSTS MONEY', 6, zeroY - 16);
+    let x = 170;
+    bars.forEach(([lab, bw, cost], i) => {
+      const p = clamp((local - c3 - 0.8 - i * 0.6) / 0.7);
+      const hh = cost * 1.4 * p;
+      ctx.fillStyle = cost < 0 ? '#20C997' : (i >= 5 ? '#FF6B57' : '#F4B740');
+      if (cost < 0) ctx.fillRect(x, zeroY, bw - 14, -hh); else ctx.fillRect(x, zeroY - hh, bw - 14, hh);
+      ctx.save(); ctx.globalAlpha = p; ctx.fillStyle = '#fff'; ctx.font = '700 24px "ESC"'; ctx.textAlign = 'center';
+      ctx.fillText(lab, x + (bw - 14) / 2, cost < 0 ? zeroY - cost * 1.4 + 34 : zeroY + 34); ctx.restore();
+      x += bw;
+    });
+    // carbon price line lifts the hurdles
+    const q = clamp((local - c4 - 0.6) / 1.4);
+    if (q > 0) {
+      const y = zeroY - 150 * q;
+      ctx.setLineDash([16, 12]); ctx.strokeStyle = '#20C997'; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.moveTo(150, y); ctx.lineTo(w, y); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = '#20C997'; ctx.font = '900 40px "ESC"';
+      ctx.fillText('CARBON PRICE: THE SPRINGBOARD', 170, y - 22);
+    }
+  };
+})();

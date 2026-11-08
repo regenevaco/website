@@ -1,0 +1,107 @@
+{
+  "name": "Surya Indian Accent Original Voice Clone",
+  "id": "surya-indian-accent-original-voice-clone",
+  "description": "Zero-shot clone of Surya's own voice and natural Indian English accent, built from his 11.8-minute studio-read sample (8 Nov 2026). Authorised by Surya for ReGeneva narration only.",
+  "use_for": "India-focused content (CCTS, BRSR, Indian regulation) and Indian audiences.",
+  "provider": "Local, offline: k2-fsa ZipVoice (Apache-2.0) via ONNX Runtime, with a Vocos 24 kHz vocoder. No cloud service, no API keys.",
+  "consent": "Reference recordings supplied by Surya for generating his own narration. Never commit, upload or share them, and never use the voice for another person or purpose.",
+  "reference_dir_env": "SURYA_VOICE_REF_DIR",
+  "reference_source": "Voice_Sample_of_Surya_ReGeneva.m4a, polished (75 Hz high-pass, light FFT denoise, -18 LUFS), 24 kHz mono",
+  "styles": {
+    "curious": {
+      "file": "curious.wav",
+      "use": "hooks, questions, high energy, curiosity",
+      "text": "Is this good news for industry? In many ways, yes. But is it enough? That's the real question. Some experts are optimistic. Others are cautious.",
+      "cut_seconds_in_source": [
+        [
+          145.9,
+          158.95
+        ]
+      ]
+    },
+    "emphatic": {
+      "file": "emphatic.wav",
+      "use": "thought-provoking statements, key takeaways, caveats",
+      "text": "Here is what I think. The companies that move early will have a genuine advantage. Remember this: data first, decision second. Without reliable data, nothing else works.",
+      "cut_seconds_in_source": [
+        [
+          159.25,
+          165.85
+        ],
+        [
+          171.75,
+          177.6
+        ]
+      ]
+    },
+    "explanatory": {
+      "file": "explanatory.wav",
+      "use": "teaching, definitions, step-by-step mechanics, data",
+      "text": "Decarbonisation means cutting emissions at source, through energy efficiency, electrification, fuel switching and renewable energy. An internal carbon price, a marginal abatement cost curve and a decarbonisation roadmap help prioritise investment.",
+      "cut_seconds_in_source": [
+        [
+          336.0,
+          343.45
+        ],
+        [
+          352.85,
+          361.75
+        ]
+      ]
+    },
+    "warm": {
+      "file": "warm.wav",
+      "use": "closings, thank-yous, calls to action",
+      "text": "If you found this useful, subscribe to ReGeneva and share it with your team. Thank you for watching, and I will see you in the next one.",
+      "cut_seconds_in_source": [
+        [
+          229.62,
+          238.55
+        ]
+      ]
+    }
+  },
+  "default_style": "explanatory",
+  "style_speed": {
+    "curious": 1.1,
+    "emphatic": 1.04,
+    "explanatory": 1.02,
+    "warm": 1.04
+  },
+  "model": {
+    "dir": "sherpa-onnx-zipvoice-zh-en-emilia",
+    "encoder": "text_encoder.onnx",
+    "decoder": "fm_decoder.onnx",
+    "tokens": "sherpa-onnx-zipvoice-distill-int8-zh-en-emilia/tokens.txt",
+    "vocoder": "vocos_24khz.onnx",
+    "download": {
+      "zipvoice": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-zipvoice-zh-en-emilia.tar.bz2",
+      "tokens": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-zipvoice-distill-int8-zh-en-emilia.tar.bz2",
+      "vocoder": "https://github.com/k2-fsa/sherpa-onnx/releases/download/vocoder-models/vocos_24khz.onnx",
+      "asr_check": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8.tar.bz2"
+    }
+  },
+  "generation": {
+    "steps": 16,
+    "guidance": 1.0,
+    "t_shift": 0.5
+  },
+  "pronunciation_tips": {
+    "acronyms": "Spell letter by letter with spaces: 'C C T S', 'C E R C', 'M R V', 'G H G', 'I E E F A'",
+    "CO2e": "C O two e",
+    "CBAM": "see bam",
+    "PAT": "Pat",
+    "years": "Write as words: 'twenty twenty-six', 'twenty twenty-three to twenty-four'",
+    "Surya": "[[sˈuːɹjə]] (raw IPA override)"
+  },
+  "validation": {
+    "speaker_similarity_wespeaker": {
+      "curious": 0.945,
+      "emphatic": 0.952,
+      "explanatory": 0.93,
+      "warm": 0.923
+    },
+    "reference_self_similarity": 0.959,
+    "measured_on": "2026-11-08"
+  }
+}

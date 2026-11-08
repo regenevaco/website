@@ -1,6 +1,6 @@
 # Evidence register: India's Carbon Credit Trading Scheme (CCTS)
 
-**Research cut-off: 31 October 2026.** Everything below reflects public information found up to that date.
+**Research cut-off: 8 November 2026** (v2 update; v1 cut-off was 31 October 2026). Everything below reflects public information found up to that date.
 
 **Method.** Live web search, cross-checked across sources. This production environment's network blocked direct downloads from government sites (beeindia.gov.in, pib.gov.in, cercind.gov.in, egazette), so primary documents were verified through their published excerpts, official URLs and agreeing independent reports (ICAP, IEEFA, CEEW, law-firm notes). Re-check items marked ⚠ against the gazette text before using them in any legal or compliance setting.
 
@@ -48,3 +48,20 @@
 - **Number of ACVAs and offset projects registered.** Not confirmed by an official source.
 - **Final iron & steel targets.** Draft only at the cut-off.
 - **Maps of India.** Not used, to avoid boundary-depiction issues. The abstract graphics carry no geographic boundaries.
+
+## v2 additions (8 November 2026)
+| # | Claim used in video | Source(s) | Date | Status | Verification / limitations |
+|---|---|---|---|---|---|
+| E27 | About 80 carbon pricing instruments (43 taxes, 37 ETSs) cover roughly 28% of global emissions and raised over US$100 bn in 2024. | World Bank, State and Trends of Carbon Pricing 2025 (press release 10 Jun 2025) | Jun 2025 | Official (WB) | Verified. |
+| E28 | Four broad ways to price carbon: carbon tax, cap-and-trade, baseline-and-credit, and project crediting. India's compliance mechanism is intensity-based baseline-and-credit. | ICAP; World Bank; CCTS design | — | Analysis/standard taxonomy | Verified. |
+| E29 | The compliance mechanism covers CO₂ and PFCs within a gate-to-gate boundary: fuels, purchased electricity/heat and process emissions. | BEE Detailed Procedure for Compliance Mechanism v1.0; ICAP | Jul 2024 | PROCEDURE | The cement calcination example is a general fact. Detailed exclusions (renewables, biomass, exported power) aren't stated on screen because the primary text couldn't be fetched. |
+| E30 | Verification is annual under CCTS; PAT used multi-year (three-year) cycles. | BEE compliance procedure; BEE PAT | — | PROCEDURE | Verified. |
+| E31 | Offset credits = baseline − project emissions − leakage. Additionality tests: regulatory surplus, financial need for carbon revenue, not common practice. Methodologies are adapted from UNFCCC CDM. Projects are validated by an ACVA and registered on the ICM portal. | BEE Detailed Procedure for Offset Mechanism (effective 27 Mar 2025); Down To Earth; KS&K | 2025 | PROCEDURE | Standard CDM-style concepts. Exact crediting periods are not stated. |
+| E32 | EU CBAM: the importer (declarant) buys and surrenders certificates. As free allocation is phased out, the share charged rises 2.5% (2026), 5, 10, 22.5, 48.5, 61, 73.5, 86, to 100% (2034). | Regulation (EU) 2023/956; Directive 2003/87/EC Art. 10a(1a); EY summary | 2023–2026 | Official (EU) | Verified. |
+| E33 | The UK listed India's CCTS as a qualifying overseas carbon pricing scheme for UK CBAM carbon price relief. UK CBAM starts 1 Jan 2027. Relief depends on the price effectively paid and on evidence. | All India Radio (8 Sep 2026); Khaitan & Co ERGO (18 Sep 2026); UK CBAM regulations 2026 | Sep 2026 | Official (UK) via secondary sources | Verified across several outlets. |
+| E34 | India signed a Joint Crediting Mechanism (JCM) with Japan under Article 6.2 of the Paris Agreement. | MoEFCC via Outlook Business, Policy Circle | 2025 | Official | The exact signing date and technology list vary between sources, so neither is shown. |
+| E35 | BEE released a draft transaction (trading) procedure for public consultation in October 2026. No floor or forbearance price had been published. | reclimatize.in; sustainability101.in; crbn.credit | Oct 2026 | DRAFT | Shown as "consultation". |
+| E36 | The first compliance year (FY 2025-26) has ended and verification is under way. No public record of CCC issuance or trading was found by 8 Nov 2026. | S&P Global; crbn.credit; ICAP | Nov 2026 | PENDING | Submission deadlines conflict across sources (31 Jul / mid-Sep / 31 Oct), so no date is stated. |
+
+### v2 exclusions
+- Covered-emissions totals, ACVA counts, per-sector energy thresholds and ESCert-based price proxies came from practitioner commentary that couldn't be verified against primary text. They aren't shown.

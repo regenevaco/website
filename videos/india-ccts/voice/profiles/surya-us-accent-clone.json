@@ -1,0 +1,31 @@
+{
+  "name": "Surya US Accent Clone",
+  "id": "surya-us-accent-clone",
+  "description": "Surya's voice timbre with a US English accent, for global audiences.",
+  "use_for": "Global topics (SBTi, ISSB, CSRD, global carbon markets) and international audiences.",
+  "pipeline": "Kokoro US-English TTS (accent and prosody) -> kNN-VC voice conversion (WavLM-Large layer-6 features, k=4 nearest neighbours from Surya's recording, pre-matched HiFi-GAN vocoder, 16 kHz).",
+  "consent": "Built from Surya's own recording with his authorisation, for ReGeneva narration only. Never commit or share the recordings.",
+  "kokoro_voice_candidates": [
+    "am_michael",
+    "am_adam",
+    "am_eric",
+    "am_liam"
+  ],
+  "env": {
+    "KNNVC_DIR": "kNN-VC repo files (matcher.py, knnvc_utils.py, wavlm/, hifigan/)",
+    "KNNVC_WEIGHTS": "WavLM-Large.pt and prematch_g_02500000.pt",
+    "KOKORO_DIR": "kokoro-v1.0.onnx and voices-v1.0.bin",
+    "SURYA_MATCH_WAV": "Surya's polished 16 kHz recording (outside the repo)"
+  },
+  "downloads": {
+    "knnvc_code": "https://raw.githubusercontent.com/bshall/knn-vc/master/",
+    "knnvc_weights": [
+      "https://github.com/bshall/knn-vc/releases/download/v0.1/WavLM-Large.pt",
+      "https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt"
+    ],
+    "kokoro": "https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0",
+    "python": "pip install torch==2.6.0 torchaudio==2.6.0 kokoro-onnx soundfile"
+  },
+  "status": "Configured, not yet validated. Running the third-party kNN-VC code needs explicit user permission in this environment.",
+  "validation": null
+}

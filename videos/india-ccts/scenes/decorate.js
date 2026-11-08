@@ -6,13 +6,22 @@
     { t: 'Emissions intensity', k: 'GEI', d: 'Emissions per unit of output. CCTS targets intensity, not an absolute cap.', v: '<div class="frac"><b>tCO<sub>2</sub>e</b><hr><span>tonne of product</span></div>' },
     { t: 'Baseline & target', k: 'BASE', d: 'Baseline: the 2023-24 starting point. Target: the lower intensity required in a compliance year.', v: '<div class="bt"><i style="height:100%"><span>2023-24<br>baseline</span></i><i class="g" style="height:88%"><span>2025-26</span></i><i class="g" style="height:80%"><span>2026-27</span></i><em>Illustrative</em></div>' },
     { t: 'Carbon Credit Certificate', k: 'CCC', d: 'One tonne of CO<sub>2</sub>e reduced, removed or avoided.', v: '<div class="ccc"><small>CARBON CREDIT CERTIFICATE</small><b>1 CCC</b><span>= 1 tCO<sub>2</sub>e</span></div>' },
-    { t: 'Compliance vs voluntary', k: 'MARKETS', d: 'Compliance markets are mandatory, created by law. Voluntary markets: buyers choose to purchase.', v: '<div class="split2"><div class="g"><i class="fa-solid fa-scale-balanced"></i>Compliance<small>mandatory</small></div><div><i class="fa-solid fa-handshake"></i>Voluntary<small>by choice</small></div></div>' },
-    { t: 'Obligated vs non-obligated', k: 'ENTITIES', d: 'Obligated entities have legal targets. Non-obligated entities can join through the offset mechanism.', v: '<div class="split2"><div class="g"><i class="fa-solid fa-industry"></i>Obligated<small>legal targets</small></div><div><i class="fa-solid fa-seedling"></i>Non-obligated<small>offset projects</small></div></div>' },
     { t: 'Monitoring, Reporting & Verification', k: 'MRV', d: 'How every tonne is measured, reported and independently checked.', v: '<div class="mrv"><span><i class="fa-solid fa-gauge-high"></i>Monitor</span><span><i class="fa-solid fa-file-lines"></i>Report</span><span><i class="fa-solid fa-magnifying-glass"></i>Verify</span></div>' },
     { t: 'Not all certificates are carbon credits', k: 'UNITS', d: 'Each certificate measures something different.', v: '<div class="units"><div><b>ESCert</b><span>PAT scheme</span><em>1 toe energy saved</em></div><div><b>REC</b><span>Renewable Energy Certificate</span><em>1 MWh green power</em></div><div class="g"><b>CCC</b><span>CCTS</span><em>1 tCO<sub>2</sub>e</em></div></div>' }
   ];
 
   window.decorate = {
+    global(sec) {
+      // EU CBAM: share of embedded emissions charged, 2026-2034 (free allocation phase-out)
+      const pct = [2.5, 5, 10, 22.5, 48.5, 61, 73.5, 86, 100];
+      const box = sec.querySelector('#pbars');
+      pct.forEach((v, i) => {
+        const d = document.createElement('div');
+        d.className = 'pb';
+        d.innerHTML = `<em class="a fade" data-c="3" data-o="${(1 + i * 0.5).toFixed(1)}">${v}%</em><i class="a growy" data-c="3" data-o="${(0.8 + i * 0.5).toFixed(1)}" style="height:${Math.max(4, v * 4.2)}px"></i><span>${2026 + i}</span>`;
+        box.appendChild(d);
+      });
+    },
     terms(sec) {
       const idx = sec.querySelector('#glossIndex');
       const stage = sec.querySelector('#glossStage');
@@ -62,7 +71,7 @@
     const ev = T.scenes.find(s => s.id === 'evolution');
     const track = document.getElementById('tltrack');
     if (ev && track) {
-      const steps = [[1, 0], [3, -460], [4, -920], [5, -1460], [6, -1920]];
+      const steps = [[1, 0], [3, -460], [5, -1460], [6, -1920]];
       const kf = [];
       const total = ev.dur;
       steps.forEach(([line, x]) => {

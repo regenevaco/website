@@ -74,13 +74,17 @@ class ZipClone:
             parts = line.rstrip("\n").split("\t")
             if len(parts) == 2:
                 self.tok[parts[0]] = int(parts[1])
+        self.prompts = {}
+        self.add_prompt("default", ref_wav, ref_text)
+
+    def add_prompt(self, name, ref_wav, ref_text):
+        """Register a reference clip (24 kHz mono) and its exact transcript as a delivery style."""
         wav, sr = sf.read(ref_wav, dtype="float32")
         assert sr == SR, "reference must be 24 kHz mono"
-        self.prompt_rms = float(np.sqrt(np.mean(wav ** 2)))
-        if self.prompt_rms < TARGET_RMS:
-            wav = wav * TARGET_RMS / self.prompt_rms
-        self.prompt_feat = fbank(wav)[None] * FEAT_SCALE
-        self.prompt_tokens = self.tokens(ref_text)
+        rms = float(np.sqrt(np.mean(wav ** 2)))
+        if rms < TARGET_RMS:
+            wav = wav * TARGET_RMS / rms
+        self.prompts[name] = (fbank(wav)[None] * FEAT_SCALE, self.tokens(ref_text), rms)
 
     def ipa(self, text):
         return phonemize(text, language="en-us", backend="espeak", strip=True, with_stress=True,
@@ -94,15 +98,16 @@ class ZipClone:
         ids = [self.tok[c] for c in ipa if c in self.tok]
         return np.array([ids], dtype=np.int64)
 
-    def say(self, text, speed=1.0, steps=8, guidance=3.0, t_shift=0.5, seed=0):
+    def say(self, text, speed=1.0, steps=8, guidance=3.0, t_shift=0.5, seed=0, prompt="default"):
+        prompt_feat, prompt_tokens, prompt_rms = self.prompts[prompt]
         tokens = self.tokens(text)
-        cond = self.enc.run(None, {"tokens": tokens, "prompt_tokens": self.prompt_tokens,
-                                   "prompt_features_len": np.array(self.prompt_feat.shape[1], dtype=np.int64),
+        cond = self.enc.run(None, {"tokens": tokens, "prompt_tokens": prompt_tokens,
+                                   "prompt_features_len": np.array(prompt_feat.shape[1], dtype=np.int64),
                                    "speed": np.array(speed, dtype=np.float32)})[0]
         n, frames, dim = cond.shape
-        plen = self.prompt_feat.shape[1]
+        plen = prompt_feat.shape[1]
         speech_cond = np.zeros((n, frames, dim), dtype=np.float32)
-        speech_cond[:, :plen] = self.prompt_feat
+        speech_cond[:, :plen] = prompt_feat
         ts = np.linspace(0, 1, steps + 1)
         ts = t_shift * ts / (1 + (t_shift - 1) * ts)
         rng = np.random.default_rng(seed)
@@ -115,6 +120,6 @@ class ZipClone:
         feat = x[:, plen:, :] / FEAT_SCALE  # (1, T, 100)
         mag, cos, sin = self.voc.run(None, {"mels": feat.transpose(0, 2, 1).astype(np.float32)})
         wav = istft(mag[0], cos[0], sin[0])
-        if self.prompt_rms < TARGET_RMS:
-            wav = wav * self.prompt_rms / TARGET_RMS
+        if prompt_rms < TARGET_RMS:
+            wav = wav * prompt_rms / TARGET_RMS
         return wav

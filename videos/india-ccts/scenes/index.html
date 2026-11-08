@@ -90,7 +90,58 @@
   </div>
 </section>
 
-<!-- ============ 2. TERMS ============ -->
+<!-- ============ 2. PRICING ============ -->
+<section class="scene dark" id="pricing" data-card="short" data-src="Sources: World Bank, State and Trends of Carbon Pricing 2025; polluter-pays principle (Indian environmental law). Cost bars and abatement curve are illustrative.">
+  <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
+  <div class="vignette"></div>
+  <div class="content">
+    <div class="poll a fade" data-o="2.0" data-x="1" data-xo="-0.3">
+      <div class="q">When a steel plant emits CO<sub>2</sub>, <em>who should pay</em> for the damage?</div>
+      <div class="opts"><span class="a pop" data-o="3.4">A · The customer</span><span class="a pop" data-o="3.8">B · The government</span><span class="a pop" data-o="4.2">C · The company that emits it</span></div>
+    </div>
+    <div class="costs a fade" data-c="1" data-x="2" data-xo="-0.3">
+      <div class="stamp-pp a pop" data-c="1" data-o="0.3">POLLUTER PAYS</div>
+      <div class="ph2 a fade" data-c="1" data-o="2.2">How a tonne of steel is priced <span class="hypo">ILLUSTRATIVE</span></div>
+      <div class="cstack">
+        <i class="a growy" data-c="1" data-o="2.6" style="height:180px"><span>Raw materials</span></i>
+        <i class="a growy" data-c="1" data-o="3.2" style="height:140px"><span>Energy</span></i>
+        <i class="a growy" data-c="1" data-o="3.8" style="height:90px"><span>Labour</span></i>
+        <i class="a growy" data-c="1" data-o="4.3" style="height:80px"><span>Capital</span></i>
+        <i class="a growy" data-c="1" data-o="4.8" style="height:60px"><span>Logistics</span></i>
+        <i class="miss a pop" data-c="1" data-o="7.2" style="height:120px"><span>Carbon?</span></i>
+      </div>
+    </div>
+    <div class="steel a fade" data-c="2" data-x="3" data-xo="-0.3">
+      <div class="ph2">Market failure: the externality <span class="hypo">ILLUSTRATIVE</span></div>
+      <div class="srow2"><b>Grey steel</b><div class="bar"><i class="base a growx" data-c="2" data-o="0.5" style="width:56%"></i><i class="carb a growx" data-c="2" data-o="5.5" style="width:22%"><span>+ carbon price</span></i></div></div>
+      <div class="srow2"><b>Green steel</b><div class="bar"><i class="base g a growx" data-c="2" data-o="1.2" style="width:70%"></i><i class="carb small a growx" data-c="2" data-o="5.9" style="width:4%"></i></div></div>
+      <div class="cap a fade" data-c="2" data-o="6.8">Price the carbon, and the gap closes</div>
+    </div>
+    <div class="macc a fade" data-c="3" data-x="5" data-xo="-0.3">
+      <div class="ph2">Cost of cutting one tonne of CO<sub>2</sub> <span class="hypo">ILLUSTRATIVE</span></div>
+      <canvas data-draw="macc" width="1680" height="600"></canvas>
+    </div>
+    <div class="types a fade" data-c="5" data-x="6" data-xo="-0.3">
+      <div class="ph2">Four ways to price carbon</div>
+      <div class="tgrid">
+        <div class="a up" data-c="5" data-o="1.4"><i class="fa-solid fa-receipt"></i><b>Carbon tax</b><small>A fixed price on every tonne</small></div>
+        <div class="a up" data-c="5" data-o="2.2"><i class="fa-solid fa-arrows-rotate"></i><b>Cap-and-trade</b><small>An absolute cap, tradable allowances</small></div>
+        <div class="hl a up" data-c="5" data-o="3.0"><i class="fa-solid fa-bullseye"></i><b>Baseline-and-credit</b><small>Intensity targets: India's CCTS</small><em>INDIA</em></div>
+        <div class="a up" data-c="5" data-o="3.8"><i class="fa-solid fa-seedling"></i><b>Project crediting</b><small>Rewards projects that cut or remove CO<sub>2</sub></small></div>
+      </div>
+    </div>
+    <div class="wb a fade" data-c="6">
+      <div class="ph2">Carbon pricing worldwide · World Bank, 2025</div>
+      <div class="wbrow">
+        <div><b><span data-count="80" data-c="6" data-o="1.6">0</span></b><span>instruments in operation</span></div>
+        <div><b>~<span data-count="28" data-c="6" data-o="3.4">0</span>%</b><span>of global emissions covered</span></div>
+        <div><b>$<span data-count="100" data-c="6" data-o="5.6">0</span>bn+</b><span>raised in 2024</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TERMS ============ -->
 <section class="scene light" id="terms" data-card="long" data-src="Sources: CCTS 2023 definitions; BEE Detailed Procedure for Compliance Mechanism (2024); CERC REC Regulations; BEE PAT">
   <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
   <div class="content">
@@ -100,7 +151,7 @@
   </div>
 </section>
 
-<!-- ============ 3. EVOLUTION ============ -->
+<!-- ============ 4. EVOLUTION ============ -->
 <section class="scene dark" id="evolution" data-card="long" data-src="Sources: CERC REC Regulations (Jan 2010); BEE / PIB on PAT &amp; NMEEE; Energy Conservation (Amendment) Act 2022; CCTS S.O. 2825(E), S.O. 5369(E)">
   <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
   <div class="vignette"></div>
@@ -113,13 +164,21 @@
     <div class="tln a up" data-c="1" data-o="0.6" style="left:0px"><div class="yr">2010</div><div class="dot"></div><h4>Renewable Energy Certificates</h4><p>CERC regulations notified · exchange trading from 2011</p><div class="unit">1 REC = 1 MWh green power</div></div>
     <div class="tln a up" data-c="2" data-o="0.2" style="left:460px"><div class="yr">2012</div><div class="dot"></div><h4>Perform, Achieve &amp; Trade (PAT)</h4><p>BEE, under the National Mission for Enhanced Energy Efficiency</p></div>
     <div class="tln stat a up" data-c="3" data-o="0.2" style="left:920px"><div class="yr">PAT Cycle I</div><div class="dot"></div>
-      <div class="statrow"><div><b data-count="478">0</b><span>plants</span></div><div><b>8</b><span>sectors</span></div><div><b data-count="8.67" data-dec="2" data-o="2.6">0</b><span>Mtoe saved</span></div><div><b>~30%</b><span>above target</span></div></div></div>
-    <div class="tln a up" data-c="4" data-o="0.2" style="left:1460px"><div class="yr">2017</div><div class="dot"></div><h4>ESCert trading begins</h4><p>Energy Saving Certificates on power exchanges</p><div class="unit">1 ESCert = 1 toe saved</div></div>
+      <div class="statrow"><div><b data-count="478">0</b><span>plants</span></div><div><b>8</b><span>sectors</span></div><div><b data-count="8.67" data-dec="2" data-o="3.6">0</b><span>Mtoe saved</span></div><div><b>~30%</b><span>above target</span></div></div></div>
+    <div class="tln a up" data-c="3" data-o="8.4" style="left:1460px"><div class="yr">2017</div><div class="dot"></div><h4>ESCert trading begins</h4><p>Energy Saving Certificates on power exchanges</p><div class="unit">1 ESCert = 1 toe saved</div></div>
     <div class="tln a up" data-c="5" data-o="0.2" style="left:1920px"><div class="yr">Dec 2022</div><div class="dot"></div><h4>Energy Conservation (Amendment) Act</h4><p>Empowers the Centre to specify a carbon credit trading scheme</p></div>
     <div class="tln hot a up" data-c="6" data-o="0.2" style="left:2380px"><div class="yr">28 Jun 2023</div><div class="dot"></div><h4>CCTS notified</h4><p>S.O. 2825(E), Ministry of Power</p></div>
     <div class="tln a up" data-c="6" data-o="2.8" style="left:2840px"><div class="yr">Dec 2023</div><div class="dot"></div><h4>Offset mechanism added</h4><p>S.O. 5369(E)</p></div>
   </div></div>
-  <div class="vs a zoom" data-c="7">
+  <div class="blind a zoom" data-c="4" data-x="5" data-xo="-0.3">
+    <div class="ph2">PAT's blind spot</div>
+    <div class="bl-grid">
+      <div class="bl-h"></div><div class="bl-h">Energy used</div><div class="bl-h">CO<sub>2</sub> emitted</div><div class="bl-h">Reward under PAT</div>
+      <div class="bl-k">Coal boiler</div><div><i class="b a growx" data-c="4" data-o="2.0" style="width:80%"></i></div><div><i class="b r a growx" data-c="4" data-o="2.4" style="width:85%"></i></div><div class="bl-v">baseline</div>
+      <div class="bl-k">Gas or renewables</div><div><i class="b a growx" data-c="4" data-o="3.2" style="width:80%"></i></div><div><i class="b g a growx" data-c="4" data-o="3.6" style="width:40%"></i></div><div class="bl-v none a pop" data-c="4" data-o="6.4">none</div>
+    </div>
+  </div>
+  <div class="vs a zoom" data-c="6" data-o="7.2">
     <div class="vsl"><small>PAT</small><b>Energy</b><span>tonnes of oil equivalent saved</span></div>
     <div class="vsarrow"><i class="fa-solid fa-arrow-right"></i></div>
     <div class="vsr"><small>CCTS</small><b>Emissions</b><span>tonnes of CO<sub>2</sub>e</span></div>
@@ -127,8 +186,8 @@
   </div>
 </section>
 
-<!-- ============ 4. WHY ============ -->
-<section class="scene light" id="why" data-card="long" data-src="Sources: India's first Biennial Transparency Report (Dec 2024); India's updated NDC (2022); NDC 2031–35 (submitted 24 Apr 2026); EU CBAM Regulation (EU) 2023/956">
+<!-- ============ 5. WHY ============ -->
+<section class="scene light" id="why" data-card="long" data-src="Sources: India's first Biennial Transparency Report (Dec 2024); India's updated NDC (2022); NDC 2031–35 (submitted 24 Apr 2026)">
   <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
   <div class="content">
     <div class="kicker a fade" data-c="1">The problem statement</div>
@@ -150,47 +209,60 @@
         <div class="goal hl a right" data-c="4" data-o="0.3" data-x="5" data-xo="-0.3"><b><span data-count="47">0</span>%</b><div>by <b>2035</b><small>NDC for 2031–35, submitted April 2026</small></div></div>
       </div>
     </div>
-    <div class="signal a zoom" data-c="5" data-x="6" data-xo="-0.3">
+    <div class="signal a zoom" data-c="5">
       <div class="sig-a"><i class="fa-solid fa-gauge"></i><span>Efficiency rules alone</span></div>
       <div class="sig-plus">+</div>
       <div class="sig-b"><i class="fa-solid fa-chart-line"></i><span>A measurable signal for every tonne avoided</span></div>
     </div>
-    <div class="cbam a up" data-c="6" data-o="0.2">
-      <div class="cbam-l"><div class="pill solid">EU · CBAM</div><h3>Carbon Border Adjustment Mechanism</h3><p>Definitive phase from <b>1 January 2026</b>: a carbon cost on imports such as steel and aluminium.</p></div>
-      <div class="cbam-r"><div class="border-line"></div><div class="crate a right" data-c="6" data-o="3.0"><i class="fa-solid fa-cubes"></i> Steel</div><div class="crate a right" data-c="6" data-o="3.6"><i class="fa-solid fa-cubes"></i> Aluminium</div><div class="tax a pop" data-c="6" data-o="5.6">+ CO<sub>2</sub> cost</div></div>
-    </div>
   </div>
 </section>
 
-<!-- ============ 5. HOW ============ -->
+<!-- ============ 6. HOW ============ -->
 <section class="scene dark" id="how" data-card="long" data-src="Sources: CCTS 2023; BEE Detailed Procedure for Compliance Mechanism (2024); CERC (Purchase and Sale of CCC) Regulations 2026; GEI Target Rules 2025">
   <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
   <div class="vignette"></div>
   <div class="content">
-    <div class="kicker a fade" data-c="1" data-x="4" data-xo="-0.3">Institutional architecture</div>
-    <div class="org a fade" data-c="1" data-x="4" data-xo="-0.3">
+    <div class="kicker a fade" data-c="1" data-x="5" data-xo="-0.3">Institutional architecture</div>
+    <div class="org a fade" data-c="1" data-x="3" data-xo="-0.3">
       <div class="org-top a pop" data-c="1" data-o="0.3"><i class="fa-solid fa-landmark"></i><div><b>National Steering Committee for the Indian Carbon Market</b><small>Chair: Secretary, Ministry of Power · Co-chair: Secretary, MoEFCC</small></div></div>
       <svg class="org-lines" viewBox="0 0 1700 120"><path class="a draw" data-c="2" d="M850 0 V50 H212 V120 M850 50 H637 V120 M850 50 H1062 V120 M850 50 H1487 V120" pathLength="1000"/></svg>
       <div class="org-row">
         <div class="org-c a up" data-c="2" data-o="0.3"><i class="fa-solid fa-bolt"></i><b>BEE</b><span>Administrator: procedures, methodologies, targets, certificates</span></div>
-        <div class="org-c a up" data-c="3" data-o="0.1"><i class="fa-solid fa-leaf"></i><b>MoEFCC</b><span>Notifies emission-intensity targets</span></div>
-        <div class="org-c a up" data-c="3" data-o="2.0"><i class="fa-solid fa-database"></i><b>Grid Controller of India</b><span>Registry of certificates</span></div>
-        <div class="org-c a up" data-c="3" data-o="3.6"><i class="fa-solid fa-scale-balanced"></i><b>CERC</b><span>Regulates trading on power exchanges</span></div>
+        <div class="org-c a up" data-c="2" data-o="2.6"><i class="fa-solid fa-leaf"></i><b>MoEFCC</b><span>Notifies emission-intensity targets</span></div>
+        <div class="org-c a up" data-c="2" data-o="4.4"><i class="fa-solid fa-scale-balanced"></i><b>CERC</b><span>Regulates trading on power exchanges</span></div>
+        <div class="org-c a up" data-c="2" data-o="6.0"><i class="fa-solid fa-gavel"></i><b>CPCB</b><span>Enforces environmental compensation</span></div>
+      </div>
+    </div>
+    <div class="demat a zoom" data-c="3" data-x="4" data-xo="-0.3">
+      <div class="dm-l"><i class="fa-solid fa-database"></i><b>Grid Controller of India</b><span>Registry of the Indian carbon market</span></div>
+      <div class="dm-eq">≈</div>
+      <div class="dm-r a right" data-c="3" data-o="2.6"><small>LIKE A</small><b>Demat account for carbon</b>
+        <div class="ledger2"><div><span>Issued</span><b>+30,000 CCC</b></div><div><span>Sold</span><b>−10,000 CCC</b></div><div class="tot"><span>Holding</span><b>20,000 CCC</b></div></div></div>
+    </div>
+    <div class="gate a fade" data-c="4" data-x="5" data-xo="-0.3">
+      <div class="ph2">What counts: inside the plant gate · CO<sub>2</sub> + PFCs</div>
+      <div class="gate-box">
+        <div class="gate-in">
+          <div class="src2 a left" data-c="4" data-o="3.6"><i class="fa-solid fa-fire-flame-curved"></i>Fuel burned on site</div>
+          <div class="src2 a left" data-c="4" data-o="5.0"><i class="fa-solid fa-plug"></i>Electricity &amp; heat bought in</div>
+          <div class="src2 a left" data-c="4" data-o="7.4"><i class="fa-solid fa-flask"></i><div>Process emissions<small>e.g. limestone → lime + CO<sub>2</sub> in cement</small></div></div>
+        </div>
+        <div class="gate-plant"><i class="fa-solid fa-industry"></i><span>GATE-TO-GATE BOUNDARY</span></div>
       </div>
     </div>
     <div class="pipe">
-      <div class="pipe-title a fade" data-c="4">The compliance cycle</div>
-      <div class="pipe-line"><i class="a growx" data-c="4" data-o="0.2" data-cd="38" data-ease="linear"></i></div>
-      <div class="step a up" data-c="4" data-o="0.2"><span class="n">1</span><i class="fa-solid fa-bullseye"></i><b>Target</b><small>Plant-specific intensity target vs 2023-24 baseline</small></div>
-      <div class="step a up" data-c="5" data-o="0.2"><span class="n">2</span><i class="fa-solid fa-gauge-high"></i><b>Monitor</b><small>Approved monitoring plan</small></div>
-      <div class="step a up" data-c="6" data-o="0.2"><span class="n">3</span><i class="fa-solid fa-clipboard-check"></i><b>Report &amp; verify</b><small>Accredited Carbon Verification Agency</small></div>
+      <div class="pipe-title a fade" data-c="5">The compliance cycle · every year</div>
+      <div class="pipe-line"><i class="a growx" data-c="5" data-o="0.2" data-cd="40" data-ease="linear"></i></div>
+      <div class="step a up" data-c="5" data-o="0.2"><span class="n">1</span><i class="fa-solid fa-bullseye"></i><b>Target</b><small>Plant-specific intensity target vs 2023-24 baseline</small></div>
+      <div class="step a up" data-c="5" data-o="5.6"><span class="n">2</span><i class="fa-solid fa-gauge-high"></i><b>Monitor</b><small>Approved monitoring plan</small></div>
+      <div class="step a up" data-c="6" data-o="0.2"><span class="n">3</span><i class="fa-solid fa-clipboard-check"></i><b>Verify</b><small>Accredited Carbon Verification Agency · annual</small></div>
       <div class="step a up" data-c="7" data-o="0.2"><span class="n">4</span><i class="fa-solid fa-stamp"></i><b>Review &amp; issue</b><small>BEE review · NSC-ICM recommends CCCs</small></div>
-      <div class="step a up" data-c="8" data-o="0.2"><span class="n">5</span><i class="fa-solid fa-arrows-rotate"></i><b>Registry &amp; trade</b><small>Power exchanges · floor &amp; ceiling price</small></div>
+      <div class="step a up" data-c="8" data-o="0.2"><span class="n">5</span><i class="fa-solid fa-arrows-rotate"></i><b>Trade</b><small>Bids on power exchanges · floor &amp; ceiling price</small></div>
     </div>
   </div>
 </section>
 
-<!-- ============ 6. EXAMPLE ============ -->
+<!-- ============ 7. EXAMPLE ============ -->
 <section class="scene light" id="example" data-card="short" data-src="Hypothetical illustration. Mechanics per GEI Target Rules 2025 &amp; BEE compliance procedure. Not real companies or targets.">
   <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
   <div class="content">
@@ -218,12 +290,100 @@
   </div>
 </section>
 
-<!-- ============ 7. STATUS ============ -->
-<section class="scene dark" id="status" data-card="long" data-src="Sources: MoEFCC GEI Target Rules (8 Oct 2025) &amp; amendment (13 Jan 2026), PIB 22 Jan 2026; CERC CCC Regulations (27 Feb 2026); ICM portal launch (21 Mar 2026); PIB on offset methodologies (Mar 2025); draft iron &amp; steel targets (Jun 2026)">
+<!-- ============ 8. OFFSETS ============ -->
+<section class="scene dark" id="offsets" data-card="short" data-src="Sources: CCTS amendment S.O. 5369(E); BEE Detailed Procedure for Offset Mechanism (effective 27 Mar 2025); methodologies adapted from UNFCCC CDM. Bars are illustrative.">
   <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
   <div class="vignette"></div>
   <div class="content">
-    <div class="kicker a fade" data-c="1">Status snapshot · 31 October 2026</div>
+    <div class="kicker a fade" data-c="0" data-o="2.0">The offset mechanism</div>
+    <div class="who4 a fade" data-c="0" data-x="1" data-xo="-0.3">
+      <div class="a pop" data-c="0" data-o="2.4"><i class="fa-solid fa-seedling"></i>Farmers</div>
+      <div class="a pop" data-c="0" data-o="3.0"><i class="fa-solid fa-building-columns"></i>Municipalities</div>
+      <div class="a pop" data-c="0" data-o="3.6"><i class="fa-solid fa-microchip"></i>Technology firms</div>
+      <div class="a pop" data-c="0" data-o="4.4"><i class="fa-solid fa-solar-panel"></i>Project developers</div>
+    </div>
+    <div class="formula a fade" data-c="1" data-x="2" data-xo="-0.3">
+      <div class="ph2">How many credits? <span class="hypo">ILLUSTRATIVE</span></div>
+      <div class="fbars">
+        <div><i class="a growy" data-c="1" data-o="2.4" style="height:360px"></i><span>Baseline</span></div>
+        <div class="op">−</div>
+        <div><i class="p a growy" data-c="1" data-o="3.6" style="height:120px"></i><span>Project</span></div>
+        <div class="op">−</div>
+        <div><i class="l a growy" data-c="1" data-o="4.8" style="height:30px"></i><span>Leakage</span></div>
+        <div class="op">=</div>
+        <div><i class="g a growy" data-c="1" data-o="5.8" style="height:210px"></i><span>Credits</span></div>
+      </div>
+    </div>
+    <div class="cycle5 a fade" data-c="2" data-x="3" data-xo="-0.3">
+      <div class="ph2">Project cycle</div>
+      <div class="c5">
+        <div class="a up" data-c="2" data-o="0.6"><b>1</b>Approved methodology</div>
+        <div class="a up" data-c="2" data-o="2.0"><b>2</b>Validation by an ACVA</div>
+        <div class="a up" data-c="2" data-o="3.6"><b>3</b>Registration on ICM portal</div>
+        <div class="a up" data-c="2" data-o="5.8"><b>4</b>Monitoring &amp; verification</div>
+        <div class="g a up" data-c="2" data-o="7.4"><b>5</b>CCC issuance</div>
+      </div>
+    </div>
+    <div class="addl a fade" data-c="3" data-x="5" data-xo="-0.3">
+      <div class="ph2">The additionality test</div>
+      <div class="ad3">
+        <div class="a up" data-c="3" data-o="1.6"><i class="fa-solid fa-scale-balanced"></i><b>Beyond the law</b><small>Not already required by regulation</small></div>
+        <div class="a up" data-c="3" data-o="3.8"><i class="fa-solid fa-coins"></i><b>Needs carbon revenue</b><small>Not viable without the credits</small></div>
+        <div class="a up" data-c="3" data-o="5.8"><i class="fa-solid fa-users"></i><b>Not common practice</b><small>Not already standard in the market</small></div>
+      </div>
+      <div class="walk a pop" data-c="4" data-o="1.0"><i class="fa-solid fa-person-walking"></i> Walking to work instead of driving <span class="no">NO CREDIT</span><small>It cuts emissions, but you would have done it anyway</small></div>
+    </div>
+    <div class="demand a zoom" data-c="5">
+      <div class="d-l"><i class="fa-solid fa-certificate"></i><b>Registered project</b></div>
+      <div class="d-q">?</div>
+      <div class="d-r"><i class="fa-solid fa-handshake"></i><b>A buyer at a fair price</b></div>
+      <div class="d-n a fade" data-c="5" data-o="3.0">Demand is the biggest open question</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. GLOBAL ============ -->
+<section class="scene light" id="global" data-card="long" data-src="Sources: Regulation (EU) 2023/956 and free-allocation phase-out (Directive 2003/87/EC Art. 10a); UK CBAM carbon price relief, India's CCTS listed (Sept 2026); MoEFCC, India–Japan JCM under Article 6.2">
+  <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
+  <div class="content">
+    <div class="kicker a fade" data-c="1">Carbon at the border</div>
+    <div class="cb1 a fade" data-c="1" data-x="3" data-xo="-0.3">
+      <h2 style="font-size:64px">EU CBAM · definitive phase from <em>1 January 2026</em></h2>
+      <div class="sect6">
+        <span class="a pop" data-c="1" data-o="5.4"><i class="fa-solid fa-cubes"></i> Iron &amp; steel</span><span class="a pop" data-c="1" data-o="6.2"><i class="fa-solid fa-cubes"></i> Aluminium</span><span class="a pop" data-c="1" data-o="6.8"><i class="fa-solid fa-cubes"></i> Cement</span><span class="a pop" data-c="1" data-o="7.4"><i class="fa-solid fa-flask"></i> Fertilisers</span><span class="a pop" data-c="1" data-o="8.0"><i class="fa-solid fa-atom"></i> Hydrogen</span><span class="a pop" data-c="1" data-o="8.6"><i class="fa-solid fa-bolt"></i> Electricity</span>
+      </div>
+      <div class="flow3 a up" data-c="2">
+        <div><i class="fa-solid fa-industry"></i><b>Indian exporter</b><small>supplies verified emissions data</small></div>
+        <i class="fa-solid fa-arrow-right arr"></i>
+        <div class="hl"><i class="fa-solid fa-file-signature"></i><b>EU importer</b><small>buys &amp; surrenders CBAM certificates</small></div>
+        <i class="fa-solid fa-arrow-right arr"></i>
+        <div><i class="fa-solid fa-handshake"></i><b>Price negotiation</b><small>carbon cost shapes margins</small></div>
+      </div>
+    </div>
+    <div class="phase a fade" data-c="3" data-x="4" data-xo="-0.3">
+      <div class="ph2 dk">Share of embedded emissions charged under EU CBAM</div>
+      <div class="pbars" id="pbars"></div>
+    </div>
+    <div class="uk a zoom" data-c="4" data-x="5" data-xo="-0.3">
+      <div class="pill solid">SEPTEMBER 2026</div>
+      <h3>UK lists India's CCTS as a qualifying carbon pricing scheme</h3>
+      <p>UK CBAM starts <b>1 January 2027</b>. A carbon price effectively paid in India can reduce the UK charge, with proper evidence.</p>
+      <div class="relief"><span>UK CBAM charge</span><i class="fa-solid fa-minus"></i><span class="g">CCTS carbon price paid</span><i class="fa-solid fa-equals"></i><span>Net charge</span></div>
+    </div>
+    <div class="jcm a up" data-c="5">
+      <div class="pill">PARIS AGREEMENT · ARTICLE 6.2</div>
+      <h3>India–Japan Joint Crediting Mechanism</h3>
+      <p>Japanese low-carbon technology deployed in India, with credits shared under a bilateral framework, opening a channel for internationally transferable credits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. STATUS ============ -->
+<section class="scene dark" id="status" data-card="long" data-src="Sources: MoEFCC GEI Target Rules (8 Oct 2025) &amp; amendment (13 Jan 2026), PIB 22 Jan 2026; CERC CCC Regulations (27 Feb 2026); ICM portal (Mar 2026); BEE draft transaction procedure (Oct 2026); PIB on offset methodologies (Mar 2025); draft iron &amp; steel targets (Jun 2026)">
+  <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
+  <div class="vignette"></div>
+  <div class="content">
+    <div class="kicker a fade" data-c="1">Status snapshot · 8 November 2026</div>
     <div class="dash">
       <div class="panel a up" data-c="1" data-o="0.1">
         <div class="ph">Obligated entities with notified targets</div>
@@ -231,43 +391,46 @@
         <div class="srow a fade" data-c="1" data-o="1.2"><span class="pill solid">OCT 2025</span><b data-count="282" data-c="1" data-o="1.2">0</b> Aluminium · Cement · Chlor-alkali · Pulp &amp; paper</div>
         <div class="srow a fade" data-c="2" data-o="0.4"><span class="pill solid">JAN 2026</span><b>+208</b> Refining · Petrochemicals · Textiles · Secondary aluminium</div>
         <div class="srow a fade" data-c="3" data-o="0.2"><span class="pill">YEARS</span>Compliance: <b>2025-26</b> and <b>2026-27</b> · baseline 2023-24</div>
-        <div class="srow a fade" data-c="3" data-o="6.4"><span class="pill warn">DRAFT</span>Iron &amp; steel targets (June 2026)</div>
+        <div class="srow a fade" data-c="3" data-o="5.6"><span class="pill">FY27</span>Second-year targets are stricter</div>
+        <div class="srow a fade" data-c="3" data-o="8.0"><span class="pill warn">DRAFT</span>Iron &amp; steel targets (June 2026)</div>
       </div>
       <div class="panel a up" data-c="4" data-o="0.1">
-        <div class="ph">Infrastructure</div>
-        <div class="check a fade" data-c="4" data-o="1.8"><i class="fa-solid fa-circle-check"></i><div><b>Verification agencies accredited</b><small>BEE list of ACVAs</small></div><span class="st live">LIVE</span></div>
-        <div class="check a fade" data-c="4" data-o="3.6"><i class="fa-solid fa-circle-check"></i><div><b>CERC trading regulations</b><small>Notified Feb 2026</small></div><span class="st">NOTIFIED</span></div>
-        <div class="check a fade" data-c="4" data-o="7.2"><i class="fa-solid fa-circle-check"></i><div><b>Indian Carbon Market portal</b><small>Launched Mar 2026</small></div><span class="st live">LIVE</span></div>
+        <div class="ph">Infrastructure &amp; process</div>
+        <div class="check p a fade" data-c="4" data-o="1.2"><i class="fa-solid fa-spinner"></i><div><b>First compliance year (FY 2025-26)</b><small>Ended · verification under way</small></div><span class="st pen">IN PROGRESS</span></div>
+        <div class="check a fade" data-c="4" data-o="4.0"><i class="fa-solid fa-circle-check"></i><div><b>CERC trading regulations</b><small>Notified Feb 2026</small></div><span class="st">NOTIFIED</span></div>
+        <div class="check a fade" data-c="4" data-o="6.6"><i class="fa-solid fa-circle-check"></i><div><b>Indian Carbon Market portal</b><small>Live · accredited verifiers listed</small></div><span class="st live">LIVE</span></div>
+        <div class="check p a fade" data-c="4" data-o="8.4"><i class="fa-solid fa-file-lines"></i><div><b>BEE draft trading procedure</b><small>Consultation, Oct 2026</small></div><span class="st pen">DRAFT</span></div>
         <div class="check a fade" data-c="5" data-o="0.4"><i class="fa-solid fa-circle-check"></i><div><b>Offset procedure + 8 methodologies</b><small>Approved Mar 2025 · more since</small></div><span class="st">PUBLISHED</span></div>
       </div>
       <div class="panel pend a up" data-c="6" data-o="0.1">
         <div class="ph">Not yet confirmed</div>
         <div class="check p a fade" data-c="6" data-o="2.4"><i class="fa-regular fa-clock"></i><div><b>First CCC issuance</b><small>Expected</small></div><span class="st pen">PENDING</span></div>
         <div class="check p a fade" data-c="6" data-o="4.0"><i class="fa-regular fa-clock"></i><div><b>First exchange trade</b><small>Expected</small></div><span class="st pen">PENDING</span></div>
-        <div class="check p a fade" data-c="6" data-o="6.6"><i class="fa-solid fa-ban"></i><div><b>Market price</b><small>No traded price exists yet</small></div><span class="st pen">—</span></div>
+        <div class="check p a fade" data-c="6" data-o="5.4"><i class="fa-solid fa-ban"></i><div><b>Floor &amp; ceiling price</b><small>Not yet published</small></div><span class="st pen">—</span></div>
+        <div class="check p a fade" data-c="6" data-o="7.4"><i class="fa-solid fa-ban"></i><div><b>Market price</b><small>No traded price exists yet</small></div><span class="st pen">—</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 8. BUSINESS ============ -->
+<!-- ============ 11. BUSINESS ============ -->
 <section class="scene light" id="business" data-card="long" data-src="ReGeneva analysis based on the CCTS framework. Opportunity labels indicate maturity, not guaranteed outcomes.">
   <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
   <div class="content">
     <div class="kicker a fade" data-c="1">Who gains, and how</div>
     <div class="biz">
-      <div class="bz a up" data-c="1" data-o="0.2"><i class="fa-solid fa-industry"></i><b>Obligated industry</b><p>Two values per tonne avoided: lower energy cost + potential certificates</p><div class="tags"><span>Efficiency</span><span>Fuel switch</span><span>WHR</span><span>Renewables</span></div><em class="mat est">ESTABLISHED</em></div>
-      <div class="bz a up" data-c="2" data-o="0.2"><i class="fa-solid fa-database"></i><b>Emissions data</b><p>Accurate, auditable data to plan and trade better</p><div class="tags"><span>Monitoring plan</span><span>Audit trail</span></div><em class="mat est">ESTABLISHED</em></div>
-      <div class="bz a up" data-c="3" data-o="0.2"><i class="fa-solid fa-seedling"></i><b>Project developers</b><p>Domestic route to certificates via approved methodologies</p><div class="tags"><span>Methodology fit</span><span>Verification</span></div><em class="mat emg">EMERGING</em></div>
-      <div class="bz a up" data-c="4" data-o="0.2"><i class="fa-solid fa-user-tie"></i><b>Sustainability advisers</b><p>GHG accounting, readiness &amp; gap assessments, roadmaps</p><div class="tags"><span>MRV support</span><span>Roadmaps</span></div><em class="mat est">ESTABLISHED</em></div>
-      <div class="bz a up" data-c="5" data-o="0.2"><i class="fa-solid fa-microchip"></i><b>Technology providers</b><p>Carbon accounting, energy &amp; emissions monitoring, digital MRV</p><div class="tags"><span>Software</span><span>Sensors</span></div><em class="mat emg">GROWING</em></div>
-      <div class="bz a up" data-c="6" data-o="0.2"><i class="fa-solid fa-sack-dollar"></i><b>Investors &amp; lenders</b><p>Carbon performance as a lens on industrial risk and transition finance</p><div class="tags"><span>Risk</span><span>Transition finance</span></div><em class="mat emg">EMERGING</em></div>
-      <div class="bz wide a up" data-c="7" data-o="0.2"><i class="fa-solid fa-store"></i><b>MSMEs &amp; supply chains</b><p>Mostly not obligated today, but buyers and export rules increasingly ask for credible emissions data</p><div class="tags"><span>Supplier data requests</span><span>CBAM exposure</span></div><em class="mat ind">INDIRECT</em></div>
+      <div class="bz a up" data-c="1" data-o="0.2"><i class="fa-solid fa-industry"></i><b>Obligated industry</b><p>Two values per tonne avoided: lower energy cost + potential certificates</p><div class="tags"><span>Capex decisions</span><span>Fuel switch</span><span>WHR</span></div><em class="mat est">ESTABLISHED</em></div>
+      <div class="bz a up" data-c="2" data-o="0.2"><i class="fa-solid fa-database"></i><b>CFOs &amp; boards</b><p>"Will we end the year with credits, or with a bill?"</p><div class="tags"><span>Monthly tracking</span><span>Audit trail</span></div><em class="mat est">ESTABLISHED</em></div>
+      <div class="bz a up" data-c="3" data-o="0.2"><i class="fa-solid fa-seedling"></i><b>Project developers</b><p>Domestic route to certificates via approved methodologies</p><div class="tags"><span>Methodology fit</span><span>Validation</span></div><em class="mat emg">EMERGING</em></div>
+      <div class="bz a up" data-c="3" data-o="2.6"><i class="fa-solid fa-user-tie"></i><b>Sustainability advisers</b><p>GHG accounting, readiness assessments, monitoring plans, roadmaps</p><div class="tags"><span>MRV support</span><span>Roadmaps</span></div><em class="mat est">ESTABLISHED</em></div>
+      <div class="bz a up" data-c="4" data-o="0.2"><i class="fa-solid fa-clipboard-check"></i><b>Verifiers &amp; tech</b><p>Verification capacity, carbon accounting software, digital MRV</p><div class="tags"><span>ACVA</span><span>Software</span><span>Sensors</span></div><em class="mat emg">GROWING</em></div>
+      <div class="bz a up" data-c="4" data-o="3.6"><i class="fa-solid fa-sack-dollar"></i><b>Investors &amp; lenders</b><p>Carbon performance as a lens on industrial risk and transition finance</p><div class="tags"><span>Risk</span><span>Transition finance</span></div><em class="mat emg">EMERGING</em></div>
+      <div class="bz wide a up" data-c="5" data-o="0.2"><i class="fa-solid fa-store"></i><b>MSMEs &amp; supply chains</b><p>Mostly below the thresholds today, but buyers and export rules increasingly ask for credible emissions data</p><div class="tags"><span>Supplier data requests</span><span>CBAM exposure</span></div><em class="mat ind">INDIRECT</em></div>
     </div>
   </div>
 </section>
 
-<!-- ============ 9. CHALLENGES ============ -->
+<!-- ============ 12. CHALLENGES ============ -->
 <section class="scene dark" id="challenges" data-card="long" data-src="Sources: IEEFA (2026) on CCTS price formation &amp; price stability; CEEW (2025–26) on final GEI targets; ICAP CCTS factsheet">
   <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
   <div class="vignette"></div>
@@ -291,32 +454,34 @@
   </div>
 </section>
 
-<!-- ============ 10. NEXT ============ -->
-<section class="scene light" id="next" data-card="long" data-src="Expected items based on published procedures and draft notifications as of 31 Oct 2026. 'Possible' items are not government decisions.">
+<!-- ============ 13. NEXT ============ -->
+<section class="scene light" id="next" data-card="long" data-src="Expected items based on published procedures and draft notifications as of 8 Nov 2026. 'Possible' items are not government decisions.">
   <canvas data-draw="contour" width="1920" height="1080" class="bg"></canvas>
   <div class="content">
     <div class="kicker a fade" data-c="1">What comes next</div>
     <div class="nx">
       <div class="nxcol a left" data-c="1">
         <div class="pill solid">EXPECTED SOON</div>
-        <div class="nxi a fade" data-c="1" data-o="1.2"><i class="fa-solid fa-certificate"></i> First certificate issuance</div>
-        <div class="nxi a fade" data-c="1" data-o="2.6"><i class="fa-solid fa-arrows-rotate"></i> First trading sessions</div>
-        <div class="nxi a fade" data-c="1" data-o="4.0"><i class="fa-solid fa-industry"></i> Final iron &amp; steel targets</div>
+        <div class="nxi a fade" data-c="1" data-o="1.2"><i class="fa-solid fa-file-lines"></i> Final trading procedure &amp; price band</div>
+        <div class="nxi a fade" data-c="1" data-o="3.6"><i class="fa-solid fa-certificate"></i> First issuance &amp; trading sessions</div>
+        <div class="nxi a fade" data-c="1" data-o="6.2"><i class="fa-solid fa-industry"></i> Final iron &amp; steel targets</div>
+        <div class="nxi a fade" data-c="1" data-o="8.0"><i class="fa-solid fa-seedling"></i> First registered offset projects</div>
       </div>
       <div class="nxcol dashed a right" data-c="2">
         <div class="pill">POSSIBLE OVER TIME</div>
-        <div class="nxi a fade" data-c="2" data-o="1.4"><i class="fa-solid fa-layer-group"></i> More sectors &amp; entities</div>
-        <div class="nxi a fade" data-c="2" data-o="3.0"><i class="fa-solid fa-chart-line"></i> Tighter targets in future cycles</div>
-        <div class="nxi a fade" data-c="2" data-o="4.6"><i class="fa-solid fa-seedling"></i> More offset methodologies</div>
-        <div class="nxi a fade" data-c="2" data-o="6.2"><i class="fa-solid fa-satellite-dish"></i> Digital MRV at scale</div>
-        <div class="nxi a fade" data-c="2" data-o="8.0"><i class="fa-solid fa-globe"></i> Links to international markets (Paris Agreement Article 6)</div>
+        <div class="nxi a fade" data-c="2" data-o="1.4"><i class="fa-solid fa-layer-group"></i> More sectors</div>
+        <div class="nxi a fade" data-c="2" data-o="2.6"><i class="fa-solid fa-chart-line"></i> Tighter targets in future cycles</div>
+        <div class="nxi a fade" data-c="2" data-o="4.2"><i class="fa-solid fa-seedling"></i> More offset methodologies</div>
+        <div class="nxi a fade" data-c="2" data-o="5.8"><i class="fa-solid fa-satellite-dish"></i> Digital MRV at scale</div>
+        <div class="nxi a fade" data-c="2" data-o="7.4"><i class="fa-solid fa-globe"></i> EU recognition, alongside the UK</div>
+        <div class="nxi a fade" data-c="2" data-o="9.2"><i class="fa-solid fa-handshake"></i> More Article 6 partnerships</div>
       </div>
     </div>
     <div class="arrowline a up" data-c="3"><span>Sustainability report</span><i class="fa-solid fa-arrow-right"></i><span class="g">Operating plan</span></div>
   </div>
 </section>
 
-<!-- ============ 11. CLOSE ============ -->
+<!-- ============ 14. CLOSE ============ -->
 <section class="scene dark" id="close" data-card="long">
   <canvas data-draw="grid" width="1920" height="1080" class="bg"></canvas>
   <div class="vignette"></div>
@@ -338,7 +503,7 @@
       <div class="tagline a fade" data-c="4" data-o="1.2">Simplifying ESG. Amplifying Action.</div>
       <div class="follow a up" data-c="4" data-o="3.2"><i class="fa-brands fa-youtube"></i> Follow ReGeneva · regeneva.co</div>
       <div class="topics a fade" data-c="4" data-o="4.6">Carbon markets · Sustainability · Industrial decarbonisation</div>
-      <div class="fine a fade" data-c="4" data-o="6.0">Research cut-off 31 October 2026. Sources: BEE, Ministry of Power, MoEFCC, PIB, CERC, Gazette of India, ICAP, IEEFA, CEEW, UNFCCC (India BTR, NDC). Full source list in the description.<br>Hypothetical examples are illustrative. Not legal or investment advice. Narrated by Surya using an AI voice generated from his own voice with his consent.</div>
+      <div class="fine a fade" data-c="4" data-o="6.0">Research cut-off 8 November 2026. Sources: BEE, Ministry of Power, MoEFCC, PIB, CERC, CPCB, Gazette of India, World Bank, ICAP, IEEFA, CEEW, UNFCCC (India BTR, NDC), European Commission, UK Government. Full source list in the description.<br>Hypothetical examples are illustrative. Not legal or investment advice. Narration uses an AI-generated voice.</div>
     </div>
   </div>
 </section>

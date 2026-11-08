@@ -6,9 +6,10 @@
     python3 build_voice.py <out_dir> --assemble      # re-assemble narration/timing from lines/*.wav
     python3 build_voice.py <out_dir> --captions-only # rebuild SRT/chapters from timing.json
 
-Configuration comes from surya-clone-voice.json plus two environment variables:
+Configuration comes from a profile in profiles/ plus environment variables:
     SURYA_VOICE_MODELS  folder holding the ZipVoice, Vocos and Parakeet model files
-    SURYA_VOICE_REF     path to Surya's reference recording (kept outside the repo)
+    SURYA_VOICE_REF_DIR folder holding the profile's style reference clips (kept outside the repo)
+    VOICE_PROFILE       profile name in profiles/ (default: surya-indian-accent-original-voice-clone)
 
 Each chunk is checked with an ASR model and re-generated with a new seed when the
 transcript drifts from the script, so misread words are caught automatically.
@@ -30,7 +31,8 @@ sys.path.insert(0, HERE)
 from zipclone import ZipClone, SR  # noqa: E402
 
 SCRIPT = os.path.join(HERE, "..", "script", "script.json")
-PROFILE = json.load(open(os.path.join(HERE, "surya-clone-voice.json")))
+PROFILE = json.load(open(os.path.join(HERE, "profiles", os.environ.get(
+    "VOICE_PROFILE", "surya-indian-accent-original-voice-clone") + ".json")))
 LEAD_IN, SCENE_PAD_IN, CHUNK_GAP, LINE_GAP, SCENE_PAD_OUT, OUTRO_HOLD = 1.6, 0.8, 0.22, 0.5, 1.1, 6.0
 MIN_SIMILARITY, MAX_TRIES = 0.8, 4
 
@@ -145,10 +147,16 @@ def write_text_tracks(script, timing, out):
 
 def load_voice():
     models = os.environ["SURYA_VOICE_MODELS"]
+    refs = os.environ[PROFILE["reference_dir_env"]]
     m = PROFILE["model"]
-    return ZipClone(os.path.join(models, m["dir"]), os.path.join(models, m["vocoder"]),
-                    os.path.join(models, m["tokens"]), os.environ["SURYA_VOICE_REF"],
-                    PROFILE["reference_transcript"], encoder=m["encoder"], decoder=m["decoder"]), Checker(models)
+    styles = PROFILE["styles"]
+    first = styles[PROFILE["default_style"]]
+    voice = ZipClone(os.path.join(models, m["dir"]), os.path.join(models, m["vocoder"]),
+                     os.path.join(models, m["tokens"]), os.path.join(refs, first["file"]), first["text"],
+                     encoder=m["encoder"], decoder=m["decoder"])
+    for name, st in styles.items():
+        voice.add_prompt(name, os.path.join(refs, st["file"]), st["text"])
+    return voice, Checker(models)
 
 
 def generate_line(voice, checker, scene, li, line, out, report):
@@ -157,7 +165,9 @@ def generate_line(voice, checker, scene, li, line, out, report):
     for ci, chunk in enumerate(chunks(line["say"])):
         best = None
         for attempt in range(MAX_TRIES):
-            w = trim(voice.say(chunk, speed=g["speed"], steps=g["steps"], guidance=g["guidance"],
+            style = line.get("style", PROFILE["default_style"])
+            w = trim(voice.say(chunk, speed=PROFILE["style_speed"].get(style, 1.0), prompt=style,
+                               steps=g["steps"], guidance=g["guidance"],
                                t_shift=g["t_shift"], seed=1000 * li + 10 * ci + attempt))
             heard = checker.transcribe(w)
             sim = similarity(re.sub(r"\[\[.*?\]\]", "", chunk), heard)
