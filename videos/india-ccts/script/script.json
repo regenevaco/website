@@ -83,7 +83,7 @@
         {"style": "explanatory", "text": "India did not build this market from scratch.",
          "say": "India did not build this market from scratch."},
         {"style": "explanatory", "text": "In 2010, the electricity regulator CERC created Renewable Energy Certificates, and exchange trading began in 2011.",
-         "say": "In twenty ten, the electricity regulator, C E R C, created renewable energy certificates, and exchange trading began in twenty eleven."},
+         "say": "In twenty ten, India's electricity regulator, the C E R C, created renewable energy certificates, and exchange trading began in twenty eleven."},
         {"style": "explanatory", "text": "In 2012, the Bureau of Energy Efficiency launched Perform, Achieve and Trade, or PAT, under the National Mission for Enhanced Energy Efficiency.",
          "say": "In twenty twelve, the Bureau of Energy Efficiency launched Perform, Achieve and Trade, or Pat, under the National Mission for Enhanced Energy Efficiency."},
         {"style": "explanatory", "text": "PAT's first cycle covered 478 plants in eight sectors, and saved 8.67 million tonnes of oil equivalent, about 30% more than its target. Surplus savings became tradable Energy Saving Certificates.",
@@ -140,7 +140,7 @@
       "id": "example", "chapter": "A worked example", "tone": "light",
       "lines": [
         {"style": "explanatory", "text": "Let's make it concrete with two hypothetical plants. Each makes one million tonnes of cement a year, with a target of 0.80 tonnes of CO2e per tonne.",
-         "say": "Let's make it concrete, with two hypothetical plants. Each makes one million tonnes of cement a year, with a target of zero point eight zero tonnes of C O two e, per tonne."},
+         "say": "Let's make it concrete, with two hypothetical plants. Each makes one million tonnes of cement a year, with a target of zero point eight tonnes of C O two e, per tonne."},
         {"style": "explanatory", "text": "Company A brings its intensity down to 0.77. That is 0.03 better than target, across one million tonnes: thirty thousand tonnes. So it may become eligible for 30,000 certificates.",
          "say": "Company A brings its intensity down to zero point seven seven. That's zero point zero three better than target, across one million tonnes. Thirty thousand tonnes. So it may become eligible for thirty thousand certificates."},
         {"style": "explanatory", "text": "Company B ends the year at 0.82, a shortfall of twenty thousand tonnes. It must surrender 20,000 certificates, bought from the market.",
