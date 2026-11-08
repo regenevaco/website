@@ -21,7 +21,21 @@ In this ReGeneva explainer:
 ✅ Business opportunities, expert critiques, and what comes next
 
 ⏱️ Chapters
-[CHAPTERS]
+0:00 Two plants, one decision
+0:41 The big picture
+1:29 Why put a price on carbon?
+2:47 Decoding the jargon
+3:56 How India got here
+5:10 Why India needs CCTS
+6:01 How CCTS works
+7:35 A worked example
+8:31 The offset route
+9:33 The global link
+10:51 Where CCTS stands today
+12:24 Business opportunities
+13:24 Challenges and critiques
+14:31 What comes next
+15:13 What it means for you
 
 📚 Key sources (research cut-off 8 Nov 2026)
 • Carbon Credit Trading Scheme, 2023 (S.O. 2825(E), Ministry of Power): https://beeindia.gov.in/sites/default/files/CCTS.pdf

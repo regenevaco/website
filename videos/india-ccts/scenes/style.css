@@ -139,7 +139,7 @@ body[data-tone="light"] .grain { opacity: .025; }
 #overview .branch h3 { font-size: 54px; font-weight: 800; margin: 14px 0 8px; }
 #overview .branch p { font-size: 29px; line-height: 1.4; color: var(--mute); }
 #overview .branch p b { color: var(--ink); }
-#overview .merge { position: absolute; left: 50%; margin-left: -500px; top: 610px; width: 1000px !important; display: flex; align-items: center; gap: 22px; background: var(--g-tint); border: 2px solid var(--g); border-radius: 18px; padding: 20px 30px; width: 900px; }
+#overview .merge { position: absolute; left: 50%; margin-left: -500px; top: 572px; width: 1000px !important; display: flex; align-items: center; gap: 22px; background: var(--g-tint); border: 2px solid var(--g); border-radius: 18px; padding: 20px 30px; width: 900px; }
 #overview .merge b { font: 800 42px "ESC"; display: block; }
 #overview .merge small { font-size: 25px; color: var(--mute); }
 .icon { display: inline-grid; place-items: center; width: 72px; height: 72px; border-radius: 18px; background: var(--g); color: #00140D; font-size: 34px; flex: none; }
