@@ -1,85 +1,89 @@
-# YouTube upload kit: India's CCTS explainer
+# YouTube upload kit: India's CCTS explainer (v2, November 2026)
 
-## Title options
-1. India's Carbon Market Explained: CCTS, Carbon Credit Certificates & What It Means for Business (2026)
-2. India's Carbon Credit Trading Scheme (CCTS) in 13 Minutes: How It Works, Status & Opportunities
+## Title (recommended first)
+1. India's Carbon Market Explained: CCTS, Carbon Credits, CBAM & What It Means for Business (2026)
+2. India's Carbon Credit Trading Scheme (CCTS): How It Works, Where It Stands & Who Gains
 3. Will Your Plant Earn or Pay? India's Carbon Credit Trading Scheme Explained
 
 ## Description
-India now has its own compliance carbon market. Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants in sectors like aluminium, cement, chlor-alkali, pulp & paper, refining, petrochemicals and textiles have legally binding greenhouse-gas emission-intensity targets. Beat your target and you may earn Carbon Credit Certificates. Miss it and you must buy them, or pay environmental compensation.
 
-In this ReGeneva explainer we cover:
-✅ What CCTS is: the compliance and offset mechanisms
-✅ Key terms: CO₂e, emissions intensity, baseline, CCC, MRV, obligated entities
+India now has its own compliance carbon market. Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants have legally binding greenhouse-gas emission-intensity targets, in sectors including aluminium, cement, chlor-alkali, pulp & paper, refining, petrochemicals and textiles. Beat your target and you may earn Carbon Credit Certificates. Miss it and you buy them, or pay environmental compensation. With the EU's CBAM now live and the UK recognising CCTS for its own carbon border tax, carbon is fast becoming a line item on the balance sheet.
+
+In this ReGeneva explainer:
+✅ Why put a price on carbon: the polluter-pays principle, market failure, and the four ways to price carbon
+✅ Key terms: CO₂e, emissions intensity, baseline, CCC, MRV
 ✅ How India got here: REC → PAT → Energy Conservation (Amendment) Act 2022 → CCTS 2023
-✅ How it works: NSC-ICM, BEE, MoEFCC, Grid Controller of India, CERC and the 5-step compliance cycle
-✅ A worked example: who earns, who pays
-✅ Where CCTS stands as of 31 October 2026: what's notified, what's live, what's still pending
-✅ Business opportunities for industry, project developers, consultants, tech providers, investors and MSMEs
-✅ Expert critiques from IEEFA and CEEW, and what comes next
+✅ How CCTS works: NSC-ICM, BEE, MoEFCC, CERC, CPCB, the Grid-India registry and the annual compliance cycle
+✅ A worked example: who earns, and who pays
+✅ The offset route: how projects earn credits, and the additionality test
+✅ The global link: EU CBAM phase-in, UK recognition of CCTS, India–Japan Article 6.2
+✅ Where CCTS stands on 8 November 2026: what's live, what's still pending
+✅ Business opportunities, expert critiques, and what comes next
 
 ⏱️ Chapters
-0:00 Two plants, one decision
-0:37 The big picture
-1:25 Decoding the jargon
-2:51 How India got here
-4:00 Why India needs CCTS
-5:08 How CCTS works
-6:28 A worked example
-7:26 Where CCTS stands today
-8:56 Business opportunities
-10:23 Challenges and critiques
-11:31 What comes next
-12:09 What it means for you
+[CHAPTERS]
 
-📚 Key sources (research cut-off 31 Oct 2026)
+📚 Key sources (research cut-off 8 Nov 2026)
 • Carbon Credit Trading Scheme, 2023 (S.O. 2825(E), Ministry of Power): https://beeindia.gov.in/sites/default/files/CCTS.pdf
 • BEE Detailed Procedure for Compliance Mechanism: https://beeindia.gov.in/sites/default/files/Detailed%20Procedure%20for%20Compliance%20Mechanism.pdf
 • PIB, GHG emission intensity targets for 208 more industries (Jan 2026): https://www.pib.gov.in/PressReleasePage.aspx?PRID=2217239
 • PIB, Offset mechanism & methodologies (Mar 2025): https://www.pib.gov.in/PressReleasePage.aspx?PRID=2116421
 • PIB, Indian Carbon Market (Parliament Q&A): https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082528
+• PIB, Status of NMEEE / PAT: https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1811051
 • BEE, Accredited Carbon Verification Agencies: https://beeindia.gov.in/view_content.php?lid=568&lang=1
+• World Bank, State and Trends of Carbon Pricing 2025: https://www.worldbank.org/en/publication/state-and-trends-of-carbon-pricing
+• All India Radio, UK recognises India's CCTS under UK CBAM (Sep 2026): https://newsonair.gov.in/uk-recognises-indias-carbon-credit-scheme-under-its-carbon-tax-mechanism-prevents-indian-exporters-from-paying-dual-charges/
 • ICAP, Indian Carbon Credit Trading Scheme: https://icapcarbonaction.com/en/ets/indian-carbon-credit-trading-scheme
 • IEEFA, Carbon price formation in the CCTS: https://ieefa.org/resources/potential-drivers-carbon-price-formation-ccts-design-and-market-dynamics-indian-carbon
 • CEEW, Final emission reduction targets & market dynamics: https://www.ceew.in/blogs/how-india%E2%80%99s-final-emission-reduction-targets-can-shape-carbon-market-dynamics
-• PIB, Status of NMEEE / PAT: https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1811051
-Full evidence register available on request.
 
-ℹ️ Independent explainer by ReGeneva. Not legal, tax or investment advice. The worked example is hypothetical. The narration is Surya's own voice, generated with AI from his recording and with his consent.
+ℹ️ Independent explainer by ReGeneva. Not legal, tax or investment advice. Worked examples and charts marked "illustrative" are hypothetical. The narration uses an AI-generated voice.
 
 🌱 ReGeneva: Simplifying ESG. Amplifying Action. | https://regeneva.co
 
-#CCTS #CarbonMarket #IndiaCarbonMarket #CarbonCredits #BEE #Decarbonisation #ESG #Sustainability #NetZero #ClimatePolicy
+#CCTS #CarbonMarket #IndiaCarbonMarket #CarbonCredits #CBAM #BEE #Decarbonisation #ESG #Sustainability #NetZero
 
-## Tags
-CCTS, Carbon Credit Trading Scheme, Indian Carbon Market, carbon credits India, carbon credit certificate, BEE, Bureau of Energy Efficiency, PAT scheme, GEI targets, emission intensity targets, CERC carbon trading, Grid Controller of India registry, offset mechanism India, MRV, CBAM India, industrial decarbonisation, ESG India, ReGeneva
+## Tags (paste into YouTube Studio → Tags)
+CCTS, Carbon Credit Trading Scheme, Indian Carbon Market, carbon credits India, carbon credit certificate, CCC, BEE, Bureau of Energy Efficiency, PAT scheme, GEI targets, emission intensity targets, CERC carbon trading, Grid Controller of India registry, offset mechanism India, additionality, MRV, CBAM India, UK CBAM, Article 6.2, carbon pricing, industrial decarbonisation, ESG India, ReGeneva
 
-## Uploading
-- Video: `india-ccts-explainer-4k.mp4` (or `india-ccts-explainer-1080p.mp4`) (YouTube serves 4K and creates 1080p and lower automatically)
-- Thumbnail: `thumbnail/thumbnail-1280x720.jpg`
-- Subtitles: `captions.srt` → Subtitles → English → Upload file → "With timing"
-- In YouTube Studio's "Altered or synthetic content" setting, consider disclosing the AI voice. The voice is realistic and synthetic, even though it is Surya's own.
+## Upload settings
+| Setting | Value |
+|---|---|
+| Video file | `india-ccts-explainer-v2-4k.mp4` (YouTube creates 1080p and lower renditions itself) |
+| Thumbnail | `india-ccts-thumbnail-1280x720.jpg` |
+| Subtitles | Subtitles → Add language: English → Upload file → With timing → `india-ccts-captions-en-v2.srt` |
+| Chapters | Already in the description (the first timestamp must be 0:00) |
+| Category | Education (or Science & Technology) |
+| Audience | Not made for kids |
+| Altered or synthetic content | **Yes**: the narration is an AI-generated voice |
+| Language | English (India) |
+| Licence | Standard YouTube licence. Music and sound design are original and royalty-free, so there is no Content ID risk. |
+| End screen | Add "Subscribe" and "Best for viewer" video elements over the final ~10 s ReGeneva card |
+| Pinned comment | "What's your biggest CCTS question: targets, trading, or offsets? Drop it below 👇" |
 
 ---
 
 # LinkedIn post (paste after upload)
 
-India's carbon market just got real, and most businesses still don't know how it works. 🇮🇳🌱
+India's carbon market just got real, and carbon is becoming a line item on the balance sheet. 🇮🇳
 
-Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants now have legally binding greenhouse-gas emission-intensity targets for FY2025-26 and FY2026-27.
+Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants now have binding emission-intensity targets.
+➡️ Beat your target and you may earn Carbon Credit Certificates (1 CCC = 1 tCO₂e).
+➡️ Miss it and you buy them, or pay compensation at 2× the average market price.
 
-Beat your target → you may earn Carbon Credit Certificates (1 CCC = 1 tCO₂e).
-Miss it → you buy certificates, or pay environmental compensation at 2× the average market price.
+And it doesn't stop at India's border:
+🌍 The EU's CBAM is live, phasing in from 2.5% in 2026 to 100% by 2034.
+🇬🇧 The UK has listed India's CCTS for carbon-price relief under its CBAM, from 2027.
 
-In our new 13-minute explainer, I break down:
-🔹 How CCTS works: BEE, MoEFCC, Grid Controller of India, CERC and the 5-step compliance cycle
-🔹 A worked example: who earns, who pays
-🔹 What's live today vs what's still pending (no CCC has a market price yet!)
-🔹 Opportunities for industry, project developers, consultants, tech providers, investors and MSMEs
-🔹 The critiques: intensity vs absolute targets, oversupply risk, price discovery
+In our new explainer we break down:
+🔹 Why carbon needs a price (and why green steel struggles without one)
+🔹 How CCTS works, step by step, from targets to trading
+🔹 How offset projects earn credits, and the additionality test
+🔹 What's live today vs still pending (no CCC price exists yet!)
+🔹 Who gains: industry, developers, advisers, verifiers, lenders, MSMEs
 
-▶️ Watch here: [YouTube link]
+▶️ Watch: [YouTube link]
 
-Carbon is moving from the sustainability report into the operating plan. Is your organisation ready?
+Is your organisation ready to end the year with credits, not a bill?
 
-#CCTS #CarbonMarkets #IndiaCarbonMarket #Decarbonisation #ESG #Sustainability #NetZero #ReGeneva
+#CCTS #CarbonMarkets #CBAM #IndiaCarbonMarket #Decarbonisation #ESG #Sustainability #NetZero #ReGeneva
