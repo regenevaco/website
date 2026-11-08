@@ -209,8 +209,8 @@
       "lines": [
         {"style": "curious", "text": "So what does this mean for business? Let's look at who gains, and how.",
          "say": "So what does this mean for business? Let's look at who gains, and how."},
-        {"style": "explanatory", "text": "For obligated industries, every tonne avoided now has two values: lower energy costs, and potentially sellable certificates. The carbon price becomes part of every capex decision.",
-         "say": "For obligated industries, every tonne avoided now has two values. Lower energy costs, and potentially sellable certificates. The carbon price becomes part of every capex decision."},
+        {"style": "explanatory", "text": "For obligated industries, every tonne of emissions avoided now has two values: lower energy costs, and potentially sellable certificates. The carbon price becomes part of every capex decision.",
+         "say": "For obligated industries, every tonne of emissions avoided now has two values. Lower energy costs, and potentially sellable certificates. The carbon price becomes part of every capex decision."},
         {"style": "emphatic", "text": "Data becomes a strategic asset. CFOs and boards are already asking one question: will we end the year with credits, or with a bill?",
          "say": "Data becomes a strategic asset. C F Os and boards are already asking one question. Will we end the year with credits, or with a bill?"},
         {"style": "explanatory", "text": "Project developers get a domestic route to certificates. Sustainability advisers will see demand for GHG accounting, readiness assessments, monitoring plans and decarbonisation roadmaps.",
