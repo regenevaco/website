@@ -63,7 +63,7 @@ CCTS, Carbon Credit Trading Scheme, Indian Carbon Market, carbon credits India, 
 ## Upload settings
 | Setting | Value |
 |---|---|
-| Video file | `india-ccts-explainer-v2-4k.mp4` (YouTube creates 1080p and lower renditions itself) |
+| Video file | `india-ccts-explainer-v2-4k-web.mp4` (YouTube creates 1080p and lower renditions itself) |
 | Thumbnail | `india-ccts-thumbnail-1280x720.jpg` |
 | Subtitles | Subtitles → Add language: English → Upload file → With timing → `india-ccts-captions-en-v2.srt` |
 | Chapters | Already in the description (the first timestamp must be 0:00) |

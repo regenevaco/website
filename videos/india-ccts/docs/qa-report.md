@@ -1,4 +1,22 @@
-# Final QA report: India's CCTS explainer (31 Oct 2026)
+# Final QA report: India's CCTS explainer v2 (8 Nov 2026)
+
+## v2 deliverables (verified)
+| File | Spec | Check |
+|---|---|---|
+| `india-ccts-explainer-v2-4k-web.mp4` | H.264 High, 3840×2160, 30 fps (two-pass 3.05 Mbps, sized under the 400 MiB delivery limit), AAC 192 kbps 48 kHz stereo, 15:56 | 28,681/28,681 video frames · −14.0 LUFS · −1.5 dBTP |
+| `india-ccts-explainer-v2-1080p.mp4` | H.264 High, 1920×1080 native render (CRF 17), 30 fps, AAC 320 kbps, 372 MiB | 28,681/28,681 frames · −14.0 LUFS · −1.5 dBTP |
+| `india-ccts-captions-en-v2.srt` | English, timed from the final narration | matches the script's `text` wording |
+| `india-ccts-chapters-v2.txt` | 15 chapters from 0:00 | also pasted into the YouTube description |
+
+## v2 checks
+- **Length:** 15:56, under the 20-minute brief.
+- **Voice:** Surya Indian Accent Original Voice Clone, with four delivery styles (curious, emphatic, explanatory, warm) chosen per line. Every chunk was transcribed by ASR and compared with the script. Regenerated after review: evolution 1 (dropped "CERC"), example 0 ("eight zero" misheard), and business 1 and 3. The remaining low scores come from ASR normalisation (tons/tonnes, CO2E, digits), not mispronunciation.
+- **Content rules:** the reference video, its channel and its link appear nowhere in the video, captions or description. Surya's name is never spoken or shown. The end card says the narration is AI-generated.
+- **Layout:** stills from every chapter were checked at the final timing. Fixed before rendering: the title-card cut-off date (now 8 November 2026) and the overview certificate card overlapping the sources line.
+
+---
+
+# v1 QA report (31 Oct 2026)
 
 ## Deliverables (verified)
 | File | Spec | Check |
