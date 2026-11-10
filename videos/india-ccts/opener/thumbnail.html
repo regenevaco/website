@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CCTS thumbnail</title>
+<link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+:root { --g: #20C997; --red: #FF5A45; }
+html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: #050807; }
+.bg { position: absolute; inset: -20px; background: url(BG) center/cover; filter: blur(3px) brightness(0.62) saturate(1.05); }
+.glow { position: absolute; left: 640px; top: -60px; width: 760px; height: 860px;
+        background: radial-gradient(closest-side, rgba(32,201,151,0.30), rgba(32,201,151,0) 70%); }
+.shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,6,5,0.92) 0%, rgba(3,6,5,0.75) 42%, rgba(3,6,5,0) 62%); }
+.vig { position: absolute; inset: 0; box-shadow: inset 0 0 160px rgba(0,0,0,0.75); }
+.me { position: absolute; height: 1400px; left: 464px; top: -85px;
+      filter: drop-shadow(0 0 2px rgba(32,201,151,0.9)) drop-shadow(0 0 26px rgba(32,201,151,0.45)) drop-shadow(18px 24px 40px rgba(0,0,0,0.6)); }
+.pill { position: absolute; left: 50px; top: 56px; background: var(--g); color: #03130e; border-radius: 12px;
+        padding: 9px 20px 10px; font: 900 30px "ESC"; letter-spacing: 0.04em; }
+.q { position: absolute; left: 44px; top: 118px; font-family: "ESC"; font-weight: 900; line-height: 0.86;
+     text-shadow: 0 6px 0 rgba(0,0,0,0.55), 0 14px 40px rgba(0,0,0,0.6); }
+.q .a { display: block; font-size: 178px; color: var(--g); letter-spacing: -0.01em; }
+.q .or { display: block; font-size: 70px; color: #fff; margin: 10px 0 6px 6px; }
+.q .b { display: block; font-size: 214px; color: var(--red); letter-spacing: -0.01em; }
+.foot { position: absolute; left: 50px; bottom: 44px; display: flex; align-items: center; gap: 16px; }
+.foot img { height: 34px; }
+.foot span { font: 700 22px "Roboto"; color: rgba(255,255,255,0.85); border-left: 2px solid rgba(255,255,255,0.35); padding-left: 16px; }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="glow"></div>
+<div class="shade"></div>
+<img class="me" src="SUBJECT" alt="">
+<div class="vig"></div>
+<div class="pill">INDIA'S CARBON MARKET · CCTS</div>
+<div class="q"><span class="a">CREDITS</span><span class="or">or a</span><span class="b">BILL?</span></div>
+<div class="foot"><img src="../assets/regeneva-logo-white.png" alt="ReGeneva"><span>490 factories · new carbon targets</span></div>
+</body>
+</html>

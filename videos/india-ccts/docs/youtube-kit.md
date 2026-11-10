@@ -1,11 +1,14 @@
-# YouTube upload kit: India's CCTS explainer (v2, November 2026)
+# YouTube upload kit: India's CCTS explainer (v3 with presenter intro, November 2026)
 
 ## Title (recommended first)
-1. India's Carbon Market Explained: CCTS, Carbon Credits, CBAM & What It Means for Business (2026)
-2. India's Carbon Credit Trading Scheme (CCTS): How It Works, Where It Stands & Who Gains
-3. Will Your Plant Earn or Pay? India's Carbon Credit Trading Scheme Explained
+1. Credits or a Bill? India's Carbon Market (CCTS) Explained for Business (2026)
+2. India's Carbon Market Explained: CCTS, Carbon Credits, CBAM & What It Means for Business (2026)
+3. India's Carbon Credit Trading Scheme (CCTS): How It Works, Where It Stands & Who Gains
+4. Will Your Plant Earn or Pay? India's Carbon Credit Trading Scheme Explained
 
 ## Description
+
+490 Indian factories just got a new target, and it's not a production target. It's a carbon target. At the end of the year, will your company hold credits, or a bill?
 
 India now has its own compliance carbon market. Under the Carbon Credit Trading Scheme (CCTS), 490 industrial plants have legally binding greenhouse-gas emission-intensity targets, in sectors including aluminium, cement, chlor-alkali, pulp & paper, refining, petrochemicals and textiles. Beat your target and you may earn Carbon Credit Certificates. Miss it and you buy them, or pay environmental compensation. With the EU's CBAM now live and the UK recognising CCTS for its own carbon border tax, carbon is fast becoming a line item on the balance sheet.
 
@@ -21,21 +24,22 @@ In this ReGeneva explainer:
 ✅ Business opportunities, expert critiques, and what comes next
 
 ⏱️ Chapters
-0:00 Two plants, one decision
-0:41 The big picture
-1:29 Why put a price on carbon?
-2:47 Decoding the jargon
-3:56 How India got here
-5:10 Why India needs CCTS
-6:01 How CCTS works
-7:35 A worked example
-8:31 The offset route
-9:33 The global link
-10:51 Where CCTS stands today
-12:24 Business opportunities
-13:24 Challenges and critiques
-14:31 What comes next
-15:13 What it means for you
+0:00 Intro: credits or a bill?
+1:33 Two plants, one decision
+2:15 The big picture
+3:02 Why put a price on carbon?
+4:20 Decoding the jargon
+5:29 How India got here
+6:43 Why India needs CCTS
+7:34 How CCTS works
+9:08 A worked example
+10:04 The offset route
+11:07 The global link
+12:24 Where CCTS stands today
+13:57 Business opportunities
+14:57 Challenges and critiques
+16:04 What comes next
+16:46 What it means for you
 
 📚 Key sources (research cut-off 8 Nov 2026)
 • Carbon Credit Trading Scheme, 2023 (S.O. 2825(E), Ministry of Power): https://beeindia.gov.in/sites/default/files/CCTS.pdf
@@ -51,7 +55,7 @@ In this ReGeneva explainer:
 • IEEFA, Carbon price formation in the CCTS: https://ieefa.org/resources/potential-drivers-carbon-price-formation-ccts-design-and-market-dynamics-indian-carbon
 • CEEW, Final emission reduction targets & market dynamics: https://www.ceew.in/blogs/how-india%E2%80%99s-final-emission-reduction-targets-can-shape-carbon-market-dynamics
 
-ℹ️ Independent explainer by ReGeneva. Not legal, tax or investment advice. Worked examples and charts marked "illustrative" are hypothetical. The narration uses an AI-generated voice.
+ℹ️ Independent explainer by ReGeneva. Not legal, tax or investment advice. Worked examples and charts marked "illustrative" are hypothetical. The main explainer narration uses an AI-generated voice; the intro is presented on camera.
 
 🌱 ReGeneva: Simplifying ESG. Amplifying Action. | https://regeneva.co
 
@@ -63,13 +67,13 @@ CCTS, Carbon Credit Trading Scheme, Indian Carbon Market, carbon credits India, 
 ## Upload settings
 | Setting | Value |
 |---|---|
-| Video file | `india-ccts-explainer-v2-4k-web.mp4` (YouTube creates 1080p and lower renditions itself) |
-| Thumbnail | `india-ccts-thumbnail-1280x720.jpg` |
-| Subtitles | Subtitles → Add language: English → Upload file → With timing → `india-ccts-captions-en-v2.srt` |
+| Video file | `india-ccts-explainer-v3-4k.mp4` (YouTube creates 1080p and lower renditions itself) |
+| Thumbnail | `india-ccts-thumbnail-v3-1280x720.jpg` (2560×1440 PNG also included) |
+| Subtitles | Subtitles → Add language: English → Upload file → With timing → `india-ccts-captions-en-v3.srt` |
 | Chapters | Already in the description (the first timestamp must be 0:00) |
 | Category | Education (or Science & Technology) |
 | Audience | Not made for kids |
-| Altered or synthetic content | **Yes**: the narration is an AI-generated voice |
+| Altered or synthetic content | **Yes**: the explainer narration is an AI-generated voice |
 | Language | English (India) |
 | Licence | Standard YouTube licence. Music and sound design are original and royalty-free, so there is no Content ID risk. |
 | End screen | Add "Subscribe" and "Best for viewer" video elements over the final ~10 s ReGeneva card |

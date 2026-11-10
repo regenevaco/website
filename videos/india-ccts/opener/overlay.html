@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Opener overlays</title>
+<link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "ESC"; font-weight: 600; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-SemiBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 400; src: url(../../../assets/fonts/Roboto/Roboto-Regular.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url(../../../assets/fonts/Roboto/Roboto-Medium.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+:root { --g: #20C997; --red: #FF6B57; --panel: rgba(8, 12, 11, 0.78); }
+html, body { margin: 0; width: 1920px; height: 1080px; background: transparent; overflow: hidden; }
+body { font-family: "Roboto", sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+.el { position: absolute; opacity: 0; will-change: transform, opacity; }
+.panel { background: var(--panel); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px;
+         box-shadow: 0 18px 50px rgba(0,0,0,0.35); padding: 26px 34px; }
+.kicker { font: 600 22px "ESC"; letter-spacing: 0.32em; text-transform: uppercase; color: var(--g); }
+.big { font: 900 170px/0.95 "ESC"; color: var(--g); letter-spacing: -0.01em; }
+.h { font: 800 52px/1.05 "ESC"; }
+.sub { font: 400 26px/1.35 "Roboto"; color: rgba(255,255,255,0.78); }
+.row { display: flex; align-items: center; gap: 18px; }
+.ico { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; font-size: 28px; flex: none; }
+.ok { background: var(--g); color: #04140f; }
+.no { background: var(--red); color: #200704; }
+
+/* 1. hook counter */
+#n490 { left: 96px; top: 290px; }
+/* 2. targets list */
+#targets { left: 80px; top: 300px; }
+.t { font: 800 44px/1.25 "ESC"; color: rgba(255,255,255,0.9); position: relative; display: inline-block; opacity: 0; }
+.t .strike { position: absolute; left: -6px; top: 52%; height: 7px; width: 0; background: var(--red); border-radius: 4px; }
+.chip { display: inline-block; margin-top: 18px; padding: 10px 26px 12px; border-radius: 14px; background: var(--g); color: #04140f;
+        font: 900 54px/1 "ESC"; letter-spacing: 0.02em; opacity: 0; }
+/* 3. lower third */
+#lower { left: 96px; bottom: 104px; display: flex; align-items: stretch; }
+#lower .bar { width: 10px; background: var(--g); border-radius: 6px; margin-right: 22px; }
+#lower .box { background: var(--panel); border-radius: 0 18px 18px 0; padding: 18px 34px 20px 28px; }
+#lower img { height: 46px; display: block; }
+#lower .sub { margin-top: 8px; font-size: 28px; }
+/* 4. beat / miss */
+#beat { left: 96px; top: 300px; width: 640px; }
+#beat .row + .row { margin-top: 22px; }
+#beat .row { opacity: 0; }
+#beat .h { font-size: 44px; }
+#beat .sub { font-size: 25px; }
+/* 5/6. EU, UK */
+#eu, #uk { right: 64px; top: 300px; width: 460px; }
+#eu .sub2, #uk .sub2 { opacity: 0; margin-top: 10px; }
+.flag { font: 800 26px "ESC"; letter-spacing: 0.18em; color: var(--g); }
+/* 7. roles */
+#roles { left: 96px; top: 300px; }
+.role { display: block; width: fit-content; margin-bottom: 14px; padding: 12px 24px; border-radius: 14px; background: var(--panel);
+        border-left: 6px solid var(--g); font: 800 42px "ESC"; opacity: 0; }
+/* 8. big question */
+#q { left: 96px; top: 250px; }
+#q .w { font: 900 128px/1.0 "ESC"; opacity: 0; display: block; text-shadow: 0 8px 30px rgba(0,0,0,0.45); }
+#q .w i { font-size: 92px; margin-left: 18px; vertical-align: 10%; }
+#q .or { font: 800 56px/1.2 "ESC"; color: rgba(255,255,255,0.8); opacity: 0; display: block; margin: 4px 0 2px 6px; }
+/* 9. in this video */
+#agenda { left: 96px; top: 300px; }
+.ag { display: flex; align-items: center; gap: 16px; margin-top: 16px; opacity: 0; font: 800 46px "ESC"; }
+.ag b { width: 46px; height: 46px; border-radius: 50%; background: var(--g); color: #04140f; display: grid; place-items: center; font: 900 26px "ESC"; }
+/* 10. stay */
+#stay { left: 96px; bottom: 104px; display: flex; align-items: stretch; }
+#stay .bar { width: 10px; background: var(--g); border-radius: 6px; margin-right: 22px; }
+#stay .box { background: var(--panel); border-radius: 0 18px 18px 0; padding: 18px 34px 20px 28px; }
+#stay .h { font-size: 46px; }
+#stay .sub { opacity: 0; margin-top: 6px; font-size: 27px; }
+</style>
+</head>
+<body>
+<div class="el panel" id="n490" data-in="0.25" data-out="3.95">
+  <div class="big"><span id="cnt">0</span></div>
+  <div class="h" style="font-size:46px">Indian factories</div>
+  <div class="sub">just got a new target</div>
+</div>
+
+<div class="el panel" id="targets" data-in="5.0" data-out="9.75">
+  <div class="kicker" style="margin-bottom:10px">Not a…</div>
+  <div class="t" data-at="5.25">Production target<span class="strike" data-at="6.35"></span></div><br>
+  <div class="t" data-at="6.75">Revenue target<span class="strike" data-at="7.7"></span></div><br>
+  <div class="chip" data-at="8.45">CARBON TARGET</div>
+</div>
+
+<div class="el" id="lower" data-in="9.95" data-out="15.6">
+  <div class="bar"></div>
+  <div class="box"><img src="../assets/regeneva-logo-white.png" alt="ReGeneva"><div class="sub">ESG &amp; Sustainability Explainer</div></div>
+</div>
+
+<div class="el panel" id="beat" data-in="18.25" data-out="29.8">
+  <div class="row" data-at="18.35"><div class="ico ok"><i class="fa-solid fa-check"></i></div>
+    <div><div class="h">Beat the target</div><div class="sub">Every tonne saved can become a certificate you can sell</div></div></div>
+  <div class="row" data-at="25.95"><div class="ico no"><i class="fa-solid fa-xmark"></i></div>
+    <div><div class="h">Miss it</div><div class="sub">Pay the price: buy certificates</div></div></div>
+</div>
+
+<div class="el panel" id="eu" data-in="34.0" data-out="40.8">
+  <div class="flag">EUROPE</div>
+  <div class="h" style="font-size:64px;color:var(--g)">CBAM</div>
+  <div class="sub sub2" data-at="37.45">Carbon Border Adjustment Mechanism: a carbon tax at the border</div>
+</div>
+
+<div class="el panel" id="uk" data-in="41.0" data-out="48.1">
+  <div class="flag">UNITED KINGDOM</div>
+  <div class="h" style="font-size:46px">recognises India's <span style="color:var(--g)">CCTS</span></div>
+  <div class="sub sub2" data-at="46.35">Carbon Credit Trading Scheme</div>
+</div>
+
+<div class="el" id="roles" data-in="48.3" data-out="55.0">
+  <div class="role" data-at="48.55">CFOs</div>
+  <div class="role" data-at="49.75">Plant heads</div>
+  <div class="role" data-at="50.65">ESG &amp; sustainability teams</div>
+</div>
+
+<div class="el" id="q" data-in="55.1" data-out="63.4">
+  <div class="kicker" style="margin-bottom:12px">At the end of the year</div>
+  <span class="w" data-at="57.85" style="color:var(--g)">Credits<i class="fa-solid fa-circle-check"></i></span>
+  <span class="or" data-at="59.05">or</span>
+  <span class="w" data-at="60.2" style="color:var(--red)">a bill?<i class="fa-solid fa-file-invoice-dollar"></i></span>
+</div>
+
+<div class="el panel" id="agenda" data-in="67.55" data-out="77.75">
+  <div class="kicker">In this video</div>
+  <div class="ag" data-at="72.75"><b>1</b>What CCTS is</div>
+  <div class="ag" data-at="73.75"><b>2</b>Where it stands</div>
+  <div class="ag" data-at="75.45"><b>3</b>The opportunities</div>
+</div>
+
+<div class="el" id="stay" data-in="77.95" data-out="88.95">
+  <div class="bar"></div>
+  <div class="box"><div class="h">Stay till the end</div>
+    <div class="sub" data-at="81.6">Opportunities for ESG &amp; sustainability professionals</div></div>
+</div>
+
+<script>
+const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+const IN = 0.35, OUT = 0.3;
+function setTime(t) {
+  let key = '', visible = false;
+  for (const el of document.querySelectorAll('.el')) {
+    const a = +el.dataset.in, b = +el.dataset.out;
+    const pin = ease((t - a) / IN), pout = ease((t - (b - OUT)) / OUT);
+    const op = t < a || t > b ? 0 : pin * (1 - pout);
+    const y = (1 - pin) * 26 - pout * 10;
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = `translateY(${y.toFixed(1)}px)`;
+    if (op > 0.002) visible = true;
+    key += op.toFixed(3) + y.toFixed(1);
+    for (const c of el.querySelectorAll('[data-at]')) {
+      const p = ease((t - +c.dataset.at) / 0.32);
+      if (c.classList.contains('strike')) { c.style.width = `calc(${(p * 100).toFixed(1)}% + 12px)`; c.style.opacity = p > 0 ? 1 : 0; }
+      else { c.style.opacity = p.toFixed(3); c.style.transform = `translateX(${((1 - p) * -22).toFixed(1)}px)`; }
+      key += p.toFixed(3);
+    }
+  }
+  const n = document.getElementById('cnt');
+  const pc = ease((t - 0.35) / 0.9);
+  n.textContent = Math.round(490 * pc);
+  key += n.textContent;
+  return { key, visible };
+}
+window.setTime = setTime;
+</script>
+</body>
+</html>
