@@ -1,4 +1,25 @@
-# Final QA report: India's CCTS explainer v2 (8 Nov 2026)
+# QA report: India's CCTS explainer v3, with the presenter intro (10 Nov 2026)
+
+## What changed from v2
+A 1:33 to-camera intro by the presenter now opens the video. The v2 explainer follows unchanged, sliding in at 1:33.1.
+
+## Intro pipeline (`opener/`)
+| Stage | Script | Notes |
+|---|---|---|
+| Matte + face tracking | `matte.py` | Robust Video Matting (ResNet-50) on all 3,689 frames, plus 478-point face landmarks per frame (no frames without a face). The iPhone HLG/Dolby Vision footage is tone-mapped to SDR BT.709. |
+| Edit | `edl.py` | 123 s of footage cut to 101.2 s across 33 segments. Removed: long pauses, breaths, a false start ("let's begin with. With…"), a doubled "is", and the duplicated "By the end of the year". Every join was checked by ASR. |
+| Audio | `audio.py` | Denoise, EQ, de-ess and two-stage compression, then ×1.08 tempo with pitch kept (93.7 s). A royalty-free music bed is ducked under the voice. −14 LUFS, matching the explainer. |
+| Studio set | `studio.py` | Blender Cycles set: 35 mm lens focused at 1.2 m, f/2.2. Charcoal wall, halo-lit ReGeneva sign, walnut slats, green LED, shelves and lamp. |
+| Retouch | `retouch.py` | The nose scar is lifted to the surrounding skin tone at low frequency only, so texture and the ridge highlight stay. Also light frequency-separation skin evening, under-eye softening and hair-shine taming. Moles and pores are kept. |
+| Composite | `comp.py` | Guided 4K matte upsampling and edge colour unmixing (removes the old white wall), plus light wrap, grade, grain and per-cut punch-ins (1.0 to 1.25). Encoded BT.601/tv, like the explainer. |
+| Graphics | `overlay.html` + `render_overlay.js` | Callouts timed to the presenter's words. An automated check confirmed that no graphic overlaps the face or hair in any frame. |
+| Thumbnail | `thumbnail.html` + `render_thumb.js` | IMG_5471, cut out with BiRefNet-portrait, with the same scar repair and retouch. |
+| Join + encode | `final.sh` | 0.6 s smooth slide into the explainer; explainer audio layered with a whoosh; two-pass 4K encode sized under 400 MiB. |
+| Subtitles + chapters | `captions.py` | The presenter's exact words (names and acronyms spelled correctly), then the explainer cues offset by 93.1 s. 237 cues, none overlapping. |
+
+---
+
+# QA report: India's CCTS explainer v2 (8 Nov 2026)
 
 ## v2 deliverables (verified)
 | File | Spec | Check |
