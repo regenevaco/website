@@ -38,7 +38,7 @@ WMS=$(python3 -c "print(int(round(($OFF-0.35)*1000)))")
 FCV="[0:v]fps=30,settb=AVTB,setpts=PTS-STARTPTS,setsar=1[o];[1:v]fps=30,settb=AVTB,setpts=PTS-STARTPTS,setsar=1[x];\
 [o][x]xfade=transition=smoothleft:duration=$XF:offset=$OFF,format=yuv420p[v]"
 FC="$FCV;[3:a]adelay=$DMS|$DMS[e];[4:a]adelay=$WMS|$WMS,volume=0.22[w];\
-[2:a][e][w]amix=inputs=3:normalize=0:duration=longest,alimiter=limit=0.89[a]"
+[2:a][e][w]amix=inputs=3:normalize=0:duration=longest,alimiter=limit=0.89:level=0[a]"
 IN=(-i "$W/opener_4k.mp4" -i "$EXPL" -i "$W/opener_mix.wav" -i "$EMIX" -i "$W/whoosh.wav")
 cd "$W"
 if [[ "$VK" == crf* ]]; then
