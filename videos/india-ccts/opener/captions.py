@@ -48,10 +48,11 @@ OPENER = [
 
 
 def ts(t):
-    t = max(0.0, t)
-    h, m = int(t // 3600), int(t % 3600 // 60)
-    s = t - h * 3600 - m * 60
-    return f"{h:02d}:{m:02d}:{int(s):02d},{int(round((s - int(s)) * 1000)) % 1000:03d}"
+    ms = int(round(max(0.0, t) * 1000))
+    h, ms = divmod(ms, 3600000)
+    m, ms = divmod(ms, 60000)
+    s, ms = divmod(ms, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
 def parse_srt(p):
