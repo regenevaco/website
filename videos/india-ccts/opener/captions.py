@@ -16,7 +16,7 @@ OPENER = [
     ("Guess", 4.2, "Guess what?"),
     ("Not", 5.1, "Not a production target, or not a revenue target."),
     ("It's", 8.1, "It's a carbon target."),
-    ("Hi", 9.8, "Hi all, this is Surya Narayankar."),
+    ("Hi", 9.8, "Hi all, this is Surya Narayan Kar."),
     ("Welcome", 12.0, "Welcome to another ESG and Sustainability Explainer by ReGeneva."),
     ("The", 15.7, "The mechanism is very simple."),
     ("You", 18.3, "You beat the target, and every tonne of greenhouse gas emission"),
