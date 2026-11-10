@@ -1,9 +1,9 @@
 # YouTube upload kit: India's CCTS explainer (v3 with presenter intro, November 2026)
 
 ## Title (recommended first)
-1. Credits or a Bill? India's Carbon Market (CCTS) Explained for Business (2026)
-2. India's Carbon Market Explained: CCTS, Carbon Credits, CBAM & What It Means for Business (2026)
-3. India's Carbon Credit Trading Scheme (CCTS): How It Works, Where It Stands & Who Gains
+1. India's Carbon Credit Trading Scheme (CCTS) Explained: How It Works & What It Means for Business
+2. Credits or a Bill? India's Carbon Market (CCTS) Explained for Business (2026)
+3. India's Carbon Market Explained: CCTS, Carbon Credits, CBAM & What It Means for Business (2026)
 4. Will Your Plant Earn or Pay? India's Carbon Credit Trading Scheme Explained
 
 ## Description

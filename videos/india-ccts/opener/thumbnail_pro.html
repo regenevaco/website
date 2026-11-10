@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CCTS thumbnail (professional)</title>
+<link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "ESC"; font-weight: 700; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url(../../../assets/fonts/Roboto/Roboto-Medium.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+:root { --g: #20C997; --ink: #0A1311; }
+html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; }
+body { background: radial-gradient(900px 700px at 1030px 330px, #12392F 0%, #0C1D19 45%, #070D0C 100%); font-family: "Roboto", sans-serif; color: #fff; position: relative; }
+/* faint consulting-style grid + a declining emissions line */
+.grid { position: absolute; inset: 0; opacity: 0.22;
+  background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 48px 48px; -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 55%, transparent 80%); }
+svg.trend { position: absolute; left: 0; top: 0; }
+.me { position: absolute; height: 960px; left: 700px; top: 34px;
+      filter: drop-shadow(0 0 1.5px rgba(32,201,151,0.75)) drop-shadow(0 0 22px rgba(32,201,151,0.28)) drop-shadow(-24px 20px 40px rgba(0,0,0,0.55)); }
+.fade { position: absolute; left: 640px; top: 0; width: 200px; height: 720px; background: linear-gradient(90deg, rgba(7,13,12,0.55), rgba(7,13,12,0)); }
+.brand { position: absolute; left: 56px; top: 46px; display: flex; align-items: center; gap: 14px; }
+.brand img { height: 30px; }
+.brand span { font: 700 17px "ESC"; letter-spacing: 0.32em; color: var(--g); border-left: 2px solid rgba(255,255,255,0.3); padding-left: 14px; }
+h1 { position: absolute; left: 52px; top: 104px; width: 640px; margin: 0; font: 900 78px/0.98 "ESC"; letter-spacing: -0.005em;
+     text-shadow: 0 6px 24px rgba(0,0,0,0.45); }
+h1 em { font-style: normal; color: var(--g); }
+.flow { position: absolute; left: 56px; top: 440px; display: flex; align-items: flex-start; gap: 0; }
+.step { width: 128px; text-align: center; }
+.step .c { width: 64px; height: 64px; margin: 0 auto 10px; border-radius: 50%; display: grid; place-items: center;
+           background: rgba(32,201,151,0.12); border: 2px solid var(--g); color: var(--g); font-size: 26px; }
+.step b { display: block; font: 800 23px "ESC"; letter-spacing: 0.02em; }
+.arrow { width: 26px; margin-top: 22px; margin-left: -24px; margin-right: -24px; color: rgba(255,255,255,0.55); font-size: 18px; text-align: center; }
+.facts { position: absolute; left: 56px; top: 600px; display: flex; gap: 14px; }
+.fact { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 14px;
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); }
+.fact .n { font: 900 34px/1 "ESC"; color: var(--g); }
+.fact .t { font: 500 16px/1.25 "Roboto"; color: rgba(255,255,255,0.82); }
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<svg class="trend" width="1280" height="720" viewBox="0 0 1280 720">
+  <polyline points="40,250 160,236 280,262 400,300 520,318 640,352 760,392" fill="none" stroke="rgba(32,201,151,0.16)" stroke-width="3"/>
+</svg>
+<div class="fade"></div>
+<img class="me" src="SUBJECT" alt="">
+<div class="brand"><img src="../assets/regeneva-logo-white.png" alt="ReGeneva"><span>EXPLAINER</span></div>
+<h1>India's Carbon Credit Trading Scheme <em>(CCTS) Explained</em></h1>
+<div class="flow">
+  <div class="step"><div class="c"><i class="fa-solid fa-bullseye"></i></div><b>Targets</b></div>
+  <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+  <div class="step"><div class="c"><i class="fa-solid fa-clipboard-check"></i></div><b>Verify</b></div>
+  <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+  <div class="step"><div class="c"><i class="fa-solid fa-certificate"></i></div><b>Credits</b></div>
+  <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+  <div class="step"><div class="c"><i class="fa-solid fa-arrow-right-arrow-left"></i></div><b>Trade</b></div>
+</div>
+<div class="facts">
+  <div class="fact"><span class="n">490</span><span class="t">industrial plants<br>with binding targets</span></div>
+  <div class="fact"><span class="n">1 CCC</span><span class="t">= 1 tonne<br>CO₂e</span></div>
+</div>
+</body>
+</html>
