@@ -14,6 +14,7 @@ Every boundary is a 0.4 s transition (video only; audio is layered, never cross-
 """
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -211,51 +212,72 @@ def audio(cfg):
 
 
 # ---------------------------------------------------------------- video
+def cut_points(p, nparts):
+    """Part boundaries (frames) in the middle of explainer chapters: never inside a transition or an overlay."""
+    segs, total = p["segments"], p["total"]
+    mids = [s["start"] + s["frames"] // 2 for s in segs if s["kind"] == "exp"]
+    busy = [(p["lower"] - 30, p["lower"] + 120)] + [(f - 30, f + 130) for f in p["subs"]]
+    mids = [m for m in mids if not any(a <= m <= b for a, b in busy)]
+    cuts = []
+    for k in range(1, nparts):
+        target = total * k / nparts
+        cuts.append(min(mids, key=lambda m: abs(m - target)))
+    return [0] + sorted(set(cuts)) + [total]
+
+
 def video(cfg, part, nparts):
+    """Encode one part of the master. Each part opens only the clips it needs, seeking into the first one."""
     p = json.load(open(f"{cfg['work']}/plan.json"))
     part, nparts = int(part), int(nparts)
+    cuts = cut_points(p, nparts)
+    a, b = cuts[part], cuts[part + 1]
+    if os.environ.get("PART_RANGE"):                             # quick tests: PART_RANGE=a,b (frames)
+        a, b = map(int, os.environ["PART_RANGE"].split(","))
     segs = p["segments"]
-    inputs, chains = [], []
+    inputs, chains, used = [], [], []
     for i, s in enumerate(segs):
+        s0, n = s["start"] - a, s["frames"]
+        if s0 + n <= 0 or s0 >= b - a:
+            continue
+        skip = max(0, -s0)
         if s["kind"] == "brand":
             src, mat = f"{cfg['raw']}/ReGeneva_{s['name']}.mp4", "bt709"
         elif s["kind"] == "cam":
             src, mat = f"{cfg['cam']}/{s['name']}.mp4", "bt601"
         else:
             src, mat = f"{cfg['scenes']}/{s['name']}.mp4", "bt601"
-        inputs += ["-i", src]
-        chains.append(f"[{i}:v]settb=AVTB,setpts=PTS-STARTPTS,fps={FPS},"
+        k = len(used)
+        inputs += (["-ss", f"{skip / FPS:.4f}"] if skip else []) + ["-i", src]
+        chains.append(f"[{k}:v]settb=AVTB,setpts=PTS-STARTPTS,fps={FPS},"
                       f"scale=3840:2160:in_color_matrix={mat}:out_color_matrix=bt709:in_range=tv:out_range=tv,"
-                      f"trim=end_frame={s['frames']},setpts=PTS-STARTPTS,format=yuv420p[v{i}]")
+                      f"trim=end_frame={n - skip},setpts=PTS-STARTPTS,format=yuv420p[v{k}]")
+        used.append((s, max(0, s0)))
     last = "v0"
-    for i in range(1, len(segs)):
-        kind = "fade" if "brand" in (segs[i - 1]["kind"], segs[i]["kind"]) else "smoothleft"
-        off = segs[i]["start"] / FPS
-        chains.append(f"[{last}][v{i}]xfade=transition={kind}:duration={XF / FPS}:offset={off:.4f}[x{i}]")
-        last = f"x{i}"
-    k = len(segs)
-    inputs += ["-framerate", str(FPS), "-i", f"{cfg['overlays']}/lower/f_%04d.png"]
-    chains.append(f"[{k}:v]setpts=PTS-STARTPTS+{p['lower'] / FPS:.4f}/TB[lt]")
-    chains.append(f"[{last}][lt]overlay=eof_action=pass:format=auto[o0]")
-    last = "o0"
-    for j, f0 in enumerate(p["subs"]):
-        inputs += ["-framerate", str(FPS), "-i", f"{cfg['overlays']}/sub/f_%04d.png"]
-        chains.append(f"[{k + 1 + j}:v]setpts=PTS-STARTPTS+{f0 / FPS:.4f}/TB[sb{j}]")
-        chains.append(f"[{last}][sb{j}]overlay=eof_action=pass:format=auto[o{j + 1}]")
-        last = f"o{j + 1}"
-    per = int(np.ceil(p["total"] / nparts))
-    a, b = part * per, min(p["total"], (part + 1) * per)
-    chains.append(f"[{last}]trim=start_frame={a}:end_frame={b},setpts=PTS-STARTPTS,format=yuv420p[out]")
-    out = f"{cfg['work']}/v_part{part}.mp4"
+    for k in range(1, len(used)):
+        prev, (s, st) = used[k - 1][0], used[k]
+        kind = "fade" if "brand" in (prev["kind"], s["kind"]) else "smoothleft"
+        chains.append(f"[{last}][v{k}]xfade=transition={kind}:duration={XF / FPS}:offset={st / FPS:.4f}[x{k}]")
+        last = f"x{k}"
+    k = len(used)
+    for name, f0, dur in [("lower", p["lower"], 66)] + [("sub", f, 102) for f in p["subs"]]:
+        if a <= f0 and f0 + dur <= b:
+            inputs += ["-framerate", str(FPS), "-i", f"{cfg['overlays']}/{name}/f_%04d.png"]
+            chains.append(f"[{k}:v]setpts=PTS-STARTPTS+{(f0 - a) / FPS:.4f}/TB[ov{k}]")
+            chains.append(f"[{last}][ov{k}]overlay=eof_action=pass:format=auto[o{k}]")
+            last = f"o{k}"
+            k += 1
+    chains.append(f"[{last}]trim=end_frame={b - a},setpts=PTS-STARTPTS,format=yuv420p[out]")
+    out = f"{cfg['work']}/v_part{part}.mp4" if not os.environ.get("PART_RANGE") else f"{cfg['work']}/test_{a}_{b}.mp4"
     ff(inputs + ["-filter_complex", ";".join(chains), "-map", "[out]", "-c:v", "libx264", "-preset", "medium",
-                 "-crf", "16", "-pix_fmt", "yuv420p", "-g", "60", "-colorspace", "bt709", "-color_primaries", "bt709",
-                 "-color_trc", "bt709", "-color_range", "tv", "-x264-params", "keyint=60:min-keyint=30", out])
-    print("part", part, a, b)
+                 "-crf", "16", "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_primaries", "bt709",
+                 "-color_trc", "bt709", "-color_range", "tv", "-x264-params", "keyint=60:min-keyint=30:rc-lookahead=30", "-threads", "4", out + ".tmp.mp4"])
+    os.replace(out + ".tmp.mp4", out)
+    print("part", part, a, b, "frames", b - a)
 
 
 def mux(cfg, out):
     w = cfg["work"]
-    parts = sorted(f for f in os.listdir(w) if f.startswith("v_part") and f.endswith(".mp4"))
+    parts = sorted((f for f in os.listdir(w) if re.match(r"v_part\d+\.mp4$", f)), key=lambda f: int(f[6:-4]))
     with open(f"{w}/parts.txt", "w") as f:
         f.writelines(f"file '{w}/{x}'\n" for x in parts)
     ff(["-f", "concat", "-safe", "0", "-i", f"{w}/parts.txt", "-i", f"{w}/mix.wav", "-map", "0:v", "-map", "1:a",
