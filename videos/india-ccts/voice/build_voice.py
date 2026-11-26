@@ -30,7 +30,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from zipclone import ZipClone, SR  # noqa: E402
 
-SCRIPT = os.path.join(HERE, "..", "script", "script.json")
+SCRIPT = os.environ.get("VOICE_SCRIPT", os.path.join(HERE, "..", "script", "script.json"))
 PROFILE = json.load(open(os.path.join(HERE, "profiles", os.environ.get(
     "VOICE_PROFILE", "surya-indian-accent-original-voice-clone") + ".json")))
 LEAD_IN, SCENE_PAD_IN, CHUNK_GAP, LINE_GAP, SCENE_PAD_OUT, OUTRO_HOLD = 1.6, 0.8, 0.22, 0.5, 1.1, 6.0

@@ -1,0 +1,370 @@
+{
+ "title": "CBAM Explained: the EU Carbon Border Adjustment Mechanism",
+ "version": 1,
+ "voice": "Surya Indian Accent Original Voice Clone",
+ "notes": "Explainer narration only (chapters 2, 4, 6, 7, 9, 11, 12, 13). Surya's on-camera clips 1-6 sit between them. CBAM is always spoken as one word: 'see bam'.",
+ "styles": "curious = hooks / questions; emphatic = key points; explanatory = teaching; warm = service and closing",
+ "scenes": [
+  {
+   "id": "basics",
+   "chapter": "CBAM in 90 seconds",
+   "tone": "dark",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "Imagine two steel plants making the same coil. One is in Europe. One is outside it.",
+     "say": "Imagine two steel plants making the same coil. One is in Europe. One is outside it."
+    },
+    {
+     "style": "explanatory",
+     "text": "The European plant pays for every tonne of carbon it emits, under the EU Emissions Trading System. In 2026, that's around 75 to 85 euros a tonne.",
+     "say": "The European plant pays for every tonne of carbon it emits, under the E U Emissions Trading System. In twenty twenty-six, that's around seventy-five to eighty-five euros a tonne."
+    },
+    {
+     "style": "emphatic",
+     "text": "The plant outside Europe may pay nothing. So its steel can be cheaper, not because it's better, but because its pollution is free.",
+     "say": "The plant outside Europe may pay nothing. So its steel can be cheaper, not because it's better, but because its pollution is free."
+    },
+    {
+     "style": "explanatory",
+     "text": "European buyers switch suppliers. European production shrinks. And the emissions don't disappear; they just move. Economists call this carbon leakage.",
+     "say": "European buyers switch suppliers. European production shrinks. And the emissions don't disappear. They just move. Economists call this, carbon leakage."
+    },
+    {
+     "style": "explanatory",
+     "text": "CBAM closes that gap at the border. When covered goods enter the EU, the importer must pay the same carbon price the European plant would have paid, for the emissions embedded in those goods.",
+     "say": "See bam closes that gap at the border. When covered goods enter the E U, the importer must pay the same carbon price the European plant would have paid, for the emissions embedded in those goods."
+    },
+    {
+     "style": "explanatory",
+     "text": "It covers six sectors: iron and steel, aluminium, cement, fertilisers, hydrogen and electricity. These are the heaviest-emitting materials in global trade.",
+     "say": "It covers six sectors. Iron and steel, aluminium, cement, fertilisers, hydrogen, and electricity. These are the heaviest emitting materials in global trade."
+    },
+    {
+     "style": "curious",
+     "text": "How big is this? In the reporting phase alone, from late 2023 to mid-2025, importers declared about 156 million tonnes of these goods.",
+     "say": "How big is this? In the reporting phase alone, from late twenty twenty-three to mid twenty twenty-five, importers declared about one hundred and fifty-six million tonnes of these goods."
+    },
+    {
+     "style": "explanatory",
+     "text": "Around 69% was iron and steel, 15% fertilisers, 11% cement and 5% aluminium.",
+     "say": "Around sixty-nine percent was iron and steel, fifteen percent fertilisers, eleven percent cement, and five percent aluminium."
+    },
+    {
+     "style": "emphatic",
+     "text": "And the price isn't a fixed tax. It follows the EU carbon market: €75.36 a tonne in the first quarter of 2026, and €82.32 by the third.",
+     "say": "And the price isn't a fixed tax. It follows the E U carbon market. Seventy-five euros thirty-six a tonne in the first quarter of twenty twenty-six, and eighty-two euros thirty-two by the third."
+    }
+   ]
+  },
+  {
+   "id": "timeline",
+   "chapter": "The timeline",
+   "tone": "light",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "To understand where CBAM is today, you need the story of how it got here, because it kept changing.",
+     "say": "To understand where see bam is today, you need the story of how it got here. Because it kept changing."
+    },
+    {
+     "style": "explanatory",
+     "text": "It began as an idea in the European Green Deal in December 2019. In July 2021, the Commission proposed it as part of the Fit for 55 package.",
+     "say": "It began as an idea in the European Green Deal, in December twenty nineteen. In July twenty twenty-one, the Commission proposed it, as part of the Fit for fifty-five package."
+    },
+    {
+     "style": "explanatory",
+     "text": "It became law as Regulation 2023/956 in May 2023.",
+     "say": "It became law as Regulation twenty twenty-three, nine fifty-six, in May twenty twenty-three."
+    },
+    {
+     "style": "explanatory",
+     "text": "From October 2023 to December 2025, CBAM ran in a transitional phase: importers reported emissions every quarter, but paid nothing.",
+     "say": "From October twenty twenty-three to December twenty twenty-five, see bam ran in a transitional phase. Importers reported emissions every quarter, but paid nothing."
+    },
+    {
+     "style": "explanatory",
+     "text": "Then, in February 2025, the EU proposed simplifications. In October 2025, the omnibus became law.",
+     "say": "Then, in February twenty twenty-five, the E U proposed simplifications. In October twenty twenty-five, the omnibus became law."
+    },
+    {
+     "style": "explanatory",
+     "text": "It brought in a 50-tonne annual threshold that exempts most small importers, while still covering about 99% of the emissions. It also delayed certificate sales and moved the declaration deadline.",
+     "say": "It brought in a fifty tonne annual threshold, that exempts most small importers, while still covering about ninety-nine percent of the emissions. It also delayed certificate sales, and moved the declaration deadline."
+    },
+    {
+     "style": "emphatic",
+     "text": "On 1 January 2026, the definitive period began. CBAM now has a cost.",
+     "say": "On the first of January, twenty twenty-six, the definitive period began. See bam now has a cost."
+    },
+    {
+     "style": "explanatory",
+     "text": "In December 2025, the Commission proposed going further: extending CBAM to around 180 downstream products made mostly of steel and aluminium, from 2028. Parliament and Council are still negotiating that.",
+     "say": "In December twenty twenty-five, the Commission proposed going further. Extending see bam to around one hundred and eighty downstream products, made mostly of steel and aluminium, from twenty twenty-eight. Parliament and Council are still negotiating that."
+    },
+    {
+     "style": "explanatory",
+     "text": "What comes next? On 1 February 2027, CBAM certificates go on sale. And by 30 September 2027, the first annual declaration and payment are due, for everything imported in 2026.",
+     "say": "What comes next? On the first of February, twenty twenty-seven, see bam certificates go on sale. And by the thirtieth of September, twenty twenty-seven, the first annual declaration and payment are due, for everything imported in twenty twenty-six."
+    },
+    {
+     "style": "emphatic",
+     "text": "In 2028, the downstream products, if the extension is agreed. And by 2034, the full carbon price at the border, as EU producers lose their last free allowances.",
+     "say": "In twenty twenty-eight, the downstream products, if the extension is agreed. And by twenty thirty-four, the full carbon price at the border, as E U producers lose their last free allowances."
+    }
+   ]
+  },
+  {
+   "id": "who",
+   "chapter": "Who complies",
+   "tone": "light",
+   "lines": [
+    {
+     "style": "explanatory",
+     "text": "Start with the importer. Any company bringing more than 50 tonnes a year of covered goods into the EU, all products combined, must first become an authorised CBAM declarant, or use a customs representative who is one. Without authorisation, customs won't release the goods.",
+     "say": "Start with the importer. Any company bringing more than fifty tonnes a year of covered goods into the E U, all products combined, must first become an authorised see bam declarant. Or use a customs representative who is one. Without authorisation, customs won't release the goods."
+    },
+    {
+     "style": "explanatory",
+     "text": "Below 50 tonnes, you're exempt. That removes around 90% of importers, mostly small businesses, but keeps about 99% of the emissions in scope. One exception: hydrogen and electricity have no threshold at all.",
+     "say": "Below fifty tonnes, you're exempt. That removes around ninety percent of importers, mostly small businesses, but keeps about ninety-nine percent of the emissions in scope. One exception. Hydrogen and electricity have no threshold at all."
+    },
+    {
+     "style": "explanatory",
+     "text": "The Commission estimated the threshold exempts about 182,000 importers, whose imports carry less than 1% of embedded emissions.",
+     "say": "The Commission estimated the threshold exempts about one hundred and eighty-two thousand importers, whose imports carry less than one percent of embedded emissions."
+    },
+    {
+     "style": "explanatory",
+     "text": "By the first week of January 2026, more than 12,000 companies had applied to become authorised declarants, and over 4,100 already had the status. During the reporting phase, the most reports were filed in Germany, Italy and Poland.",
+     "say": "By the first week of January twenty twenty-six, more than twelve thousand companies had applied to become authorised declarants, and over four thousand one hundred already had the status. During the reporting phase, the most reports were filed in Germany, Italy, and Poland."
+    },
+    {
+     "style": "explanatory",
+     "text": "Next, the producer: the steel mill in India, the aluminium smelter in the Gulf, the cement plant in Turkey. CBAM doesn't oblige them directly. But only they hold the real emissions data, and they need an accredited verifier to confirm it.",
+     "say": "Next, the producer. The steel mill in India, the aluminium smelter in the Gulf, the cement plant in Turkey. See bam doesn't oblige them directly. But only they hold the real emissions data, and they need an accredited verifier to confirm it."
+    },
+    {
+     "style": "explanatory",
+     "text": "Then everyone in between: exporters, traders and buyers. Their contracts now need clauses on who supplies the data, and who bears the cost.",
+     "say": "Then everyone in between. Exporters, traders, and buyers. Their contracts now need clauses on who supplies the data, and who bears the cost."
+    },
+    {
+     "style": "explanatory",
+     "text": "What exactly is counted? The embedded emissions: the CO₂ released to make the product. For steel, aluminium and hydrogen, that's direct emissions from the plant. For cement and fertilisers, it also includes the electricity used.",
+     "say": "What exactly is counted? The embedded emissions. The C O two released to make the product. For steel, aluminium, and hydrogen, that's direct emissions from the plant. For cement and fertilisers, it also includes the electricity used."
+    },
+    {
+     "style": "emphatic",
+     "text": "And if the producer already paid a carbon price at home, that amount can be deducted. That's why domestic carbon markets, like India's CCTS or the UK's ETS, suddenly matter to exporters.",
+     "say": "And if the producer already paid a carbon price at home, that amount can be deducted. That's why domestic carbon markets, like India's C C T S, or the U K's E T S, suddenly matter to exporters."
+    }
+   ]
+  },
+  {
+   "id": "cost",
+   "chapter": "What it costs: a worked example",
+   "tone": "dark",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "Let's make it real. An EU importer brings in 1,000 tonnes of steel from a supplier outside the EU. These numbers are illustrative.",
+     "say": "Let's make it real. An E U importer brings in one thousand tonnes of steel, from a supplier outside the E U. These numbers are illustrative."
+    },
+    {
+     "style": "explanatory",
+     "text": "Scenario A: actual, verified data. The mill measured its emissions: 2.0 tonnes of CO₂ per tonne of steel. That's 2,000 tonnes of embedded emissions.",
+     "say": "Scenario A. Actual, verified data. The mill measured its emissions. Two tonnes of C O two, per tonne of steel. That's two thousand tonnes of embedded emissions."
+    },
+    {
+     "style": "explanatory",
+     "text": "Scenario B: no data. The importer must use the EU's default value for that country, plus a 10% penalty mark-up in 2026. Say that comes to 2.6 tonnes of CO₂ per tonne. That's 2,600 tonnes.",
+     "say": "Scenario B. No data. The importer must use the E U's default value for that country, plus a ten percent penalty mark-up in twenty twenty-six. Say that comes to two point six tonnes of C O two per tonne. That's two thousand six hundred tonnes."
+    },
+    {
+     "style": "emphatic",
+     "text": "The difference is 600 tonnes of CO₂. At the third-quarter price of €82.32, that's about €49,400 extra on one shipment. Almost fifty thousand euros, just for missing data.",
+     "say": "The difference is six hundred tonnes of C O two. At the third quarter price of eighty-two euros thirty-two, that's about forty-nine thousand, four hundred euros extra, on one shipment. Almost fifty thousand euros, just for missing data."
+    },
+    {
+     "style": "explanatory",
+     "text": "And the penalty mark-up rises to 20% in 2027, and 30% from 2028.",
+     "say": "And the penalty mark-up rises to twenty percent in twenty twenty-seven, and thirty percent from twenty twenty-eight."
+    },
+    {
+     "style": "explanatory",
+     "text": "Today, the bill is reduced by an allowance that mirrors the free allowances EU producers still get. But that allowance shrinks every year until 2034. So even if your emissions stay the same, your CBAM bill grows.",
+     "say": "Today, the bill is reduced by an allowance that mirrors the free allowances E U producers still get. But that allowance shrinks every year until twenty thirty-four. So even if your emissions stay the same, your see bam bill grows."
+    },
+    {
+     "style": "emphatic",
+     "text": "By 2034, at today's price, Scenario A means about €165 of carbon cost on every tonne of steel.",
+     "say": "By twenty thirty-four, at today's price, Scenario A means about one hundred and sixty-five euros of carbon cost, on every tonne of steel."
+    }
+   ]
+  },
+  {
+   "id": "global",
+   "chapter": "The global ripple",
+   "tone": "light",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "CBAM is starting to reshape global trade, in three different ways.",
+     "say": "See bam is starting to reshape global trade, in three different ways."
+    },
+    {
+     "style": "explanatory",
+     "text": "First, its scope is growing. The proposed extension would add around 180 downstream products from 2028: things like screws, bolts, wires, pipes and machine parts, made mostly of steel or aluminium.",
+     "say": "First, its scope is growing. The proposed extension would add around one hundred and eighty downstream products from twenty twenty-eight. Things like screws, bolts, wires, pipes, and machine parts, made mostly of steel or aluminium."
+    },
+    {
+     "style": "explanatory",
+     "text": "Parliament wants to go much further, to about 457 product types. It also targets circumvention: shipping goods through a third country, or importing a slightly more processed product, to dodge the rules.",
+     "say": "Parliament wants to go much further, to about four hundred and fifty-seven product types. It also targets circumvention. Shipping goods through a third country, or importing a slightly more processed product, to dodge the rules."
+    },
+    {
+     "style": "explanatory",
+     "text": "Second, other countries are copying it. The UK starts its own CBAM on 1 January 2027, covering aluminium, cement, fertilisers, hydrogen, iron and steel. Exporters to both markets will face two systems, with different rules.",
+     "say": "Second, other countries are copying it. The U K starts its own see bam on the first of January, twenty twenty-seven, covering aluminium, cement, fertilisers, hydrogen, iron, and steel. Exporters to both markets will face two systems, with different rules."
+    },
+    {
+     "style": "curious",
+     "text": "So which exporting countries feel it most? Commission analysis puts China at about 18% of EU imports of CBAM goods, India at 7%, and Russia at 6%.",
+     "say": "So which exporting countries feel it most? Commission analysis puts China at about eighteen percent of E U imports of see bam goods, India at seven percent, and Russia at six percent."
+    },
+    {
+     "style": "explanatory",
+     "text": "And when the definitive period opened in January 2026, the main origins of declared imports were Turkey, China, India, Canada, Taiwan and Vietnam.",
+     "say": "And when the definitive period opened in January twenty twenty-six, the main origins of declared imports were Turkey, China, India, Canada, Taiwan, and Vietnam."
+    },
+    {
+     "style": "explanatory",
+     "text": "Third, exporting countries are responding. India, China and Russia have challenged CBAM at the World Trade Organization.",
+     "say": "Third, exporting countries are responding. India, China, and Russia have challenged see bam at the World Trade Organization."
+    },
+    {
+     "style": "explanatory",
+     "text": "India and the EU concluded a free trade agreement in January 2026. It includes a CBAM annex on data, verification and support for small businesses, but no exemption.",
+     "say": "India and the E U concluded a free trade agreement in January twenty twenty-six. It includes a see bam annex on data, verification, and support for small businesses. But no exemption."
+    },
+    {
+     "style": "explanatory",
+     "text": "Meanwhile, countries like India are building their own carbon markets. Under CBAM, a carbon price paid at home can reduce what's paid at the EU border.",
+     "say": "Meanwhile, countries like India are building their own carbon markets. Under see bam, a carbon price paid at home can reduce what's paid at the E U border."
+    },
+    {
+     "style": "explanatory",
+     "text": "And inside Europe, there's another twist. As EU producers lose free allowances, their exports get more expensive too. So the Commission has proposed a temporary fund, about €633 million from CBAM revenue, to support EU exporters of CBAM goods.",
+     "say": "And inside Europe, there's another twist. As E U producers lose free allowances, their exports get more expensive too. So the Commission has proposed a temporary fund, about six hundred and thirty-three million euros from see bam revenue, to support E U exporters of see bam goods."
+    },
+    {
+     "style": "emphatic",
+     "text": "And here's the trend that tells you CBAM is here to stay. The Commission plans to make it a source of EU funding, with about €1.4 billion a year going to the EU budget from 2028. A rule that pays for the budget is not a rule that quietly disappears.",
+     "say": "And here's the trend that tells you see bam is here to stay. The Commission plans to make it a source of E U funding, with about one point four billion euros a year going to the E U budget, from twenty twenty-eight. A rule that pays for the budget, is not a rule that quietly disappears."
+    }
+   ]
+  },
+  {
+   "id": "challenges",
+   "chapter": "The five real challenges",
+   "tone": "dark",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "So what makes CBAM hard in practice? There are five things.",
+     "say": "So what makes see bam hard in practice? There are five things."
+    },
+    {
+     "style": "explanatory",
+     "text": "One: data from suppliers. Importers depend on emissions data from mills and smelters they don't control, often several tiers back in the supply chain.",
+     "say": "One. Data from suppliers. Importers depend on emissions data from mills and smelters they don't control, often several tiers back in the supply chain."
+    },
+    {
+     "style": "explanatory",
+     "text": "Two: calculation complexity. Embedded emissions follow EU methods: system boundaries, precursors, production routes and electricity factors. Most plants have never calculated them this way.",
+     "say": "Two. Calculation complexity. Embedded emissions follow E U methods. System boundaries, precursors, production routes, and electricity factors. Most plants have never calculated them this way."
+    },
+    {
+     "style": "explanatory",
+     "text": "Three: verification capacity. From 2026, actual data must be checked by an accredited verifier, and there aren't enough of them.",
+     "say": "Three. Verification capacity. From twenty twenty-six, actual data must be checked by an accredited verifier. And there aren't enough of them."
+    },
+    {
+     "style": "explanatory",
+     "text": "Four: contracts and pricing. Who pays? Who supplies the data? What if it's late or rejected? Most supply contracts don't say.",
+     "say": "Four. Contracts and pricing. Who pays? Who supplies the data? What if it's late, or rejected? Most supply contracts don't say."
+    },
+    {
+     "style": "emphatic",
+     "text": "Five: constant change. Default-value acts, price rules, the downstream extension and the UK's CBAM all arrive within months of each other.",
+     "say": "Five. Constant change. Default value acts, price rules, the downstream extension, and the U K's see bam, all arrive within months of each other."
+    }
+   ]
+  },
+  {
+   "id": "regeneva",
+   "chapter": "How ReGeneva helps",
+   "tone": "light",
+   "lines": [
+    {
+     "style": "curious",
+     "text": "So who can help you through all of this? This is exactly the work ReGeneva does.",
+     "say": "So who can help you through all of this? This is exactly the work ReGeneva does."
+    },
+    {
+     "style": "warm",
+     "text": "For exporters and producers, ReGeneva measures and calculates your embedded emissions the way the EU expects. It prepares you for verification, and builds the data packs your European buyers are asking for.",
+     "say": "For exporters and producers, ReGeneva measures and calculates your embedded emissions, the way the E U expects. It prepares you for verification, and builds the data packs your European buyers are asking for."
+    },
+    {
+     "style": "warm",
+     "text": "For EU importers, ReGeneva supports authorisation, supplier data collection, CBAM declarations and certificate planning, so you know your carbon cost before the shipment leaves port.",
+     "say": "For E U importers, ReGeneva supports authorisation, supplier data collection, see bam declarations, and certificate planning. So you know your carbon cost, before the shipment leaves port."
+    },
+    {
+     "style": "emphatic",
+     "text": "And for both, ReGeneva turns CBAM into a decarbonisation roadmap. Because every tonne you cut is money you don't pay at the border.",
+     "say": "And for both, ReGeneva turns see bam into a decarbonisation roadmap. Because every tonne you cut, is money you don't pay at the border."
+    }
+   ]
+  },
+  {
+   "id": "checklist",
+   "chapter": "Your CBAM readiness checklist",
+   "tone": "light",
+   "lines": [
+    {
+     "style": "explanatory",
+     "text": "Wherever you are in the supply chain, start with these five steps.",
+     "say": "Wherever you are in the supply chain, start with these five steps."
+    },
+    {
+     "style": "explanatory",
+     "text": "One: map your exposure. Which products, under which CN codes, go to the EU or the UK, and how many tonnes a year?",
+     "say": "One. Map your exposure. Which products, under which C N codes, go to the E U or the U K, and how many tonnes a year?"
+    },
+    {
+     "style": "explanatory",
+     "text": "Two: get your data. Collect actual emissions per product, per installation, using the EU method.",
+     "say": "Two. Get your data. Collect actual emissions per product, per installation, using the E U method."
+    },
+    {
+     "style": "explanatory",
+     "text": "Three: plan verification. Book an accredited verifier early, because capacity is tight.",
+     "say": "Three. Plan verification. Book an accredited verifier early, because capacity is tight."
+    },
+    {
+     "style": "explanatory",
+     "text": "Four: fix your contracts. Agree who provides the data, who pays, and by when.",
+     "say": "Four. Fix your contracts. Agree who provides the data, who pays, and by when."
+    },
+    {
+     "style": "warm",
+     "text": "Five: cut your emissions. The free allowance shrinks every year, so the bill rises unless your emissions fall.",
+     "say": "Five. Cut your emissions. The free allowance shrinks every year, so the bill rises, unless your emissions fall."
+    }
+   ]
+  }
+ ]
+}
