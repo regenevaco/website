@@ -4,6 +4,8 @@
     python3 assemble.py audio <cfg.json>            -> <work>/mix.wav (-14 LUFS, -1.5 dBTP)
     python3 assemble.py video <cfg.json> <part> <n_parts>  -> <work>/v_part<k>.mp4 (frame range of the master)
     python3 assemble.py mux   <cfg.json> <out.mp4>  -> joins the parts and adds the mix
+    python3 assemble.py pieces <cfg.json> [k n]      -> master as independent pieces (bodies + 0.4 s transitions)
+    python3 assemble.py mux_pieces <cfg.json> <out.mp4> -> joins the pieces and adds the mix
 
 cfg.json: {"work": dir, "raw": dir with ReGeneva_intro/outro.mp4, "edl": dir, "camaudio": dir, "cam": dir with
 comp mp4s, "scenes": dir with <scene>.mp4, "timing": explainer timing.json, "lines": narration lines dir,
@@ -275,6 +277,108 @@ def video(cfg, part, nparts):
     print("part", part, a, b, "frames", b - a)
 
 
+X264 = ["-c:v", "libx264", "-preset", "medium", "-crf", "16", "-pix_fmt", "yuv420p", "-profile:v", "high",
+        "-level", "5.1", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+        "-color_range", "tv", "-x264-params", "keyint=60:min-keyint=30:rc-lookahead=30", "-threads", "3"]
+
+
+def source(cfg, s):
+    if s["kind"] == "brand":
+        return f"{cfg['raw']}/ReGeneva_{s['name']}.mp4", "bt709"
+    if s["kind"] == "cam":
+        return f"{cfg['cam']}/{s['name']}.mp4", "bt601"
+    return f"{cfg['scenes']}/{s['name']}.mp4", "bt601"
+
+
+def pieces_plan(p):
+    """Bodies (one input each) and 0.4 s transitions (two short inputs), in timeline order."""
+    segs, out = p["segments"], []
+    last = len(segs) - 1
+    for i, s in enumerate(segs):
+        a = XF if i > 0 else 0
+        b = s["frames"] - (XF if i < last else 0)
+        out.append({"type": "body", "seg": i, "from": a, "to": b, "out": s["start"] + a})
+        if i < last:
+            out.append({"type": "trans", "seg": i, "out": segs[i + 1]["start"]})
+    return out
+
+
+def chain(k, mat, skip, n):
+    return (f"[{k}:v]settb=AVTB,setpts=PTS-STARTPTS,fps={FPS},"
+            f"scale=3840:2160:in_color_matrix={mat}:out_color_matrix=bt709:in_range=tv:out_range=tv,"
+            f"trim=end_frame={n},setpts=PTS-STARTPTS,format=yuv420p")
+
+
+def seek(frame):
+    return ["-ss", f"{max(0, frame - 0.5) / FPS:.4f}"] if frame > 0 else []
+
+
+def pieces(cfg, k=0, n=1):
+    """Encode the master as independent pieces (resumable; worker k of n). Low memory: at most two inputs."""
+    p = json.load(open(f"{cfg['work']}/plan.json"))
+    segs = p["segments"]
+    d = f"{cfg['work']}/pieces"
+    os.makedirs(d, exist_ok=True)
+    overlays = [("lower", p["lower"], 66)] + [("sub", f, 102) for f in p["subs"]]
+    for j, pc in enumerate(pieces_plan(p)):
+        if j % int(n) != int(k):
+            continue
+        out = f"{d}/p_{j:03d}.mp4"
+        if os.path.exists(out) or os.path.exists(out + ".tmp.mp4"):
+            continue
+        s = segs[pc["seg"]]
+        if pc["type"] == "body":
+            src, mat = source(cfg, s)
+            if not os.path.exists(src):
+                continue
+            nfr = pc["to"] - pc["from"]
+            inputs = seek(pc["from"]) + ["-i", src]
+            chains = [chain(0, mat, pc["from"], nfr) + "[v]"]
+            last, kk = "v", 1
+            for name, f0, dur in overlays:
+                if pc["out"] <= f0 and f0 + dur <= pc["out"] + nfr:
+                    inputs += ["-framerate", str(FPS), "-i", f"{cfg['overlays']}/{name}/f_%04d.png"]
+                    chains.append(f"[{kk}:v]setpts=PTS-STARTPTS+{(f0 - pc['out']) / FPS:.4f}/TB[ov{kk}]")
+                    chains.append(f"[{last}][ov{kk}]overlay=eof_action=pass:format=auto,format=yuv420p[o{kk}]")
+                    last, kk = f"o{kk}", kk + 1
+                elif pc["out"] < f0 + dur and f0 < pc["out"] + nfr:
+                    raise SystemExit(f"overlay {name} crosses a piece boundary")
+            chains.append(f"[{last}]trim=end_frame={nfr},setpts=PTS-STARTPTS[out]")
+        else:
+            s2 = segs[pc["seg"] + 1]
+            (src1, m1), (src2, m2) = source(cfg, s), source(cfg, s2)
+            if not (os.path.exists(src1) and os.path.exists(src2)):
+                continue
+            kind = "fade" if "brand" in (s["kind"], s2["kind"]) else "smoothleft"
+            inputs = seek(s["frames"] - XF) + ["-i", src1] + ["-i", src2]
+            chains = [chain(0, m1, 0, XF) + "[a]", chain(1, m2, 0, XF) + "[b]",
+                      f"[a][b]xfade=transition={kind}:duration={XF / FPS}:offset=0,trim=end_frame={XF}[out]"]
+            nfr = XF
+        ff(inputs + ["-filter_complex", ";".join(chains), "-map", "[out]"] + X264 + [out + ".tmp.mp4"])
+        got = int(subprocess.run(["ffprobe", "-v", "error", "-count_packets", "-select_streams", "v", "-show_entries",
+                                  "stream=nb_read_packets", "-of", "csv=p=0", out + ".tmp.mp4"],
+                                 capture_output=True, text=True).stdout.strip() or 0)
+        if got != nfr:
+            raise SystemExit(f"piece {j}: {got} frames, expected {nfr}")
+        os.replace(out + ".tmp.mp4", out)
+        print("piece", j, pc["type"], s["name"], nfr, flush=True)
+
+
+def mux_pieces(cfg, out):
+    p = json.load(open(f"{cfg['work']}/plan.json"))
+    d = f"{cfg['work']}/pieces"
+    plan = pieces_plan(p)
+    files = [f"{d}/p_{j:03d}.mp4" for j in range(len(plan))]
+    missing = [f for f in files if not os.path.exists(f)]
+    if missing:
+        raise SystemExit(f"{len(missing)} pieces missing, e.g. {missing[0]}")
+    with open(f"{d}/list.txt", "w") as f:
+        f.writelines(f"file '{x}'\n" for x in files)
+    ff(["-f", "concat", "-safe", "0", "-i", f"{d}/list.txt", "-i", f"{cfg['work']}/mix.wav", "-map", "0:v",
+        "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "320k", "-shortest", "-movflags", "+faststart", out])
+    print(out)
+
+
 def mux(cfg, out):
     w = cfg["work"]
     parts = sorted((f for f in os.listdir(w) if re.match(r"v_part\d+\.mp4$", f)), key=lambda f: int(f[6:-4]))
@@ -289,4 +393,5 @@ if __name__ == "__main__":
     cfg = json.load(open(sys.argv[2]))
     os.makedirs(cfg["work"], exist_ok=True)
     {"plan": lambda: plan(cfg), "audio": lambda: audio(cfg),
-     "video": lambda: video(cfg, sys.argv[3], sys.argv[4]), "mux": lambda: mux(cfg, sys.argv[3])}[sys.argv[1]]()
+     "video": lambda: video(cfg, sys.argv[3], sys.argv[4]), "mux": lambda: mux(cfg, sys.argv[3]),
+     "pieces": lambda: pieces(cfg, *sys.argv[3:5]), "mux_pieces": lambda: mux_pieces(cfg, sys.argv[3])}[sys.argv[1]]()
