@@ -30,14 +30,14 @@
     if (w && !w.children.length) {
       const base = el('g', { class: 'base' }, w);
       Object.entries(G.world.p).forEach(([id, d]) => el('path', { d, class: G.eu.eu.includes(id) ? 'eu' : 'non' }, base));
-      [['156', 3.4], ['356', 5.0], ['643', 6.2]].forEach(([id, o]) =>
+      [['156', 5.6], ['356', 11.0], ['643', 13.1]].forEach(([id, o]) =>
         el('path', { d: G.world.p[id], class: 'hot a fade', 'data-c': '4', 'data-o': String(o) }, w));
       const [ex, ey] = G.world.eu;
       const orig = [['792', 'Türkiye', [0, -30]], ['156', 'China', [10, -34]], ['356', 'India', [-6, 44]], ['124', 'Canada', [0, -30]], ['158', 'Taiwan', [44, 6]], ['704', 'Vietnam', [8, 44]]];
       const arcs = el('g', { class: 'arcs' }, w);
       orig.forEach(([id, name, dxy], i) => {
         const [x, y] = G.world.c[id];
-        const o = (1.0 + i * 0.7).toFixed(1);
+        const o = [6.7, 7.2, 8.0, 8.7, 9.2, 9.9][i].toFixed(1);       // as each country is named
         const mx = (x + ex) / 2, my = Math.min(y, ey) - 60 - Math.abs(x - ex) * 0.12;
         el('path', { d: `M${x} ${y} Q${mx} ${my} ${ex} ${ey}`, class: 'arc a draw', pathLength: '1000', 'data-c': '5', 'data-o': o, 'data-cd': '1.2' }, arcs);
         el('circle', { cx: x, cy: y, r: 9, class: 'dot a pop', 'data-c': '5', 'data-o': o }, w);
