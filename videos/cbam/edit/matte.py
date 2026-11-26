@@ -37,6 +37,7 @@ def main(video, out, models):
     os.makedirs(f"{out}/alpha", exist_ok=True)
     so = ort.SessionOptions()
     so.intra_op_num_threads = 4
+    so.add_session_config_entry("session.intra_op.allow_spinning", "0")      # no busy-wait when the CPU is shared
     rvm = ort.InferenceSession(f"{models}/rvm_resnet50_fp32.onnx", so, providers=["CPUExecutionProvider"])
     rec = [np.zeros([1, 1, 1, 1], np.float32)] * 4
     dsr = np.array([0.25], np.float32)

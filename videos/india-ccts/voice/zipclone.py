@@ -65,6 +65,7 @@ class ZipClone:
                  encoder="text_encoder.onnx", decoder="fm_decoder.onnx"):
         so = ort.SessionOptions()
         so.intra_op_num_threads = threads
+        so.add_session_config_entry("session.intra_op.allow_spinning", "0")   # no busy-wait when the CPU is shared
         p = ["CPUExecutionProvider"]
         self.enc = ort.InferenceSession(os.path.join(model_dir, encoder), so, providers=p)
         self.dec = ort.InferenceSession(os.path.join(model_dir, decoder), so, providers=p)

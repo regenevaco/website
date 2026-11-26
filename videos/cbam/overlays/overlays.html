@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CBAM overlays</title>
+<link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+.ov { position: absolute; inset: 0; display: none; }
+body[data-o="lower"] #lower, body[data-o="sub"] #sub { display: block; }
+
+/* lower third: name only */
+#lower .lt { position: absolute; left: 120px; bottom: 150px; display: flex; align-items: stretch; }
+#lower .bar { width: 10px; background: #20C997; border-radius: 3px; transform-origin: bottom; }
+#lower .plate { margin-left: 12px; padding: 16px 34px 20px 26px; border-radius: 6px; background: rgba(6, 14, 12, .80);
+  box-shadow: 0 14px 40px rgba(0,0,0,.35); clip-path: inset(0 100% 0 0); }
+#lower .name { font: 800 58px/1 "ESC"; color: #fff; letter-spacing: .005em; white-space: nowrap; }
+
+/* subscribe + bell reminder */
+#sub .box { position: absolute; right: 120px; bottom: 120px; display: flex; align-items: center; gap: 18px; }
+#sub .btn { position: relative; height: 84px; padding: 0 34px 0 26px; border-radius: 42px; background: #FF0033; color: #fff;
+  display: flex; align-items: center; gap: 16px; font: 900 40px "ESC"; letter-spacing: .06em; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+#sub .btn i { font-size: 46px; }
+#sub .btn .s2 { display: none; }
+#sub .btn.done { background: #2B2F2E; }
+#sub .btn.done .s1 { display: none; }
+#sub .btn.done .s2 { display: inline; }
+#sub .bell { width: 84px; height: 84px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+#sub .bell i { font-size: 40px; color: #222; transform-origin: 50% 8%; }
+#sub .bell.on i { color: #FF0033; }
+#sub .cur { position: absolute; font-size: 54px; color: #fff; filter: drop-shadow(0 3px 6px rgba(0,0,0,.6)); }
+#sub .ring { position: absolute; width: 60px; height: 60px; border-radius: 50%; border: 4px solid rgba(255,255,255,.9); opacity: 0; }
+</style>
+</head>
+<body data-o="lower">
+<section class="ov" id="lower">
+  <div class="lt"><div class="bar"></div><div class="plate"><div class="name">Surya Narayan Kar</div></div></div>
+</section>
+<section class="ov" id="sub">
+  <div class="box">
+    <div class="btn"><i class="fa-brands fa-youtube"></i><span class="s1">SUBSCRIBE</span><span class="s2">SUBSCRIBED</span></div>
+    <div class="bell"><i class="fa-solid fa-bell"></i></div>
+  </div>
+  <i class="cur fa-solid fa-arrow-pointer"></i>
+  <div class="ring r1"></div><div class="ring r2"></div>
+</section>
+<script>
+// Deterministic overlay animations: window.setT(t) poses every element for time t (seconds).
+const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+const lin = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
+window.DUR = { lower: 5.6, sub: 3.4 };
+window.setT = function (t) {
+  const o = document.body.dataset.o;
+  if (o === 'lower') {
+    const inn = ease(lin(t, 0, 0.55)), out = lin(t, 5.0, 5.5);
+    document.querySelector('#lower .bar').style.transform = `scaleY(${ease(lin(t, 0, 0.35))})`;
+    document.querySelector('#lower .plate').style.clipPath = `inset(0 ${100 - 100 * ease(lin(t, 0.15, 0.7))}% 0 0)`;
+    const lt = document.querySelector('#lower .lt');
+    lt.style.opacity = 1 - out;
+    lt.style.transform = `translateX(${-30 * (1 - inn) - 20 * out}px)`;
+  } else {
+    const box = document.querySelector('#sub .box');
+    const pin = ease(lin(t, 0, 0.45)), pout = lin(t, 2.95, 3.35);
+    box.style.opacity = pin * (1 - pout);
+    box.style.transform = `translateY(${40 * (1 - pin)}px) scale(${0.92 + 0.08 * pin})`;
+    const btn = document.querySelector('#sub .btn'), bell = document.querySelector('#sub .bell');
+    const br = btn.getBoundingClientRect(), bl = bell.getBoundingClientRect();
+    const click1 = 1.15, click2 = 1.95;
+    btn.classList.toggle('done', t >= click1);
+    bell.classList.toggle('on', t >= click2);
+    btn.style.transform = `scale(${t >= click1 && t < click1 + 0.12 ? 0.93 : 1})`;
+    // cursor path: from below right -> button -> bell
+    const p0 = [1880, 1100], p1 = [br.left + br.width * 0.55, br.top + br.height * 0.6], p2 = [bl.left + bl.width * 0.55, bl.top + bl.height * 0.62];
+    let x, y;
+    if (t < click1) { const k = ease(lin(t, 0.45, click1)); x = p0[0] + (p1[0] - p0[0]) * k; y = p0[1] + (p1[1] - p0[1]) * k; }
+    else { const k = ease(lin(t, click1 + 0.2, click2)); x = p1[0] + (p2[0] - p1[0]) * k; y = p1[1] + (p2[1] - p1[1]) * k; }
+    const cur = document.querySelector('#sub .cur');
+    cur.style.left = (x - 10) + 'px'; cur.style.top = (y - 6) + 'px';
+    cur.style.opacity = lin(t, 0.4, 0.6) * (1 - lin(t, 2.5, 2.8));
+    // click ripples
+    [[document.querySelector('#sub .r1'), p1, click1], [document.querySelector('#sub .r2'), p2, click2]].forEach(([r, p, c]) => {
+      const k = lin(t, c, c + 0.45);
+      r.style.left = (p[0] - 30) + 'px'; r.style.top = (p[1] - 30) + 'px';
+      r.style.opacity = t >= c ? (1 - k) * 0.9 : 0; r.style.transform = `scale(${0.4 + 1.4 * k})`;
+    });
+    // bell swing after the click
+    const s = t >= click2 ? Math.exp(-(t - click2) * 3.2) * Math.sin((t - click2) * 26) * 24 : 0;
+    document.querySelector('#sub .bell i').style.transform = `rotate(${s}deg)`;
+  }
+};
+</script>
+</body>
+</html>

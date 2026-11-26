@@ -111,7 +111,7 @@ def main(wav, words_json, clip, out_json):
             fa, fb = round(i / 100 * FPS), round(j / 100 * FPS)
             # ASR word times can be ~0.2 s early, so only short runs with no word nearby are dropped
             has_word = (j - i) >= 60 or any(i / 100 - 0.3 <= st < j / 100 + 0.1 for st in starts)
-            if fb > fa and has_word:                         # drop breaths / noises between phrases
+            if fb - fa >= 6 and has_word:                    # drop breaths / noises (and blips under 0.2 s)
                 segs.append([fa, fb])
             i = j
         else:

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CBAM thumbnails</title>
+<link rel="stylesheet" href="../../../assets/css/fontawesome.min.css">
+<style>
+@font-face { font-family: "ESC"; font-weight: 700; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Bold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 800; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-ExtraBold.ttf); }
+@font-face { font-family: "ESC"; font-weight: 900; src: url(../../../assets/fonts/Encode_Sans_Condensed/EncodeSansCondensed-Black.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url(../../../assets/fonts/Roboto/Roboto-Medium.ttf); }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url(../../../assets/fonts/Roboto/Roboto-Bold.ttf); }
+:root { --g: #20C997; --g-lo: #0E8F6A; --ink: #0A1311; --red: #FF5A45; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1280px; height: 720px; overflow: hidden; }
+body { font-family: "Roboto", sans-serif; position: relative; }
+.v { position: absolute; inset: 0; display: none; overflow: hidden; }
+body[data-v="a"] #a, body[data-v="b"] #b, body[data-v="c"] #c { display: block; }
+.me { position: absolute; }
+.logo { position: absolute; left: 56px; top: 46px; height: 54px; }
+
+/* ---------- A: professional (suit) ---------- */
+#a { background: radial-gradient(900px 700px at 1010px 330px, #12392F 0%, #0C1D19 45%, #070D0C 100%); color: #fff; }
+#a .grid { position: absolute; inset: 0; opacity: .22;
+  background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px; -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 55%, transparent 80%); }
+#a .spot { position: absolute; left: 760px; top: -120px; width: 620px; height: 900px;
+  background: radial-gradient(closest-side, rgba(32,201,151,.36), rgba(32,201,151,.10) 55%, rgba(32,201,151,0) 75%); }
+#a .me { height: 980px; left: 700px; top: 30px;
+  filter: drop-shadow(0 0 1.5px rgba(32,201,151,.75)) drop-shadow(0 0 22px rgba(32,201,151,.28)) drop-shadow(-24px 20px 40px rgba(0,0,0,.55)); }
+#a .fade { position: absolute; left: 640px; top: 0; width: 200px; height: 720px; background: linear-gradient(90deg, rgba(7,13,12,.55), rgba(7,13,12,0)); }
+#a h1 { position: absolute; left: 52px; top: 150px; font: 900 176px/0.9 "ESC"; letter-spacing: -0.01em; text-shadow: 0 8px 30px rgba(0,0,0,.5); }
+#a h1 .eu { color: var(--g); }
+#a .hl { position: absolute; left: 56px; top: 334px; padding: 6px 26px 12px; background: var(--g); color: #04140f; border-radius: 14px;
+  font: 900 78px/1 "ESC"; box-shadow: 0 10px 30px rgba(32,201,151,.35); }
+#a .yr { position: absolute; left: 536px; top: 352px; font: 900 34px "ESC"; color: #04140f; background: #fff; padding: 4px 14px; border-radius: 8px; rotate: 8deg; box-shadow: 0 8px 20px rgba(0,0,0,.4); }
+#a .flow { position: absolute; left: 58px; top: 500px; display: flex; align-items: center; gap: 10px; }
+#a .st { width: 128px; text-align: center; }
+#a .st .c { width: 82px; height: 82px; margin: 0 auto 10px; border-radius: 50%; display: grid; place-items: center; font-size: 34px;
+  background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.35); color: #fff; }
+#a .st.k .c { background: var(--g); color: #04140f; border-color: var(--g); box-shadow: 0 8px 24px rgba(32,201,151,.4); font: 900 24px "ESC"; white-space: nowrap; }
+#a .st b { font: 800 24px "ESC"; letter-spacing: .02em; }
+#a .ar { color: var(--g); font-size: 22px; margin-top: -34px; }
+#a .eu12 { position: relative; width: 82px; height: 82px; border-radius: 50%; background: #1F3FA8; margin: 0 auto 10px; border: 2px solid rgba(255,255,255,.35); }
+#a .eu12 i { position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; background: #FFD23F; border-radius: 50%; }
+#a .floor { position: absolute; left: 0; bottom: 0; width: 1280px; height: 110px; background: linear-gradient(0deg, rgba(4,8,7,.6), rgba(4,8,7,0)); }
+
+/* ---------- B: thinking (who pays?) ---------- */
+#b { background: radial-gradient(1000px 760px at 980px 360px, #FFFFFF 0%, #EEF8F4 55%, #DDEFE8 100%); color: var(--ink); }
+#b .grid { position: absolute; inset: 0; opacity: .5;
+  background-image: linear-gradient(rgba(14,143,106,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(14,143,106,.07) 1px, transparent 1px);
+  background-size: 48px 48px; -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 75%); }
+#b .disc { position: absolute; left: 700px; top: 70px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(closest-side, rgba(32,201,151,.30), rgba(32,201,151,.0)); }
+#b .me { height: 1010px; left: 640px; top: 12px; filter: drop-shadow(-18px 22px 34px rgba(0,40,30,.25)); }
+#b h1 { position: absolute; left: 52px; top: 140px; font: 900 132px/0.92 "ESC"; letter-spacing: -0.01em; }
+#b h1 em { font-style: normal; color: var(--g-lo); }
+#b .q { position: absolute; left: 60px; top: 430px; display: flex; align-items: center; gap: 16px; }
+#b .q span { display: flex; align-items: center; gap: 12px; font: 800 34px "ESC"; padding: 12px 20px; border-radius: 14px; background: #0A1311; color: #fff; }
+#b .q span i { color: var(--g); }
+#b .q .vs { font: 900 40px "ESC"; color: var(--g-lo); }
+#b .tag { position: absolute; left: 62px; top: 548px; font: 900 40px "ESC"; color: #fff; background: var(--red); padding: 8px 20px 10px; border-radius: 12px; rotate: -3deg; box-shadow: 0 10px 24px rgba(255,90,69,.35); }
+
+/* ---------- C: expressive (the price of missing data) ---------- */
+#c { background: radial-gradient(900px 700px at 980px 360px, #2A0F0B 0%, #120807 50%, #060404 100%); color: #fff; }
+#c .glow { position: absolute; left: 700px; top: 60px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,90,69,.38), rgba(255,90,69,0)); }
+#c .me { height: 1140px; left: 640px; top: 14px; filter: drop-shadow(0 0 1.5px rgba(255,150,120,.7)) drop-shadow(-20px 22px 40px rgba(0,0,0,.6)); }
+#c .pre { position: absolute; left: 58px; top: 150px; font: 800 44px "ESC"; color: rgba(255,255,255,.85); letter-spacing: .02em; }
+#c .big { position: absolute; left: 50px; top: 196px; font: 900 196px/1 "ESC"; color: var(--red); letter-spacing: -0.02em; text-shadow: 0 10px 40px rgba(255,90,69,.35); }
+#c .sub { position: absolute; left: 58px; top: 404px; font: 900 64px/1.0 "ESC"; }
+#c .sub em { font-style: normal; color: var(--g); }
+#c .chip { position: absolute; left: 60px; top: 560px; display: flex; gap: 12px; }
+#c .chip span { font: 800 28px "ESC"; padding: 10px 18px; border-radius: 12px; background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.3); }
+#c .chip span.g { background: var(--g); color: #04140f; border-color: var(--g); }
+</style>
+</head>
+<body data-v="a">
+
+<section class="v" id="a">
+  <div class="grid"></div><div class="spot"></div><div class="fade"></div>
+  <img class="me" data-subject="a" alt="">
+  <div class="floor"></div>
+  <img class="logo" src="../../india-ccts/assets/regeneva-logo-white.png" alt="ReGeneva">
+  <h1><span class="eu">EU</span> CBAM</h1>
+  <div class="yr">2026</div>
+  <div class="hl">EXPLAINED</div>
+  <div class="flow">
+    <div class="st"><div class="c"><i class="fa-solid fa-industry"></i></div><b>Exporter</b></div>
+    <div class="ar"><i class="fa-solid fa-chevron-right"></i></div>
+    <div class="st k"><div class="c"><span>€/CO<sub style="font-size:.6em;vertical-align:-0.15em">2</sub></span></div><b>Carbon price</b></div>
+    <div class="ar"><i class="fa-solid fa-chevron-right"></i></div>
+    <div class="st"><div class="eu12"><i style="transform:rotate(0deg) translateY(-26px)"></i><i style="transform:rotate(30deg) translateY(-26px)"></i><i style="transform:rotate(60deg) translateY(-26px)"></i><i style="transform:rotate(90deg) translateY(-26px)"></i><i style="transform:rotate(120deg) translateY(-26px)"></i><i style="transform:rotate(150deg) translateY(-26px)"></i><i style="transform:rotate(180deg) translateY(-26px)"></i><i style="transform:rotate(210deg) translateY(-26px)"></i><i style="transform:rotate(240deg) translateY(-26px)"></i><i style="transform:rotate(270deg) translateY(-26px)"></i><i style="transform:rotate(300deg) translateY(-26px)"></i><i style="transform:rotate(330deg) translateY(-26px)"></i></div><b>EU border</b></div>
+  </div>
+</section>
+
+<section class="v" id="b">
+  <div class="grid"></div><div class="disc"></div>
+  <img class="me" data-subject="b" alt="">
+  <img class="logo" src="../../india-ccts/assets/regeneva-logo-dark.png" alt="ReGeneva">
+  <h1>Who <em>Pays</em><br>for CBAM?</h1>
+  <div class="q"><span><i class="fa-solid fa-user-tie"></i>EU importer</span><span class="vs">or</span><span><i class="fa-solid fa-industry"></i>Exporter</span></div>
+  <div class="tag">Not who you think</div>
+</section>
+
+<section class="v" id="c">
+  <div class="glow"></div>
+  <img class="me" data-subject="c" alt="">
+  <img class="logo" src="../../india-ccts/assets/regeneva-logo-white.png" alt="ReGeneva">
+  <div class="pre">One shipment. Missing data.</div>
+  <div class="big">€49,400</div>
+  <div class="sub">EU <em>CBAM</em> explained</div>
+  <div class="chip"><span class="g">2026</span><span>Who pays</span><span>What it costs</span></div>
+</section>
+
+</body>
+</html>

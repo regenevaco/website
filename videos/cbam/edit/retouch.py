@@ -167,6 +167,12 @@ def tame_hair_shine(img, lm, alpha, amount=0.8):
     sat = roi.max(-1) - roi.min(-1)
     h = np.clip((lum - blum - 0.03) / 0.16, 0, 1) * np.clip(1 - sat / 0.25, 0, 1) * hair
     h = cv2.GaussianBlur(h, (0, 0), 0.01 * iod + 0.5)
+    # fade out toward the region's edges (no visible seam where the processed area stops)
+    yy = np.arange(shp[0], dtype=np.float32)[:, None]
+    xx = np.arange(shp[1], dtype=np.float32)[None, :]
+    fade = np.clip((shp[0] - 1 - yy) / (0.6 * iod), 0, 1) * np.clip(yy / (0.3 * iod), 0, 1) \
+        * np.clip(xx / (0.3 * iod), 0, 1) * np.clip((shp[1] - 1 - xx) / (0.3 * iod), 0, 1)
+    h = h * fade
     res = img.copy()
     res[y0:y1, x0:x1] = roi + amount * h[..., None] * (base - roi)
     return res

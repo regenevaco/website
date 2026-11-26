@@ -4,7 +4,7 @@
     python3 plate.py chair <plate.png> <plate_seen.png> <out_prefix>
 
 For ~n_samples frames spread over the clip, the presenter (1080p RVM matte, upscaled and dilated)
-is masked out; every background pixel takes the median of the frames where it was visible.
+is masked out; every background pixel takes the median of the frames where it was visible (at least 4).
 Pixels never visible (always behind the presenter) are inpainted; they are always covered by him,
 so they only matter as a fallback. Output: 16-bit PNG, 3840x2160, BT.709 SDR (same tone map as the comp).
 Also writes <out>_seen.png (255 where real pixels were seen).
@@ -40,7 +40,9 @@ def main(video, mdir, out, n=28):
         valid[j] = cv2.dilate((a > 4).astype(np.uint8), k) == 0
     dec.wait()
     plate = np.zeros((H, W, 3), np.uint16)
-    seen = valid.any(0)
+    # trust a pixel only if it was clearly visible in several frames (a median of 1-3 samples can still
+    # hold a motion-blurred sleeve or hand); the rest is filled smoothly and never used for edge unmixing
+    seen = valid.sum(0) >= 4
     for y0 in range(0, H, 120):
         s = stack[:, y0:y0 + 120].astype(np.float32)
         v = valid[:, y0:y0 + 120]
@@ -73,8 +75,8 @@ def chair_masks(plate_png, seen_png, out_prefix):
     dark = L < 0.30
     teal = (hsv[..., 0] > 160) & (hsv[..., 0] < 205) & (hsv[..., 1] > 0.3) & (hsv[..., 2] > 0.2)
     m = ((dark | teal) & seen) | ~seen
-    m[:, :int(0.28 * W)] = False
-    m[:, int(0.72 * W):] = False
+    m[:, :int(0.15 * W)] = False
+    m[:, int(0.85 * W):] = False
     m = cv2.morphologyEx(m.astype(np.uint8), cv2.MORPH_OPEN, np.ones((9, 9), np.uint8))
     n, lab, st, _ = cv2.connectedComponentsWithStats(m)
     keep = [i for i in range(1, n) if st[i, cv2.CC_STAT_AREA] > 0.004 * W * H]

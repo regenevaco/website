@@ -39,12 +39,16 @@ _X = np.linspace(0, 1, 4096, dtype=np.float32)
 _CURVE = np.clip(_X + 0.05 * np.sin(2 * np.pi * (_X - 0.5)) * _X * (1 - _X) * 2, 0, 1).astype(np.float32)
 
 
+_G = np.array([1.015, 1.0, 0.985], np.float32)
+_S = np.float32(0.95)
+_M = (_S * np.eye(3, dtype=np.float32) + (1 - _S) * np.outer(np.ones(3, np.float32), LUMA)) * _G[None, :]
+
+
 def grade(x):
     """Gentle grade shared by presenter and old background: slightly warmer, calmer saturation, soft S."""
-    x = x * np.array([1.015, 1.0, 0.985], np.float32)
-    lum = x @ LUMA
-    x = lum[..., None] + (x - lum[..., None]) * np.float32(0.95)
-    return _CURVE[(np.clip(x, 0, 1) * 4095).astype(np.int32)]
+    y = cv2.transform(x, _M)
+    np.clip(y, 0, 1, out=y)
+    return _CURVE[(y * 4095).astype(np.int16)]
 
 
 def smooth_landmarks(L, r=2):
@@ -71,17 +75,30 @@ def load16(path, size=None):
 
 
 def person_alpha(a1080, img, B, reliable):
-    """RVM matte at 4K, refined inside the uncertain edge band with the known background."""
-    a = cv2.resize(a1080, (W, H), interpolation=cv2.INTER_LINEAR)
-    g = img @ LUMA
+    """RVM matte at 4K, refined inside the uncertain edge band with the known background.
+    Works on the presenter's bounding box (everything outside it is background)."""
+    ys, xs = np.where(a1080 > 0.002)
+    full = np.zeros((H, W), np.float32)
+    if not len(ys):
+        return full
+    y0, y1 = max(0, 2 * ys.min() - 64) // Q * Q, min(H, 2 * ys.max() + 66 + Q) // Q * Q
+    x0, x1 = max(0, 2 * xs.min() - 64) // Q * Q, min(W, 2 * xs.max() + 66 + Q) // Q * Q
+    full[y0:y1, x0:x1] = _person_alpha(a1080, img[y0:y1, x0:x1], B[y0:y1, x0:x1], reliable[y0:y1, x0:x1], y0, y1, x0, x1)
+    return full
+
+
+def _person_alpha(a1080, img, B, reliable, y0, y1, x0, x1):
+    h, w = img.shape[:2]
+    a = cv2.resize(np.ascontiguousarray(a1080[y0 // 2:y1 // 2, x0 // 2:x1 // 2]), (w, h), interpolation=cv2.INTER_LINEAR)
+    g = cv2.transform(img, LUMA[None, :])
     a = np.clip(cv2.ximgproc.guidedFilter(g, a, 6, 1e-4), 0, 1)
-    aq = cv2.resize(a, (W // Q, H // Q), interpolation=cv2.INTER_AREA)
+    aq = cv2.resize(a, (w // Q, h // Q), interpolation=cv2.INTER_AREA)
     solid = cv2.erode((aq > 0.97).astype(np.uint8), np.ones((3, 3), np.uint8)).astype(np.float32)
     band_q = (cv2.dilate((aq > 0.02).astype(np.uint8), np.ones((11, 11), np.uint8)) > 0) & (solid == 0)
     if not band_q.any():
         return a
     # nearby solid foreground colour (normalised convolution), quarter resolution
-    iq = cv2.resize(img, (W // Q, H // Q), interpolation=cv2.INTER_AREA)
+    iq = cv2.resize(img, (w // Q, h // Q), interpolation=cv2.INTER_AREA)
     den = cv2.GaussianBlur(solid, (0, 0), 5)
     Fq = cv2.GaussianBlur(iq * solid[..., None], (0, 0), 5) / (den[..., None] + 1e-6)
     den2 = cv2.GaussianBlur(solid, (0, 0), 16)
@@ -89,9 +106,9 @@ def person_alpha(a1080, img, B, reliable):
     Fq = np.where((den > 0.05)[..., None], Fq, Fq2)
     near = np.clip((den - 0.03) / 0.10, 0, 1)            # a solid foreground colour is close by: F is trustworthy
     wq = cv2.GaussianBlur(band_q.astype(np.float32), (0, 0), 2) * band_q * near
-    wb = cv2.resize(wq, (W, H), interpolation=cv2.INTER_LINEAR) * reliable
+    wb = cv2.resize(wq, (w, h), interpolation=cv2.INTER_LINEAR) * reliable
     ys, xs = np.where(wb > 0.01)
-    F = cv2.resize(Fq, (W, H), interpolation=cv2.INTER_LINEAR)[ys, xs]
+    F = cv2.resize(Fq, (w, h), interpolation=cv2.INTER_LINEAR)[ys, xs]
     Bb, Ib = B[ys, xs], img[ys, xs]
     d = F - Bb
     dd = (d * d).sum(1)
@@ -125,7 +142,7 @@ def chair_alpha(img, core, roi_box, roi):
     sub = img[y0:y1, x0:x1]
     hsv = cv2.cvtColor(sub, cv2.COLOR_RGB2HSV)
     L = sub @ LUMA
-    dark = np.clip((0.28 - L) / 0.06, 0, 1)
+    dark = np.clip((0.36 - L) / 0.10, 0, 1)
     teal = ((hsv[..., 0] > 168) & (hsv[..., 0] < 200) & (hsv[..., 1] > 0.45) & (hsv[..., 2] > 0.18)).astype(np.float32)
     m = np.maximum(dark, teal) * roi[y0:y1, x0:x1]
     hard = cv2.morphologyEx((m > 0.5).astype(np.uint8), cv2.MORPH_OPEN, np.ones((7, 7), np.uint8))
@@ -161,6 +178,7 @@ class Clip:
         self.cfg = cfg
         self.L = smooth_landmarks(np.load(f"{cfg['matte']}/landmarks.npy")[..., :2]) * 2.0
         self.B0 = load16(cfg["plate_bg"])
+        self.Bg0 = grade(self.B0)
         self.N = load16(cfg["studio"], (W, H))
         self.core = cv2.dilate(cv2.imread(cfg["chair_seen"], 0), np.ones((9, 9), np.uint8)) > 0
         rel = (cv2.imread(cfg["reliable"], 0) > 0).astype(np.float32)
@@ -174,28 +192,46 @@ class Clip:
         self.N_wrap = cv2.resize(cv2.GaussianBlur(nq, (0, 0), 10), (W, H), interpolation=cv2.INTER_LINEAR)
 
     def render(self, img, src, rng):
+        """Composite one 4K frame; returns (uint8 RGB frame, alpha)."""
         lm = self.L[src]
         img = fix_scar(img, lm, 1.8, (1.4, 1.8), -0.06, 1.0)
         img = soften_skin(img, lm, 0.30)
         img = soften_under_eyes(img, lm, 0.45)
         a1080 = cv2.imread(f"{self.cfg['matte']}/alpha/{src:06d}.png", 0).astype(np.float32) / 255.0
-        a0 = cv2.resize(a1080, (W, H), interpolation=cv2.INTER_LINEAR)
-        B = self.B0 * frame_gain(img, self.B0, a0, self.roi)
+        gain = frame_gain(img, self.B0, cv2.resize(a1080, (W, H), interpolation=cv2.INTER_NEAREST), self.roi)
+        B = cv2.multiply(self.B0, tuple(float(g) for g in gain) + (0,))
         a = person_alpha(a1080, img, B, self.reliable)
-        a = np.maximum(a, chair_alpha(img, self.core, self.roi_box, self.roif))
+        np.maximum(a, chair_alpha(img, self.core, self.roi_box, self.roif), out=a)
         img = tame_hair_shine(img, lm, a)
-        img, Bg = grade(img), grade(B)
-        a3 = a[..., None]
-        fg = np.clip(img - (1 - a3) * Bg, 0, a3)
-        fg *= np.clip((a3 - 0.015) / 0.06, 0, 1)          # pure background: drop old-room shadows and noise
-        comp = fg + (1 - a3) * self.N
-        aq = cv2.resize(a, (W // Q, H // Q), interpolation=cv2.INTER_AREA)
-        inner = cv2.resize(cv2.GaussianBlur(aq, (0, 0), 4), (W, H), interpolation=cv2.INTER_LINEAR)
-        wrap = (0.30 * a * np.clip(1 - inner, 0, 1))[..., None]
-        comp = comp * (1 - wrap) + self.N_wrap * wrap
+        # composite only inside the foreground's bounding box; elsewhere the frame is the studio plate
+        ys, xs = np.where(cv2.resize(a, (W // 8, H // 8), interpolation=cv2.INTER_AREA) > 0.0005)
+        comp = self.N.copy()
+        if len(ys):
+            pad = 48
+            y0, y1 = max(0, ys.min() * 8 - pad), min(H, ys.max() * 8 + 8 + pad)
+            x0, x1 = max(0, xs.min() * 8 - pad), min(W, xs.max() * 8 + 8 + pad)
+            ab = a[y0:y1, x0:x1]
+            ib = grade(np.ascontiguousarray(img[y0:y1, x0:x1]))
+            Bg = cv2.multiply(self.Bg0[y0:y1, x0:x1], tuple(float(g) for g in gain) + (0,))
+            Nb = self.N[y0:y1, x0:x1]
+            a3 = cv2.merge([ab, ab, ab])
+            inv = 1.0 - a3
+            fg = ib - inv * Bg                                   # exact replacement of the old room
+            np.clip(fg, 0, a3, out=fg)
+            fg *= np.clip((a3 - 0.015) / 0.06, 0, 1)             # pure background: drop old-room shadows and noise
+            cb = fg + inv * Nb
+            aq = cv2.resize(ab, ((x1 - x0) // Q, (y1 - y0) // Q), interpolation=cv2.INTER_AREA)
+            inner = cv2.resize(cv2.GaussianBlur(aq, (0, 0), 4), (x1 - x0, y1 - y0), interpolation=cv2.INTER_LINEAR)
+            wrap = 0.30 * ab * np.clip(1 - inner, 0, 1)
+            cb += cv2.merge([wrap, wrap, wrap]) * (self.N_wrap[y0:y1, x0:x1] - cb)   # light wrap
+            comp[y0:y1, x0:x1] = cb
         n = cv2.resize(rng.standard_normal((H // 2, W // 2), dtype=np.float32), (W, H), interpolation=cv2.INTER_LINEAR)
-        comp += (n * (0.0035 + 0.006 * (1 - a)))[..., None]
-        return comp, a
+        n *= 0.0035 + 0.006 * (1 - a)
+        n += rng.random((H, W), dtype=np.float32) * (1 / 255) - 0.5 / 255   # grain + dither
+        comp += cv2.merge([n, n, n])
+        np.clip(comp, 0, 1, out=comp)
+        frame = cv2.convertScaleAbs(comp, alpha=255.0)       # round to uint8
+        return frame, a
 
     def frame_zoom(self, comp, seg, prog):
         cfg = self.cfg
@@ -208,7 +244,7 @@ class Clip:
         x0 = float(np.clip(cx - tx / z, 0, W - W / z))
         y0 = float(np.clip(cy - ty / z, 0, H - H / z))
         M = np.array([[z, 0, -x0 * z], [0, z, -y0 * z]], np.float32)
-        return cv2.warpAffine(comp, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)
+        return cv2.warpAffine(comp, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)   # uint8 frame
 
 
 def decode(video, frames):
@@ -244,7 +280,7 @@ def main(cfg_path, out, *args):
         rng = np.random.default_rng(0)
         for f, img in decode(cfg["video"], want):
             comp, a = clip.render(img, f, rng)
-            cv2.imwrite(f"{out}/c_{f:05d}.png", (np.clip(comp, 0, 1) * 65535).astype(np.uint16)[..., ::-1])
+            cv2.imwrite(f"{out}/c_{f:05d}.png", comp[..., ::-1])
             cv2.imwrite(f"{out}/a_{f:05d}.png", (a * 255).astype(np.uint8))
             cv2.imwrite(f"{out}/s_{f:05d}.png", (img * 65535).astype(np.uint16)[..., ::-1])
             print("still", f, flush=True)
@@ -254,7 +290,7 @@ def main(cfg_path, out, *args):
     enc = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-vf", "scale=out_color_matrix=bt601:out_range=tv",
-         "-c:v", "libx264", "-preset", "medium", "-crf", "13", "-pix_fmt", "yuv420p",
+         "-c:v", "libx264", "-preset", "faster", "-crf", "12", "-pix_fmt", "yuv420p",
          "-colorspace", "bt470bg", "-color_range", "tv", out], stdin=subprocess.PIPE)
     rng = np.random.default_rng(k0)
     frames = dict()
@@ -264,10 +300,9 @@ def main(cfg_path, out, *args):
         while src not in frames:
             f, img = next(gen)
             frames = {f: img}
-        comp, _ = clip.render(frames[src], src, rng)
-        comp = clip.frame_zoom(comp, si, prog)
-        frame = np.clip(comp * 255 + rng.random((H, W, 1), dtype=np.float32) - 0.5, 0, 255).astype(np.uint8)
-        enc.stdin.write(frame.tobytes())
+        frame, _ = clip.render(frames[src], src, rng)
+        frame = clip.frame_zoom(frame, si, prog)
+        enc.stdin.write(np.ascontiguousarray(frame).tobytes())
         if (k - k0) % 30 == 0:
             print(f"{k}/{k1}", flush=True)
     enc.stdin.close()
