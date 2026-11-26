@@ -124,6 +124,8 @@ def narration(cfg, scene, work):
 def build_music(cfg, p, work):
     sys.path.insert(0, cfg["music_lib"])
     import build_music as bm                                    # CCTS synthesized palette (no licensing)
+    from scipy.signal import oaconvolve
+    bm.fftconvolve = oaconvolve                                 # same reverb, overlap-add: far less memory
     total = p["total"] / FPS + 1.0
     n = int(total * SR)
     music = np.zeros((n, 2))

@@ -14,7 +14,20 @@ For a test, upload with A and title 1, then use YouTube's "Test & compare" with 
 
 ## Description
 
-> Paste from here. Replace [CHAPTERS] with the chapter list in `chapters.txt`.
+> Paste from here. Replace 0:00 CBAM is live: why it matters now
+1:17 CBAM in 90 seconds
+2:54 The importer pays, but the exporter feels it
+3:48 The timeline: how CBAM kept changing
+5:37 It's not you: the rules kept moving
+6:13 Who has to comply
+8:07 What it costs: a worked example
+9:35 Your data is now worth money
+10:29 The global ripple
+12:57 The debate: climate tool or trade barrier?
+14:43 The five real challenges
+15:38 How ReGeneva helps
+16:21 Your CBAM readiness checklist
+16:59 Wrap-up and next steps with the chapter list in `chapters.txt`.
 
 The EU's Carbon Border Adjustment Mechanism (CBAM) is no longer a pilot. Since 1 January 2026 it has a cost, the first CBAM certificates go on sale in February 2027, and the first annual declaration and payment are due by 30 September 2027. And the rules have changed so many times that even sustainability, sales, procurement and compliance teams aren't sure what applies today.
 
@@ -30,7 +43,20 @@ In this video, ReGeneva's Surya Narayan Kar decodes CBAM simply and up to date:
 (Or scan the QR code at the end of the video.)
 
 ⏱️ Chapters
-[CHAPTERS]
+0:00 CBAM is live: why it matters now
+1:17 CBAM in 90 seconds
+2:54 The importer pays, but the exporter feels it
+3:48 The timeline: how CBAM kept changing
+5:37 It's not you: the rules kept moving
+6:13 Who has to comply
+8:07 What it costs: a worked example
+9:35 Your data is now worth money
+10:29 The global ripple
+12:57 The debate: climate tool or trade barrier?
+14:43 The five real challenges
+15:38 How ReGeneva helps
+16:21 Your CBAM readiness checklist
+16:59 Wrap-up and next steps
 
 📚 Official sources
 - Regulation (EU) 2023/956 (CBAM): https://eur-lex.europa.eu/eli/reg/2023/956/oj
@@ -56,9 +82,9 @@ CBAM, CBAM explained, carbon border adjustment mechanism, EU CBAM, CBAM 2026, EU
 ## Upload settings
 - **Altered or synthetic content: Yes.** The explainer narration is an AI voice clone of Surya, used with his consent. Tick the box in YouTube Studio ("Altered content").
 - Category: Education. Language: English (India); caption language: English.
-- Subtitles: upload `CBAM_explainer_subtitles_en.srt` (Subtitles → Upload file → With timing).
+- Subtitles: upload `CBAM_explainer_subtitles_en.srt` (Subtitles → Add language: English → Upload file → With timing).
 - Chapters: they appear automatically from the description (the first one must be 0:00).
-- Thumbnail: 1280×720 JPG (under 2 MB) from the thumbnails folder.
+- Thumbnail: the 1280×720 JPGs (under 2 MB); the 2560×1440 PNGs are for other uses.
 - End screen (last 6 s, over the outro): Subscribe element + one "Best for viewer" video. Keep them clear of the QR code (it sits in the outro).
 - Cards: at "Who complies" link a CBAM playlist or the CCTS video ("domestic carbon markets... India's CCTS").
 - Playlist: add to "Carbon markets & compliance".
