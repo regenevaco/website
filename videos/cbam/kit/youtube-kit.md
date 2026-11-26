@@ -14,7 +14,7 @@ For a test, upload with A and title 1, then use YouTube's "Test & compare" with 
 
 ## Description
 
-> Paste from here. Replace [CHAPTERS] with the chapter list in `chapters.txt`, and add the booking link where marked.
+> Paste from here. Replace [CHAPTERS] with the chapter list in `chapters.txt`.
 
 The EU's Carbon Border Adjustment Mechanism (CBAM) is no longer a pilot. Since 1 January 2026 it has a cost, the first CBAM certificates go on sale in February 2027, and the first annual declaration and payment are due by 30 September 2027. And the rules have changed so many times that even sustainability, sales, procurement and compliance teams aren't sure what applies today.
 
@@ -26,7 +26,7 @@ In this video, ReGeneva's Surya Narayan Kar decodes CBAM simply and up to date:
 ✅ How CBAM is spreading: the UK CBAM from 2027, WTO challenges, the India–EU FTA and domestic carbon markets
 ✅ The five real challenges, and a 5-step CBAM readiness checklist
 
-📅 Book a free CBAM consult with ReGeneva: [booking link]
+📅 Book a free CBAM consult with ReGeneva: https://outlook.office.com/book/BookaFreeConsult@regeneva.co/s/AJN0JhcX-U-nfkLo5lrxjw2?ismsaljsauthenabled=true
 (Or scan the QR code at the end of the video.)
 
 ⏱️ Chapters
@@ -66,7 +66,7 @@ CBAM, CBAM explained, carbon border adjustment mechanism, EU CBAM, CBAM 2026, EU
 
 ## Pinned comment
 What's your biggest CBAM question right now: data from suppliers, verification, default values or contract clauses? Drop it below and we'll answer. 👇
-Free CBAM consult with ReGeneva: [booking link]
+Free CBAM consult with ReGeneva: https://outlook.office.com/book/BookaFreeConsult@regeneva.co/s/AJN0JhcX-U-nfkLo5lrxjw2?ismsaljsauthenabled=true
 
 ## Search notes (why these words)
 CBAM moved from a reporting exercise to a cost on 1 January 2026, so most searches now pair the term with "2026", "explained", "cost/price", "who pays" and country names (India, China, Türkiye). The title and first two lines of the description carry "CBAM", "carbon border adjustment mechanism", "EU carbon border tax" and "2026", since YouTube weights those most. Timely hooks covered in the video and description: the certificate price (€75.36 in Q1 2026, €82.32 in Q3), the 50-tonne threshold, the first payment deadline (30 September 2027), the UK CBAM from 1 January 2027, and the downstream extension still being negotiated.

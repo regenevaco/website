@@ -21,6 +21,8 @@ FPS = 30
 MAX_GAP = 0.36          # silences longer than this are shortened
 KEEP_SENT = 0.40        # pause kept after a sentence (s): natural rhythm, no rushing
 KEEP_MICRO = 0.20       # pause kept inside a sentence (s)
+# extra seconds kept after the last word (a calm hold, e.g. so the name lower third can finish)
+TAIL_EXTRA = {"CBAM_01_cold-open": 0.6}
 # false starts / repeated words: (first word removed, approx time, first word kept after, approx time)
 CUTS = {
     "CBAM_05_debate": [("camp", 8.96, "camp", 10.32),     # "Camp 1, Camp one will say" -> "Camp one will say"
@@ -66,7 +68,8 @@ def main(wav, words_json, clip, out_json):
     # Region to use: from just before the first word to the end of the last word.
     first = starts[0] - 0.12
     last_on = np.where(sp[int(starts[-1] * 100):])[0]
-    end = starts[-1] + (last_on[-1] / 100 if len(last_on) else 0.6) + 0.25
+    end = starts[-1] + (last_on[-1] / 100 if len(last_on) else 0.6) + 0.25 + TAIL_EXTRA.get(clip, 0)
+    end = min(end, T - 0.05)
 
     keep = np.zeros(int(T * 100) + 1, bool)
     keep[int(first * 100):int(end * 100)] = True
@@ -99,6 +102,10 @@ def main(wav, words_json, clip, out_json):
             i = j
         else:
             i += 1
+
+    # The closing hold is kept whole (the pause shortening above must not trim it).
+    if clip in TAIL_EXTRA:
+        keep[int((end - TAIL_EXTRA[clip] - 0.25) * 100):int(end * 100)] = True
 
     # Kept runs -> frame segments.
     segs = []

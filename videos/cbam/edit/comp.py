@@ -255,9 +255,9 @@ def decode(video, frames):
             ranges.append((s, p))
             s = q
     sel = "+".join(f"between(n\\,{a}\\,{b})" for a, b in ranges)
-    dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", video, "-map", "0:v:0",
+    dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-threads", "2", "-filter_threads", "1", "-i", video, "-map", "0:v:0",
                             "-vf", f"fps={FPS},select='{sel}',{TONEMAP},format=gbrpf32le", "-fps_mode", "passthrough",
-                            "-f", "rawvideo", "-pix_fmt", "gbrpf32le", "-"], stdout=subprocess.PIPE, bufsize=W * H * 12)
+                            "-f", "rawvideo", "-pix_fmt", "gbrpf32le", "-"], stdout=subprocess.PIPE, bufsize=W * H * 4)
     fsz = W * H * 4
     for f in uniq:
         buf = dec.stdout.read(fsz * 3)

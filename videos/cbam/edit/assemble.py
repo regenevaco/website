@@ -41,7 +41,7 @@ CHAPTERS = {"CBAM_01_cold-open": "CBAM is live: why it matters now",
             "checklist": "Your CBAM readiness checklist",
             "CBAM_06_close-CTA": "Wrap-up and next steps"}
 TRANSITION = {"brand": "fade"}       # into/out of the brand clips; everything else slides
-LOWER_AT = ("CBAM_01_cold-open", 1.5)
+LOWER_AT = ("CBAM_01_cold-open", 69.2)       # as he says "I am Surya" (his request)
 SUB_AT = [("CBAM_03_rules-kept-moving", 4.0), ("CBAM_05_debate", 4.0)]
 
 
