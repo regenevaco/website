@@ -234,10 +234,10 @@
 #cost .cb .lab b { color: var(--red); }
 #cost .intens { font: 500 26px Roboto; color: rgba(255,255,255,.75); margin-top: 10px; }
 #cost .intens b { font: 900 40px "ESC"; color: #fff; }
-#cost .bar { position: relative; height: 460px; display: flex; align-items: flex-end; justify-content: center; margin-top: 20px; }
-#cost .bar i { display: block; width: 170px; border-radius: 12px 12px 0 0; background: var(--g); }
-#cost .cb .bar i { background: linear-gradient(0deg, #9AA39F 0 77%, var(--red) 77% 100%); }
-#cost .bar .mk { position: absolute; right: -130px; top: 34px; font: 700 22px "ESC"; color: var(--red); width: 180px; text-align: left; }
+#cost .col .bar { position: relative; height: 460px; display: flex; align-items: flex-end; justify-content: center; margin-top: 20px; }
+#cost .col .bar i { display: block; width: 170px; border-radius: 12px 12px 0 0; background: var(--g); }
+#cost .col.cb .bar i { background: linear-gradient(0deg, #9AA39F 0 77%, var(--red) 77% 100%); }
+#cost .col .bar .mk { position: absolute; right: -130px; top: 34px; font: 700 22px "ESC"; color: var(--red); width: 180px; text-align: left; }
 #cost .tot { position: absolute; left: 0; right: 0; top: 560px; font: 900 44px "ESC"; }
 #cost .col { height: 640px; }
 #cost .col .tot { top: 630px; }

@@ -6,7 +6,7 @@
     if (box && !box.children.length) [97.5, 95, 90, 77.5, 51.5, 39, 26.5, 14, 0].forEach((v, i) => {
       const d = document.createElement('div');
       d.className = 'pb';
-      d.innerHTML = `<em class="a fade" data-c="5" data-o="${(1.4 + i * 0.45).toFixed(2)}">${v}%</em><i class="a growy" data-c="5" data-o="${(1.2 + i * 0.45).toFixed(2)}" style="height:${Math.max(6, v * 3.6)}px"></i><span>${2026 + i}</span>`;
+      d.innerHTML = `<em class="a fade" data-c="5" data-o="${(2.2 + i * 0.65).toFixed(2)}">${v}%</em><i class="a growy" data-c="5" data-o="${(2.0 + i * 0.65).toFixed(2)}" style="height:${Math.max(6, v * 3.6)}px"></i><span>${2026 + i}</span>`;
       box.appendChild(d);
     });
     T.scenes.forEach(info => {

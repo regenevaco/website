@@ -12,6 +12,8 @@ const PAGE = 'file://' + path.join(__dirname, 'index.html');
 async function openPage(browser, timing, scale) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
   page.on('pageerror', e => console.error('pageerror', e.message));
+  page.on('crash', () => { console.error('page crashed'); process.exit(2); });
+  browser.on('disconnected', () => { if (!global.closing) { console.error('browser gone'); process.exit(2); } });
   await page.goto(PAGE);
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(t => window.init(t), timing);
@@ -27,7 +29,7 @@ async function stills(timing, outDir, times, scale) {
     await page.evaluate(x => window.setTime(x), t);
     await page.screenshot({ path: path.join(outDir, `s_${String(t.toFixed(2)).padStart(7, '0')}.png`) });
   }
-  await browser.close();
+  global.closing = true; await browser.close();
 }
 
 async function segment(timing, from, to, out, scale) {
@@ -49,7 +51,7 @@ async function segment(timing, from, to, out, scale) {
   }
   ff.stdin.end();
   await new Promise((res, rej) => ff.on('close', c => (c === 0 ? res() : rej(new Error('ffmpeg ' + c)))));
-  await browser.close();
+  global.closing = true; await browser.close();
 }
 
 async function video(timing, out, workers, scale) {
