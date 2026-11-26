@@ -22,6 +22,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 
 import numpy as np
 import soundfile as sf
@@ -233,13 +234,24 @@ def main():
     redo = sys.argv[sys.argv.index("--redo") + 1].split(",") if "--redo" in sys.argv else None
     if "--assemble" not in sys.argv:
         voice, checker = load_voice()
+        # VOICE_SKIP_EXISTING=1: keep lines already generated (resume); VOICE_BUDGET_MIN: stop cleanly in time
+        skip = os.environ.get("VOICE_SKIP_EXISTING") == "1"
+        budget = float(os.environ.get("VOICE_BUDGET_MIN", "0")) * 60
+        t_start = time.time()
         for scene in script["scenes"]:
-            if only and scene["id"] != only:
+            if only and scene["id"] not in only.split(","):
                 continue
             for li, line in enumerate(scene["lines"]):
                 if redo and f"{scene['id']}:{li}" not in redo:
                     continue
+                if skip and os.path.exists(os.path.join(out, "lines", f"{scene['id']}_{li:02}.wav")):
+                    continue
+                if budget and time.time() - t_start > budget:
+                    print("time budget reached; resume later", flush=True)
+                    json.dump(report, open(qa_path, "w"), indent=1, ensure_ascii=False)
+                    return
                 generate_line(voice, checker, scene, li, line, out, report)
+                json.dump(report, open(qa_path, "w"), indent=1, ensure_ascii=False)
         json.dump(report, open(qa_path, "w"), indent=1, ensure_ascii=False)
     if only is None:
         assemble(script, out)
