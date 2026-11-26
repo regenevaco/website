@@ -220,7 +220,7 @@ def main():
     if "--captions-only" in sys.argv:
         write_text_tracks(script, json.load(open(os.path.join(out, "timing.json"))), out)
         return
-    qa_path = os.path.join(out, "voice_qa.json")
+    qa_path = os.path.join(out, os.environ.get("VOICE_QA_NAME", "voice_qa.json"))   # one file per parallel worker
     report = json.load(open(qa_path)) if os.path.exists(qa_path) else {}
     if isinstance(report, list):  # older list format: re-key by scene/line/chunk
         keyed, seen = {}, {}
