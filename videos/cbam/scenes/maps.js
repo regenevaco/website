@@ -15,7 +15,7 @@
     if (eu && !eu.children.length) {
       const base = el('g', { class: 'base' }, eu);
       Object.entries(G.eu.p).forEach(([id, d]) => el('path', { d, class: G.eu.eu.includes(id) ? 'eu' : 'non' }, base));
-      const hot = [['276', 'Germany', 8.0, [0, -6]], ['380', 'Italy', 8.5, [-30, 8]], ['616', 'Poland', 9.0, [10, -4]]];
+      const hot = [['276', 'Germany', 15.1, [0, -6]], ['380', 'Italy', 15.8, [-30, 8]], ['616', 'Poland', 16.5, [10, -4]]];
       hot.forEach(([id, name, o, dxy]) => {
         el('path', { d: G.eu.p[id], class: 'hot a fade', 'data-c': '3', 'data-o': String(o) }, eu);
       });
