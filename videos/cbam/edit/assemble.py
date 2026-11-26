@@ -336,7 +336,8 @@ def pieces(cfg, k=0, n=1):
             chains = [chain(0, mat, pc["from"], nfr) + "[v]"]
             last, kk = "v", 1
             for name, f0, dur in overlays:
-                if pc["out"] <= f0 and f0 + dur <= pc["out"] + nfr:
+                # an overlay belongs to the piece it starts in (its fully faded last frames may be cut)
+                if pc["out"] <= f0 < pc["out"] + nfr and f0 + dur <= pc["out"] + nfr + 6:
                     inputs += ["-framerate", str(FPS), "-i", f"{cfg['overlays']}/{name}/f_%04d.png"]
                     chains.append(f"[{kk}:v]setpts=PTS-STARTPTS+{(f0 - pc['out']) / FPS:.4f}/TB[ov{kk}]")
                     chains.append(f"[{last}][ov{kk}]overlay=eof_action=pass:format=auto,format=yuv420p[o{kk}]")
